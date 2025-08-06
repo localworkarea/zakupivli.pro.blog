@@ -121,6 +121,12 @@
         "start": 1754489608261,
         "end": 1754497791656,
         "type": "build"
+      },
+      {
+        "date": "06.08.2025",
+        "start": 1754501067898,
+        "end": 1754502581503,
+        "type": "build"
       }
     ],
     "files": [
@@ -177,7 +183,8 @@
       "calendar-path.js",
       "calendar-api.js",
       "fill-arrow.svg",
-      "calendar.scss"
+      "calendar.scss",
+      "head.html"
     ]
   }
 }

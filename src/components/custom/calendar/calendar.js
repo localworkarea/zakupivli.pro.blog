@@ -1,11 +1,24 @@
-import fetchCalendarData from '../../../files/calendar-api.js';
-import CALENDAR_DATA_URL from '../../../files/calendar-path.js';
-import getCalendarLocale from '../../../files/calendar-locale.js';
+// import fetchCalendarData from '../../../files/calendar-api.js';
+// import CALENDAR_DATA_URL from '../../../files/calendar-path.js';
+// import getCalendarLocale from '../../../files/calendar-locale.js';
 import './calendar.scss';
 
-const LOCALIZATION = getCalendarLocale();
+//    const [{ default: fetchCalendarData }, { default: CALENDAR_DATA_URL }, { default: getCalendarLocale }] = await Promise.all([
+//     import('/files/calendar-api.js'),
+//     import('/files/calendar-path.js'),
+//     import('/files/calendar-locale.js'),
+//   ]);
+
+// const LOCALIZATION = getCalendarLocale();
 
 document.addEventListener('DOMContentLoaded', async () => {
+    const [{ default: fetchCalendarData }, { default: CALENDAR_DATA_URL }, { default: getCalendarLocale }] = await Promise.all([
+    import('/files/calendar-api.js'),
+    import('/files/calendar-path.js'),
+    import('/files/calendar-locale.js'),
+  ]);
+
+  const LOCALIZATION = getCalendarLocale();
   const calendarEl = document.querySelector('[data-fls-calendar]');
   if (!calendarEl) return;
 
