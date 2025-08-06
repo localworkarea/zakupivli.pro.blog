@@ -444,72 +444,38 @@ function formInit() {
   formClearButtonInit();
 }
 document.querySelector("[data-fls-form]") ? window.addEventListener("load", formInit) : null;
-const scriptRel = "modulepreload";
-const assetsURL = function(dep, importerUrl) {
-  return new URL(dep, importerUrl).href;
-};
-const seen = {};
-const __vitePreload = function preload(baseModule, deps, importerUrl) {
-  let promise = Promise.resolve();
-  if (deps && deps.length > 0) {
-    let allSettled = function(promises$2) {
-      return Promise.all(promises$2.map((p$1) => Promise.resolve(p$1).then((value$1) => ({
-        status: "fulfilled",
-        value: value$1
-      }), (reason) => ({
-        status: "rejected",
-        reason
-      }))));
+const CALENDAR_DATA_URL = "./files/calendar.json";
+async function fetchCalendarData(url) {
+  const response = await fetch(url);
+  return await response.json();
+}
+function getCalendarLocale() {
+  const lang = document.documentElement.lang;
+  if (lang === "uk") {
+    return {
+      title: "Календар подій",
+      months: ["Січня", "Лютого", "Березня", "Квітня", "Травня", "Червня", "Липня", "Серпня", "Вересня", "Жовтня", "Листопада", "Грудня"],
+      weekdays: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"],
+      noEvents: "Немає подій"
     };
-    const links = document.getElementsByTagName("link");
-    const cspNonceMeta = document.querySelector("meta[property=csp-nonce]");
-    const cspNonce = cspNonceMeta?.nonce || cspNonceMeta?.getAttribute("nonce");
-    promise = allSettled(deps.map((dep) => {
-      dep = assetsURL(dep, importerUrl);
-      if (dep in seen) return;
-      seen[dep] = true;
-      const isCss = dep.endsWith(".css");
-      const cssSelector = isCss ? '[rel="stylesheet"]' : "";
-      const isBaseRelative = !!importerUrl;
-      if (isBaseRelative) for (let i$1 = links.length - 1; i$1 >= 0; i$1--) {
-        const link$1 = links[i$1];
-        if (link$1.href === dep && (!isCss || link$1.rel === "stylesheet")) return;
-      }
-      else if (document.querySelector(`link[href="${dep}"]${cssSelector}`)) return;
-      const link = document.createElement("link");
-      link.rel = isCss ? "stylesheet" : scriptRel;
-      if (!isCss) link.as = "script";
-      link.crossOrigin = "";
-      link.href = dep;
-      if (cspNonce) link.setAttribute("nonce", cspNonce);
-      document.head.appendChild(link);
-      if (isCss) return new Promise((res, rej) => {
-        link.addEventListener("load", res);
-        link.addEventListener("error", () => rej(/* @__PURE__ */ new Error(`Unable to preload CSS for ${dep}`)));
-      });
-    }));
+  } else if (lang === "ru") {
+    return {
+      title: "Календарь событий",
+      months: ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"],
+      weekdays: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+      noEvents: "Нет событий"
+    };
+  } else {
+    return {
+      title: "Events Calendar",
+      months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      weekdays: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+      noEvents: "No events"
+    };
   }
-  function handlePreloadError(err$2) {
-    const e$1 = new Event("vite:preloadError", { cancelable: true });
-    e$1.payload = err$2;
-    window.dispatchEvent(e$1);
-    if (!e$1.defaultPrevented) throw err$2;
-  }
-  return promise.then((res) => {
-    for (const item of res || []) {
-      if (item.status !== "rejected") continue;
-      handlePreloadError(item.reason);
-    }
-    return baseModule().catch(handlePreloadError);
-  });
-};
+}
+const LOCALIZATION = getCalendarLocale();
 document.addEventListener("DOMContentLoaded", async () => {
-  const [{ default: fetchCalendarData }, { default: CALENDAR_DATA_URL }, { default: getCalendarLocale }] = await Promise.all([
-    __vitePreload(() => Promise.resolve().then(() => calendarApi), true ? void 0 : void 0, import.meta.url),
-    __vitePreload(() => Promise.resolve().then(() => calendarPath), true ? void 0 : void 0, import.meta.url),
-    __vitePreload(() => Promise.resolve().then(() => calendarLocale), true ? void 0 : void 0, import.meta.url)
-  ]);
-  const LOCALIZATION = getCalendarLocale();
   const calendarEl = document.querySelector("[data-fls-calendar]");
   if (!calendarEl) return;
   const calendarData = await fetchCalendarData(CALENDAR_DATA_URL);
@@ -1940,7 +1906,7 @@ const unlazy = (swiper, index) => {
   const imageEl = swiper.slides[index].querySelector('[loading="lazy"]');
   if (imageEl) imageEl.removeAttribute("loading");
 };
-const preload2 = (swiper) => {
+const preload = (swiper) => {
   if (!swiper || swiper.destroyed || !swiper.params) return;
   let amount = swiper.params.lazyPreloadPrevNext;
   const len = swiper.slides.length;
@@ -2071,7 +2037,7 @@ function updateActiveIndex(newActiveIndex) {
     activeIndex
   });
   if (swiper.initialized) {
-    preload2(swiper);
+    preload(swiper);
   }
   swiper.emit("activeIndexChange");
   swiper.emit("snapIndexChange");
@@ -4695,9 +4661,9 @@ class Swiper {
         });
       }
     });
-    preload2(swiper);
+    preload(swiper);
     swiper.initialized = true;
-    preload2(swiper);
+    preload(swiper);
     swiper.emit("init");
     swiper.emit("afterInit");
     return swiper;
@@ -5490,12 +5456,3 @@ function initSliders() {
   }
 }
 document.querySelector("[data-fls-slider]") ? window.addEventListener("load", initSliders) : null;
-const calendarApi = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null
-}, Symbol.toStringTag, { value: "Module" }));
-const calendarPath = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null
-}, Symbol.toStringTag, { value: "Module" }));
-const calendarLocale = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null
-}, Symbol.toStringTag, { value: "Module" }));

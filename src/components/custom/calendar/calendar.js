@@ -3,22 +3,44 @@
 // import getCalendarLocale from '../../../files/calendar-locale.js';
 import './calendar.scss';
 
-//    const [{ default: fetchCalendarData }, { default: CALENDAR_DATA_URL }, { default: getCalendarLocale }] = await Promise.all([
-//     import('/files/calendar-api.js'),
-//     import('/files/calendar-path.js'),
-//     import('/files/calendar-locale.js'),
-//   ]);
+const CALENDAR_DATA_URL = './files/calendar.json';
 
-// const LOCALIZATION = getCalendarLocale();
+async function fetchCalendarData(url) {
+  const response = await fetch(url);
+  return await response.json();
+}
+
+
+function getCalendarLocale() {
+  const lang = document.documentElement.lang;
+  if (lang === 'uk') {
+    return {
+      title: 'Календар подій',
+      months: ['Січня', 'Лютого', 'Березня', 'Квітня', 'Травня', 'Червня', 'Липня', 'Серпня', 'Вересня', 'Жовтня', 'Листопада', 'Грудня'],
+      weekdays: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Нд'],
+      noEvents: 'Немає подій',
+    };
+  } else if (lang === 'ru') {
+    return {
+      title: 'Календарь событий',
+      months: ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'],
+      weekdays: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
+      noEvents: 'Нет событий',
+    };
+  } else {
+    return {
+      title: 'Events Calendar',
+      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      weekdays: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+      noEvents: 'No events',
+    };
+  }
+}
+
+const LOCALIZATION = getCalendarLocale();
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const [{ default: fetchCalendarData }, { default: CALENDAR_DATA_URL }, { default: getCalendarLocale }] = await Promise.all([
-    import('/files/calendar-api.js'),
-    import('/files/calendar-path.js'),
-    import('/files/calendar-locale.js'),
-  ]);
-
-  const LOCALIZATION = getCalendarLocale();
+ 
   const calendarEl = document.querySelector('[data-fls-calendar]');
   if (!calendarEl) return;
 
