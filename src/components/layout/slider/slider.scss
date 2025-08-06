@@ -1,0 +1,87 @@
+.swiper {
+	overflow: hidden;
+	position: relative;
+	@media (max-width:toEm($mobile)){
+		 overflow: visible; 
+	}
+}
+.swiper-initialized {
+	touch-action: pan-y;
+}
+.swiper-wrapper {
+	width: 100%;
+	height: 100%;
+	box-sizing: content-box;
+	display: flex;
+	position: relative;
+}
+.swiper-vertical {
+	.swiper-wrapper {
+		flex-direction: column;
+	}
+}
+.swiper-autoheight {
+	.swiper-wrapper {
+		align-items: flex-start;
+	}
+}
+.swiper-initialized {
+	.swiper-slide {
+		flex-shrink: 0;
+		// transition-property: transform;
+	}
+}
+.swiper-android {
+	.swiper-slide,
+	.swiper-wrapper {
+		transform: translate3d(0px, 0, 0);
+	}
+}
+.swiper-button-lock {
+	display: none !important;
+}
+
+.swiper-pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--size-1);
+  flex-wrap: wrap;
+  justify-content: center;
+  .swiper-pagination-bullet {
+    flex: 0 0 var(--size-1);
+    width: var(--size-1);
+    height: var(--size-1);
+    border-radius: 50%;
+    border: 1px solid var(--white);
+    transition: background-color .3s ease;
+    &.swiper-pagination-bullet-active {
+      background-color: var(--white);
+    }
+  } 
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  @extend %gridCenter;
+  width: 30px;
+  height: 30px;
+  color: var(--white);
+  transition: color .3s ease;
+  @media (any-hover: hover){
+    &:hover{
+      color: var(--green);
+    }
+  }
+  font-size: 30px;
+  &.swiper-button-disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+}
+.swiper-button-prev {
+}
+.swiper-button-next {
+  &::before {
+    transform: scaleX(-1);
+  }
+}

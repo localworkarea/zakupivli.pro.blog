@@ -1,0 +1,183 @@
+{
+  "statistics": {
+    "sessions": [
+      {
+        "date": "04.08.2025",
+        "start": 1754301878271,
+        "end": 1754308395711
+      },
+      {
+        "date": "04.08.2025",
+        "start": 1754308401041,
+        "end": 1754311333850
+      },
+      {
+        "date": "04.08.2025",
+        "start": 1754311367959,
+        "end": 1754313887384
+      },
+      {
+        "date": "04.08.2025",
+        "start": 1754313892502,
+        "end": 1754315773721
+      },
+      {
+        "date": "04.08.2025",
+        "start": 1754315779154,
+        "end": 1754317225022
+      },
+      {
+        "date": "04.08.2025",
+        "start": 1754317230644,
+        "end": 1754318302282
+      },
+      {
+        "date": "04.08.2025",
+        "start": 1754318307523,
+        "end": 1754326020826
+      },
+      {
+        "date": "05.08.2025",
+        "start": 1754387746797,
+        "end": 1754397395244
+      },
+      {
+        "date": "05.08.2025",
+        "start": 1754397403593,
+        "end": 1754397403593
+      },
+      {
+        "date": "05.08.2025",
+        "start": 1754397429734,
+        "end": 1754397607416
+      },
+      {
+        "date": "05.08.2025",
+        "start": 1754397613854,
+        "end": 1754420378740
+      },
+      {
+        "date": "06.08.2025",
+        "start": 1754469475424,
+        "end": 1754479483799
+      },
+      {
+        "date": "06.08.2025",
+        "start": 1754479488858,
+        "end": 1754479605279
+      },
+      {
+        "date": "06.08.2025",
+        "start": 1754479609867,
+        "end": 1754481045437
+      },
+      {
+        "date": "06.08.2025",
+        "start": 1754481051121,
+        "end": 1754482888785,
+        "type": "build"
+      },
+      {
+        "date": "06.08.2025",
+        "start": 1754482980964,
+        "end": 1754482985655
+      },
+      {
+        "date": "06.08.2025",
+        "start": 1754482991652,
+        "end": 1754483369176,
+        "type": "build"
+      },
+      {
+        "date": "06.08.2025",
+        "start": 1754483424198,
+        "end": 1754485318082,
+        "type": "build"
+      },
+      {
+        "date": "06.08.2025",
+        "start": 1754485413652,
+        "end": 1754488222500
+      },
+      {
+        "date": "06.08.2025",
+        "start": 1754488227464,
+        "end": 1754488760636
+      },
+      {
+        "date": "06.08.2025",
+        "start": 1754488766499,
+        "end": 1754488997615,
+        "type": "build"
+      },
+      {
+        "date": "06.08.2025",
+        "start": 1754489359996,
+        "end": 1754489585121,
+        "type": "build"
+      },
+      {
+        "date": "06.08.2025",
+        "start": 1754489608261,
+        "end": 1754497791656,
+        "type": "build"
+      }
+    ],
+    "files": [
+      "settings.scss",
+      "style.scss",
+      "reset.css",
+      "variables.css",
+      "index.html",
+      "home.html",
+      "main.html",
+      "app.js",
+      "main.js",
+      "news.html",
+      "header.html",
+      "menu.html",
+      "articles.html",
+      "article.html",
+      "customer.html",
+      "supplier.html",
+      "icon_linkedin.svg",
+      "icon_telegram.svg",
+      "main.scss",
+      "home.scss",
+      "buttons.html",
+      "_components.html",
+      "buttons.scss",
+      "menu.scss",
+      "header.scss",
+      "extends.scss",
+      "input.scss",
+      "form.scss",
+      "form.js",
+      "yt.svg",
+      "phone.svg",
+      "search.svg",
+      "cross.svg",
+      "eye.svg",
+      "fb.svg",
+      "like.svg",
+      "clock.svg",
+      "checked.svg",
+      "arrow.svg",
+      "slider.js",
+      "slider.html",
+      "slider.scss",
+      "iconfont.svg",
+      "iconfont.ttf",
+      "iconfont.woff2",
+      "iconfont.html",
+      "calendar.html",
+      "events-api.js",
+      "calendar.json",
+      "calendar.js",
+      "calendar-path.js",
+      "calendar-api.js",
+      "fill-arrow.svg",
+      "calendar.scss"
+    ]
+  }
+}

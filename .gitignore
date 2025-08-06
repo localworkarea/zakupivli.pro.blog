@@ -1,0 +1,5 @@
+/.vscode
+/css
+/docker-compose.yml
+/node_modules
+/package.json

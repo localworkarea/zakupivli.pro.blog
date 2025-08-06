@@ -1,0 +1,81 @@
+<header data-fls-header class="header">
+	<div class="header__container">
+		<if condition="'[[home]]' == 'true'">
+			<div class="header__logo">
+				<img src="@img/icons/logo.svg" width="187" height="31" alt="logo Zakupivli.pro">
+			</div>
+		</if>
+		<else>
+			<a href="index.html" class="header__logo" aria-label="logo Zakupivli.pro">
+				<img src="@img/icons/logo.svg" width="187" height="31" alt="logo Zakupivli.pro">
+			</a>
+		</else>
+		<div class="header__menu menu">
+			<button type="button" data-fls-menu class="menu__icon" aria-label="open menu">
+				<span class="icon-menu">
+					<span></span>
+				</span>
+			</button>
+			<nav class="menu__body">
+				<div class="menu__wrapper">
+					<ul class="menu__list">
+						<each loop='item in [
+							{"href": "news.html", "ancor": "Новини"},
+							{"href": "articles.html", "ancor": "Статті",
+								"submenu": [
+									{"href": "#", "label": "Назва статті 1"}, 
+									{"href": "#", "label": "Назва статті 2"}, 
+									{"href": "#", "label": "Назва статті інструкції 3"}, 
+									{"href": "#", "label": "Назва статті 4"}, 
+									{"href": "#", "label": "Назва статті інструкції 5"}, 
+									{"href": "#", "label": "Назва статті 6"}
+								]
+							},
+							{"href": "#", "ancor": "Заходи", 
+								"submenu": [
+									{"href": "#", "label": "Назва інструкції 1"}, 
+									{"href": "#", "label": "Назва інструкції 2"}, 
+									{"href": "#", "label": "Назва інструкції інструкції 3"}, 
+									{"href": "#", "label": "Назва інструкції 4"}, 
+									{"href": "#", "label": "Назва інструкції інструкції 5"}, 
+									{"href": "#", "label": "Назва інструкції 6"}
+								]
+							},
+							{"href": "#", "ancor": "Законодавство"},
+							{"href": "#", "ancor": "Інструкції"},
+							{"href": "#", "ancor": "Про нас"},
+							{"href": "#", "ancor": "Глосарій"},
+							{"href": "#", "ancor": "На майданчик"}
+						]'>
+	
+			<li class="menu__item [[item.submenu ? '_has-submenu' : '' ]]">
+				<a href="[[item.href]]" class="menu__link [[item.ancor === active ? 'menu__link--active' : '' ]]" aria-label="link to the page">[[item.ancor]]</a>
+				<if condition="item.submenu">
+					<ul class="menu__list--sub">
+						<each loop="subitem in item.submenu">
+							<li class="menu__item--sub">	
+								<a href="[[subitem.href]]" class="menu__link--sub" aria-label="link to the page">[[subitem.label]]</a>
+							</li>
+						</each>
+					</ul>
+				</if>
+			</li>
+						</each>
+					</ul>
+				</div>
+
+			</nav>
+		</div>
+		<div data-fls-dynamic=".menu__wrapper,768.98,0" class="header__search search-form">
+			<form class="search-form__form form" data-fls-form="dev" action="#" method="POST">
+				<div data-fls-form-item class="form__item form__item--search">
+					<button type="submit" aria-label="submit" class="form__icon-submit --icon-search"></button>
+					<input data-fls-input type="text" name="search" placeholder="Що щукаєте?" class="form__input input">
+					<button data-fls-clear type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</header>
+

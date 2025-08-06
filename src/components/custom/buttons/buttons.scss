@@ -1,0 +1,87 @@
+.btn {
+  display: grid;
+  place-items: center;
+  max-width: max-content;
+  padding-block: var(--size-1);
+  padding-inline: var(--size-4);
+  font-size: 14px;
+  font-weight: 700;
+  transition-property: background-color, outline, color;
+  transition-duration: .3s;
+  transition-timing-function: ease;
+  line-height: 1.3;
+  text-align: center;
+  min-height: 40px;
+  border-radius: var(--size-1);
+  outline: 1px solid transparent;
+  outline-offset: -1px;
+  &:focus,
+    &:focus-visible {
+      outline-width: 2px;
+    }
+  &--fw {
+    max-width: 100%;
+    background-color: #000;
+  }   
+  &--green {
+    background-color: var(--green);
+    @media (any-hover: hover){
+      &:hover{
+        background-color: var(--green-2);
+      }
+    }
+    &:focus,
+    &:focus-visible {
+      outline-color: var(--green-1);
+      background-color: var(--green-2);
+    }
+    &:active {
+      background-color: var(--green-1);
+    }
+  }
+  &--green-light {
+    background-color: var(--white);
+    outline-color: var(--green);
+    color: var(--green-1);
+    // background-color: #000;
+    @media (any-hover: hover){
+      &:hover{
+        color: var(--green);
+        outline-color: var(--green-2);
+      }
+    }
+    &:focus,
+    &:focus-visible {
+      outline-color: var(--green-1);
+    }
+    &:active {
+      outline-color: var(--green);
+      color: var(--green-1);
+      background-color: var(--green-4);
+    }
+  }
+  &--white {
+    background-color: var(--white);
+    @media (any-hover: hover){
+      &:hover{
+        outline-color: var(--gray-dark);
+        background-color: var(--gray-light);
+      }
+    }
+    &:focus,
+    &:focus-visible {
+      outline-color: var(--gray-dark);
+      background-color: var(--white);
+    }
+    &:active {
+      outline-color: var(--gray-dark);
+      background-color: var(--gray-light-2);
+    }
+  }
+  &[disabled] {
+    pointer-events: none;
+    outline-color: var(--gray);
+    background-color: var(--gray);
+    color: var(--gray-dark);
+  }
+} 

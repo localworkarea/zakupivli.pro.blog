@@ -1,0 +1,41 @@
+@font-face { 
+	font-family: "iconfont"; 
+	font-display: swap;
+	src: url("D://IT/projects/zakupivli.pro.blog/src/assets/svgicons/preview/iconfont.woff2?b36204cc4f57ebaea1cb62ea45a10e29") format("woff2"); 
+} 
+[class*="--icon-"]::before{
+	font-family: iconfont; 
+}
+	[class*="--icon-yt"]::before { 
+		content: "\f101"; 
+	} 
+	[class*="--icon-search"]::before { 
+		content: "\f102"; 
+	} 
+	[class*="--icon-phone"]::before { 
+		content: "\f103"; 
+	} 
+	[class*="--icon-like"]::before { 
+		content: "\f104"; 
+	} 
+	[class*="--icon-fill-arrow"]::before { 
+		content: "\f105"; 
+	} 
+	[class*="--icon-fb"]::before { 
+		content: "\f106"; 
+	} 
+	[class*="--icon-eye"]::before { 
+		content: "\f107"; 
+	} 
+	[class*="--icon-cross"]::before { 
+		content: "\f108"; 
+	} 
+	[class*="--icon-clock"]::before { 
+		content: "\f109"; 
+	} 
+	[class*="--icon-checked"]::before { 
+		content: "\f10a"; 
+	} 
+	[class*="--icon-arrow"]::before { 
+		content: "\f10b"; 
+	} 

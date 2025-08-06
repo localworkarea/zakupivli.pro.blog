@@ -1,0 +1,188 @@
+.calendar {
+   background-color: var(--green);
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   padding-block: 40px;
+   padding-inline: 20px;
+   max-width: 390px;
+   border-radius: var(--size-1);
+   margin-inline: auto;
+  @media (max-width: toEm($tablet)) and (min-width: toEm($mobile)){
+    padding-inline: 18px;
+  }
+   @media (min-width:toEm($tablet)){
+     padding-inline: 30px;
+   }
+   // .calendar__body
+   &__body {
+    flex: 1;
+   }
+		// .calendar__header
+		&__header {
+      font-weight: 700;
+      margin-bottom: 4px;
+		}
+		// .calendar__title
+		&__title {
+      font-size: 24px;
+      margin-bottom: 20px;
+      @media (max-width: toEm($tablet)) and (min-width: toEm($mobile)){
+        font-size: 20px;
+      }
+      @media (max-width: toEm($tablet)) and (min-width: toEm($mobile)){
+          
+      }
+		}
+
+		// .calendar__nav
+		&__nav {
+      @extend %flexCenter;
+      justify-content: space-between;
+		}
+
+		// .calendar__month-year
+		&__month-year {
+      font-weight: 700;
+      font-size: 18px;
+      @media (max-width: toEm($tablet)) and (min-width: toEm($mobile)){
+         font-size: 14px;
+      }
+		}
+
+		// .calendar__btns
+		&__btns {
+      @extend %flexCenter;
+      gap: 6px;
+      button {
+        display: grid;
+        place-items: center;
+        width: 40px;
+        aspect-ratio: 1;
+        font-size: 21px;
+        border-radius: 50%;
+        transition: background-color .3s ease;
+        @media (max-width: toEm($tablet)) and (min-width: toEm($mobile)){
+          width: 30px;
+          font-size: 18px;
+        }
+        @media (any-hover: hover){
+          &:hover{
+            background-color: var(--primary);
+            color: var(--green);
+          }
+        }
+        &:active {
+          background-color: var(--primary);
+          color: var(--green);
+        }
+      }
+      [data-next] {
+        &::before {
+          transform: scaleX(-1);
+        }
+      }
+		}
+
+		// .calendar__grid
+		&__grid {
+      margin-bottom: var(--size-2);
+		}
+
+	
+
+    &__weekdays,
+    &__days {
+      display: grid;
+      grid-template-columns: repeat(7,1fr);
+    }
+    	// .calendar__weekdays
+		&__weekdays {
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 1.85;
+      text-transform: uppercase;
+      justify-items: center;
+      margin-bottom: 4px;
+      @media (max-width: toEm($tablet)) and (min-width: toEm($mobile)){
+        font-size: 11px;
+      }
+		}
+		// .calendar__weekday
+		&__weekday {
+      // aspect-ratio: 1;
+		}
+    
+		// .calendar__days
+		&__days {
+      gap: 6px 8px;
+      grid-auto-rows: 1fr;
+      @media (max-width: toEm($tablet)) and (min-width: toEm($mobile)){
+        gap: 4px;
+      }
+    }
+    
+		// .calendar__day
+		&__day {
+      @extend %gridCenter;
+      aspect-ratio: 1;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background-color .3s ease;
+      &:not(.calendar__day--event) {
+        @media (any-hover: hover){
+          &:hover{
+            background-color: var(--green-2);
+          }
+        }
+      }
+       @media (max-width: toEm($tablet)) and (min-width: toEm($mobile)){
+       font-size: 11px;   
+      }
+		}
+
+		// .calendar__day--empty
+		&__day--empty {
+		}
+    // .calendar__day--event
+    &__day--event {
+      background-color: var(--primary);
+      color: var(--green);
+    }
+		// .calendar__events
+		&__events {
+      flex: 1;
+      margin-bottom: var(--size-4);
+		}
+
+    // .calendar__list
+    &__list {
+    }
+    
+    // .calendar__item
+    &__item {
+      font-weight: 700;
+      &:not(:last-child) {
+        margin-bottom: var(--size-2);
+      }
+    }
+    
+    // .calendar__event
+    &__event {
+      font-weight: 400;
+      line-height: 1.6;
+    }
+		// .calendar__link
+		&__link {
+		}
+}
+
+
+.--icon-arrow {
+}
+.btn {
+}
+.btn--white {
+}
+.btn--fw {
+}
