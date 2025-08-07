@@ -96,14 +96,14 @@ body {
 
 .title-main {
   font-weight: 700;
-  font-size: 24px;
   line-height: 1.33;
-
+	@include adaptiveValue("font-size", 32,24);
+	&--mb {
+		@include adaptiveValue("margin-bottom", 42, 17);
+	}
   @media (min-width:toEm($mobileSmall)) {
-    font-size: 36px;
     line-height: 1.25;
   }
-
   span {
     color: var(--green);
   }
@@ -124,7 +124,7 @@ body {
     }
   }
 }
-
+// PADDING =====================
 .pdt-1 {
 	padding-top: 48px;
 	@media (min-width:toEm($mobile)){
@@ -136,4 +136,106 @@ body {
 	@media (min-width:toEm($mobile)){
 		 padding-bottom: 100px; 
 	}
+}
+
+.pdt-2 {
+	padding-top: 48px;
+}
+
+// MARGIN ========================
+.mt-1 {
+	margin-top: 48px;
+	@media (min-width:toEm($mobile)){
+		 margin-top: 100px; 
+	}
+}
+.mb-1 {
+	margin-bottom: 48px;
+	@media (min-width:toEm($mobile)){
+		 margin-bottom: 100px; 
+	}
+}
+
+.grid-clm {
+  display: grid;
+  grid-template-columns: 100%;
+  gap: var(--size-4);
+  @media (min-width:toEm($mobile)){
+    gap: var(--size-3);
+    grid-template-columns: 66% auto;
+  }
+}
+
+%bodyGrid {
+  display: grid;
+  gap: var(--size-4);
+  grid-template-columns: 100%;
+  @media (min-width:toEm($mobile)){
+    gap: var(--size-3);
+  }
+}
+
+.body-main {
+  @extend %bodyGrid;
+  @media (min-width:toEm($mobile)){
+    grid-template-columns: 66% auto;
+  }
+  // .body-main__left
+  &__left {
+    display: flex;
+    flex-direction: column;
+  }
+  // .body-main__slider
+  &__slider {
+  }
+  // .body-main__cards
+  &__cards {
+    flex: 1;
+    @extend %bodyGrid;
+    margin-top: var(--size-3);
+    @media (min-width:toEm(600.98)){
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (min-width:toEm($mobileSmall)){
+      margin-top: var(--size-4);
+    }
+    
+	}
+	// .body-main__right
+	&__right {
+ 
+  }
+	// .body-main__content
+	&__content {
+	}
+}
+
+.white-wrapper {
+	background-color: var(--white);
+	border-radius: 40px;
+	padding-top: 38px;
+	padding-bottom: 48px;
+	margin-bottom: 48px;
+	@media (min-width:toEm($mobile)){
+		margin-bottom: 85px;
+		 padding-bottom: 100px; 
+	}
+}
+
+.divide {
+	padding-block: var(--size-4);
+	@media (min-width:toEm($mobileSmall)){
+		padding-block: 50px;
+	}
+		// .divide__container
+		&__container {
+			span {
+				@media (min-width:toEm($mobileSmall)){
+					display: block;
+					width: 100%;
+					height: 1px;
+					background-color: var(--gray-light);
+				}
+			}
+		}
 }

@@ -444,165 +444,6 @@ function formInit() {
   formClearButtonInit();
 }
 document.querySelector("[data-fls-form]") ? window.addEventListener("load", formInit) : null;
-const CALENDAR_DATA_URL = "./files/calendar.json";
-async function fetchCalendarData(url) {
-  const response = await fetch(url);
-  return await response.json();
-}
-function getCalendarLocale() {
-  const lang = document.documentElement.lang;
-  if (lang === "uk") {
-    return {
-      title: "Календар подій",
-      months: ["Січня", "Лютого", "Березня", "Квітня", "Травня", "Червня", "Липня", "Серпня", "Вересня", "Жовтня", "Листопада", "Грудня"],
-      weekdays: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"],
-      noEvents: "Немає подій"
-    };
-  } else if (lang === "ru") {
-    return {
-      title: "Календарь событий",
-      months: ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"],
-      weekdays: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
-      noEvents: "Нет событий"
-    };
-  } else {
-    return {
-      title: "Events Calendar",
-      months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-      weekdays: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
-      noEvents: "No events"
-    };
-  }
-}
-const LOCALIZATION = getCalendarLocale();
-document.addEventListener("DOMContentLoaded", async () => {
-  const calendarEl = document.querySelector("[data-fls-calendar]");
-  if (!calendarEl) return;
-  const calendarData = await fetchCalendarData(CALENDAR_DATA_URL);
-  let currentDate = /* @__PURE__ */ new Date();
-  const headerEl = document.createElement("div");
-  headerEl.className = "calendar__header";
-  headerEl.innerHTML = `
-    <h2 class="calendar__title">${LOCALIZATION.title}</h2>
-    <div class="calendar__nav">
-      <span class="calendar__month-year"><strong></strong></span>
-      <div class="calendar__btns">
-        <button data-prev class="--icon-arrow"></button>
-        <button data-next class="--icon-arrow"></button>
-      </div>
-    </div>
-  `;
-  const gridEl = document.createElement("div");
-  gridEl.className = "calendar__grid";
-  const weekdaysEl = document.createElement("div");
-  weekdaysEl.className = "calendar__weekdays";
-  LOCALIZATION.weekdays.forEach((day) => {
-    const el = document.createElement("div");
-    el.className = "calendar__weekday";
-    el.textContent = day;
-    weekdaysEl.appendChild(el);
-  });
-  const daysContainer = document.createElement("div");
-  daysContainer.className = "calendar__days";
-  gridEl.appendChild(weekdaysEl);
-  gridEl.appendChild(daysContainer);
-  const eventsWrapper = document.createElement("div");
-  eventsWrapper.className = "calendar__events";
-  const eventsList = document.createElement("ul");
-  eventsList.className = "calendar__list";
-  eventsWrapper.appendChild(eventsList);
-  const linkEl = calendarEl.querySelector(".calendar__link");
-  let calendarBody = calendarEl.querySelector(".calendar__body");
-  if (!calendarBody) {
-    calendarBody = document.createElement("div");
-    calendarBody.className = "calendar__body";
-    calendarEl.insertBefore(calendarBody, linkEl);
-  }
-  calendarBody.innerHTML = "";
-  calendarBody.appendChild(headerEl);
-  calendarBody.appendChild(gridEl);
-  calendarBody.appendChild(eventsWrapper);
-  const monthYearEl = headerEl.querySelector(".calendar__month-year");
-  function renderCalendar(year, month) {
-    const firstDay = new Date(year, month, 1);
-    const lastDay = new Date(year, month + 1, 0);
-    const daysInMonth = lastDay.getDate();
-    const firstWeekday = (firstDay.getDay() + 6) % 7;
-    monthYearEl.innerHTML = `<strong>${LOCALIZATION.months[month]}</strong> ${year}`;
-    daysContainer.innerHTML = "";
-    for (let i = 0; i < firstWeekday; i++) {
-      const empty = document.createElement("div");
-      empty.className = "calendar__day calendar__day--empty";
-      daysContainer.appendChild(empty);
-    }
-    const datesWithEvents = calendarData.map((ev) => ev.date);
-    for (let d = 1; d <= daysInMonth; d++) {
-      const dayStr = String(d).padStart(2, "0");
-      const monthStr = String(month + 1).padStart(2, "0");
-      const dateStr = `${year}-${monthStr}-${dayStr}`;
-      const dayEl = document.createElement("div");
-      dayEl.className = "calendar__day";
-      dayEl.textContent = d;
-      dayEl.dataset.date = dateStr;
-      if (datesWithEvents.includes(dateStr)) {
-        dayEl.classList.add("calendar__day--event");
-      }
-      dayEl.addEventListener("click", () => {
-        renderEventsForDate(dateStr);
-      });
-      daysContainer.appendChild(dayEl);
-    }
-    renderMonthEvents(year, month);
-  }
-  function renderMonthEvents(year, month) {
-    eventsList.innerHTML = "";
-    const monthStr = String(month + 1).padStart(2, "0");
-    const filtered = calendarData.filter((ev) => ev.date.startsWith(`${year}-${monthStr}`));
-    if (filtered.length === 0) {
-      eventsList.innerHTML = `<li class="calendar__item">${LOCALIZATION.noEvents}</li>`;
-      return;
-    }
-    for (const ev of filtered) {
-      const li = document.createElement("li");
-      li.className = "calendar__item";
-      const a = document.createElement("a");
-      a.className = "calendar__event";
-      a.href = ev.link || "#";
-      a.innerHTML = `<strong>${ev.dayName} ${ev.day} ${ev.monty}, ${ev.time}</strong><br>${ev.title}`;
-      li.appendChild(a);
-      eventsList.appendChild(li);
-    }
-  }
-  function renderEventsForDate(dateStr) {
-    eventsList.innerHTML = "";
-    const events2 = calendarData.filter((ev) => ev.date === dateStr);
-    if (events2.length === 0) {
-      eventsList.innerHTML = `<li class="calendar__item">${LOCALIZATION.noEvents}</li>`;
-      return;
-    }
-    for (const ev of events2) {
-      const li = document.createElement("li");
-      li.className = "calendar__item";
-      const a = document.createElement("a");
-      a.className = "calendar__event";
-      a.href = ev.link || "#";
-      a.innerHTML = `<strong>${ev.dayName} ${ev.day} ${ev.monty}, ${ev.time}</strong><br>${ev.title}`;
-      li.appendChild(a);
-      eventsList.appendChild(li);
-    }
-  }
-  const prevBtn = headerEl.querySelector("[data-prev]");
-  const nextBtn = headerEl.querySelector("[data-next]");
-  prevBtn.addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
-  });
-  nextBtn.addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
-  });
-  renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
-});
 function isObject$1(obj) {
   return obj !== null && typeof obj === "object" && "constructor" in obj && obj.constructor === Object;
 }
@@ -5456,3 +5297,218 @@ function initSliders() {
   }
 }
 document.querySelector("[data-fls-slider]") ? window.addEventListener("load", initSliders) : null;
+function adjustCardTextClamp() {
+  const cards = document.querySelectorAll(".card-news--t1");
+  cards.forEach((card, i) => {
+    const text = card.querySelector(".card-news__text");
+    if (!text) return;
+    requestAnimationFrame(() => {
+      const picture = card.querySelector(".card-news__picture");
+      const time = card.querySelector(".card-news__time");
+      const tags = card.querySelector(".card-news__tags");
+      const title = card.querySelector(".card-news__title");
+      const cardStyle = getComputedStyle(card);
+      const paddingTop = parseFloat(cardStyle.paddingTop || 0);
+      const paddingBottom = parseFloat(cardStyle.paddingBottom || 0);
+      const cardPadding = paddingTop + paddingBottom;
+      const cardHeight = 488;
+      const pictureMarginBottom = picture ? parseFloat(getComputedStyle(picture).marginBottom || 0) : 0;
+      const pictureHeight = 230 + pictureMarginBottom;
+      let occupiedHeight = 0;
+      [time, tags, title].forEach((el) => {
+        if (el) {
+          const style = getComputedStyle(el);
+          occupiedHeight += el.offsetHeight + parseFloat(style.marginBottom || 0);
+        }
+      });
+      const textStyle = getComputedStyle(text);
+      const textMarginTop = parseFloat(textStyle.marginTop || 0);
+      let availableHeight = cardHeight - cardPadding - pictureHeight - occupiedHeight - textMarginTop;
+      let lineHeight = parseFloat(textStyle.lineHeight);
+      if (!lineHeight || isNaN(lineHeight)) {
+        const fontSize = parseFloat(textStyle.fontSize) || 14;
+        lineHeight = fontSize * 1.7;
+      }
+      const EPSILON = 6;
+      let lines = Math.floor((availableHeight + EPSILON) / lineHeight);
+      lines = Math.max(1, lines);
+      text.style.webkitLineClamp = lines;
+      text.style.display = "-webkit-box";
+    });
+  });
+}
+window.addEventListener("load", () => {
+  adjustCardTextClamp();
+  let lastWidth = window.innerWidth;
+  const resizeObserver = new ResizeObserver((entries) => {
+    requestAnimationFrame(() => {
+      entries.forEach((entry) => {
+        const currentWidth = entry.contentRect.width;
+        if (currentWidth !== lastWidth) {
+          requestAnimationFrame(adjustCardTextClamp);
+          lastWidth = currentWidth;
+        }
+      });
+    });
+  });
+  resizeObserver.observe(document.body);
+});
+const CALENDAR_DATA_URL = "./files/calendar.json";
+async function fetchCalendarData(url) {
+  const response = await fetch(url);
+  return await response.json();
+}
+function getCalendarLocale() {
+  const lang = document.documentElement.lang;
+  if (lang === "uk") {
+    return {
+      title: "Календар подій",
+      months: ["Січня", "Лютого", "Березня", "Квітня", "Травня", "Червня", "Липня", "Серпня", "Вересня", "Жовтня", "Листопада", "Грудня"],
+      weekdays: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"],
+      noEvents: "Немає подій"
+    };
+  } else if (lang === "ru") {
+    return {
+      title: "Календарь событий",
+      months: ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"],
+      weekdays: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+      noEvents: "Нет событий"
+    };
+  } else {
+    return {
+      title: "Events Calendar",
+      months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      weekdays: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+      noEvents: "No events"
+    };
+  }
+}
+const LOCALIZATION = getCalendarLocale();
+document.addEventListener("DOMContentLoaded", async () => {
+  const calendarEl = document.querySelector("[data-fls-calendar]");
+  if (!calendarEl) return;
+  const calendarData = await fetchCalendarData(CALENDAR_DATA_URL);
+  let currentDate = /* @__PURE__ */ new Date();
+  const headerEl = document.createElement("div");
+  headerEl.className = "calendar__header";
+  headerEl.innerHTML = `
+    <h2 class="calendar__title">${LOCALIZATION.title}</h2>
+    <div class="calendar__nav">
+      <span class="calendar__month-year"><strong></strong></span>
+      <div class="calendar__btns">
+        <button data-prev class="--icon-arrow"></button>
+        <button data-next class="--icon-arrow"></button>
+      </div>
+    </div>
+  `;
+  const gridEl = document.createElement("div");
+  gridEl.className = "calendar__grid";
+  const weekdaysEl = document.createElement("div");
+  weekdaysEl.className = "calendar__weekdays";
+  LOCALIZATION.weekdays.forEach((day) => {
+    const el = document.createElement("div");
+    el.className = "calendar__weekday";
+    el.textContent = day;
+    weekdaysEl.appendChild(el);
+  });
+  const daysContainer = document.createElement("div");
+  daysContainer.className = "calendar__days";
+  gridEl.appendChild(weekdaysEl);
+  gridEl.appendChild(daysContainer);
+  const eventsWrapper = document.createElement("div");
+  eventsWrapper.className = "calendar__events";
+  const eventsList = document.createElement("ul");
+  eventsList.className = "calendar__list";
+  eventsWrapper.appendChild(eventsList);
+  const linkEl = calendarEl.querySelector(".calendar__link");
+  let calendarBody = calendarEl.querySelector(".calendar__body");
+  if (!calendarBody) {
+    calendarBody = document.createElement("div");
+    calendarBody.className = "calendar__body";
+    calendarEl.insertBefore(calendarBody, linkEl);
+  }
+  calendarBody.innerHTML = "";
+  calendarBody.appendChild(headerEl);
+  calendarBody.appendChild(gridEl);
+  calendarBody.appendChild(eventsWrapper);
+  const monthYearEl = headerEl.querySelector(".calendar__month-year");
+  function renderCalendar(year, month) {
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const daysInMonth = lastDay.getDate();
+    const firstWeekday = (firstDay.getDay() + 6) % 7;
+    monthYearEl.innerHTML = `<strong>${LOCALIZATION.months[month]}</strong> ${year}`;
+    daysContainer.innerHTML = "";
+    for (let i = 0; i < firstWeekday; i++) {
+      const empty = document.createElement("div");
+      empty.className = "calendar__day calendar__day--empty";
+      daysContainer.appendChild(empty);
+    }
+    const datesWithEvents = calendarData.map((ev) => ev.date);
+    for (let d = 1; d <= daysInMonth; d++) {
+      const dayStr = String(d).padStart(2, "0");
+      const monthStr = String(month + 1).padStart(2, "0");
+      const dateStr = `${year}-${monthStr}-${dayStr}`;
+      const dayEl = document.createElement("div");
+      dayEl.className = "calendar__day";
+      dayEl.textContent = d;
+      dayEl.dataset.date = dateStr;
+      if (datesWithEvents.includes(dateStr)) {
+        dayEl.classList.add("calendar__day--event");
+      }
+      dayEl.addEventListener("click", () => {
+        renderEventsForDate(dateStr);
+      });
+      daysContainer.appendChild(dayEl);
+    }
+    renderMonthEvents(year, month);
+  }
+  function renderMonthEvents(year, month) {
+    eventsList.innerHTML = "";
+    const monthStr = String(month + 1).padStart(2, "0");
+    const filtered = calendarData.filter((ev) => ev.date.startsWith(`${year}-${monthStr}`));
+    if (filtered.length === 0) {
+      eventsList.innerHTML = `<li class="calendar__item">${LOCALIZATION.noEvents}</li>`;
+      return;
+    }
+    for (const ev of filtered) {
+      const li = document.createElement("li");
+      li.className = "calendar__item";
+      const a = document.createElement("a");
+      a.className = "calendar__event";
+      a.href = ev.link || "#";
+      a.innerHTML = `<strong>${ev.dayName} ${ev.day} ${ev.monty}, ${ev.time}</strong><br>${ev.title}`;
+      li.appendChild(a);
+      eventsList.appendChild(li);
+    }
+  }
+  function renderEventsForDate(dateStr) {
+    eventsList.innerHTML = "";
+    const events2 = calendarData.filter((ev) => ev.date === dateStr);
+    if (events2.length === 0) {
+      eventsList.innerHTML = `<li class="calendar__item">${LOCALIZATION.noEvents}</li>`;
+      return;
+    }
+    for (const ev of events2) {
+      const li = document.createElement("li");
+      li.className = "calendar__item";
+      const a = document.createElement("a");
+      a.className = "calendar__event";
+      a.href = ev.link || "#";
+      a.innerHTML = `<strong>${ev.dayName} ${ev.day} ${ev.monty}, ${ev.time}</strong><br>${ev.title}`;
+      li.appendChild(a);
+      eventsList.appendChild(li);
+    }
+  }
+  const prevBtn = headerEl.querySelector("[data-prev]");
+  const nextBtn = headerEl.querySelector("[data-next]");
+  prevBtn.addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+  });
+  nextBtn.addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+  });
+  renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+});

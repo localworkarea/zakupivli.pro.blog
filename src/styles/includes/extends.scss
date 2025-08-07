@@ -87,3 +87,12 @@
   display: flex;
   align-items: center;
 }
+%lineElements {
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  display: box;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+}

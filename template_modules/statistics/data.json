@@ -133,6 +133,12 @@
         "start": 1754503326304,
         "end": 1754503503238,
         "type": "build"
+      },
+      {
+        "date": "07.08.2025",
+        "start": 1754554096314,
+        "end": 1754574266734,
+        "type": "build"
       }
     ],
     "files": [
@@ -190,7 +196,15 @@
       "calendar-api.js",
       "fill-arrow.svg",
       "calendar.scss",
-      "head.html"
+      "head.html",
+      "zakupaiko.png",
+      "gridmain.html",
+      "gridmain.scss",
+      "tags.html",
+      "tags.scss",
+      "cardnews.html",
+      "cardnews.scss",
+      "cardnews.js"
     ]
   }
 }

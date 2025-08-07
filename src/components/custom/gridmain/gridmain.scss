@@ -1,0 +1,9 @@
+[data-fls-gridmain]{
+  display: grid;
+  grid-template-columns: 100%;
+  gap: var(--size-4);
+  @media (min-width:toEm($mobile)){
+    gap: var(--size-3);
+    grid-template-columns: 66% auto;
+  }
+}
