@@ -131,7 +131,7 @@ export default {
 		'@video': 'src/assets/video',
 		'@files': 'src/files',
 		// Other
-		'@pug': 'src/pug'
+		'@pug': 'src/pug',
 	},
 	coffee: {
 		enable: true,
