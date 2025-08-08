@@ -38,41 +38,45 @@
 
 <body>
 	<div class="components">
-		<div class="components__item">
-			<include src="@components/custom/buttons/buttons.html"></include>
-		</div>
-		<div class="components__item">
-			<p>Поле инпут с кнопкой submit</p>
-			<form class="form" data-fls-form="dev" action="#" method="POST">
-				<div data-fls-form-item class="form__item form__item--search">
-					<button type="submit" aria-label="submit" class="form__icon-submit --icon-search"></button>
-					<input data-fls-input type="text" name="search" placeholder="Що щукаєте?" class="form__input input">
-					<button data-fls-clear type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
-				</div>
-			</form>
-			<p>Поле инпут без кнопки submit</p>
-			<div data-fls-form-item class="form__item">
-				<input data-fls-input type="text" name="search" placeholder="Що щукаєте?" class="form__input input">
-				<button data-fls-clear type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
+		<div class="components__container">
+			<div class="components__item">
+				<include src="@components/custom/buttons/buttons.html"></include>
 			</div>
-			<p>Поле инпут без кнопки submit, с изображением лупы</p>
-			<div data-fls-form-item class="form__item form__item--search">
-					<div aria-label="icon" class="form__icon-submit --icon-search"></div>
+			<div class="components__item">
+				<p>Поле инпут с кнопкой submit</p>
+				<form class="form" data-fls-form="dev" action="#" method="POST">
+					<div data-fls-form-item class="form__item form__item--search">
+						<button type="submit" aria-label="submit" class="form__icon-submit --icon-search"></button>
+						<input data-fls-input type="text" name="search" placeholder="Що щукаєте?" class="form__input input">
+						<button data-fls-clear type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
+					</div>
+				</form>
+				<p>Поле инпут без кнопки submit</p>
+				<div data-fls-form-item class="form__item">
 					<input data-fls-input type="text" name="search" placeholder="Що щукаєте?" class="form__input input">
 					<button data-fls-clear type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
 				</div>
+				<p>Поле инпут без кнопки submit, с изображением лупы</p>
+				<div data-fls-form-item class="form__item form__item--search">
+						<div aria-label="icon" class="form__icon-submit --icon-search"></div>
+						<input data-fls-input type="text" name="search" placeholder="Що щукаєте?" class="form__input input">
+						<button data-fls-clear type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
+					</div>
+			</div>
+			<div class="components__item">
+				<include src="@components/custom/calendar/calendar.html"></include>
+			</div>
+			<div class="components__item">
+				<include src="@components/custom/tags/tags.html"></include>
+			</div>
+			<div class="components__item">
+				<include src="@components/custom/cardnews/cardnews.html"></include>
+			</div>
+			<div class="components__item">
+				<include src="@components/custom/subscribe/subscribe.html"></include>
+			</div>
+			<div class="components__item"></div>
 		</div>
-		<div class="components__item">
-			<include src="@components/custom/calendar/calendar.html"></include>
-		</div>
-		<div class="components__item">
-			<include src="@components/custom/tags/tags.html"></include>
-		</div>
-		<div class="components__item">
-			<include src="@components/custom/cardnews/cardnews.html"></include>
-		</div>
-		<div class="components__item"></div>
-		<div class="components__item"></div>
 	</div>
 </body>
 <script type="module" src="@js/app.js"></script>

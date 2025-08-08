@@ -55,8 +55,8 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
 		clearScreen: true,
 		root: path.join(__dirname, "src"),
 		logLevel: "silent",
-		// publicDir: false,
-		publicDir: path.resolve(__dirname, 'public'),
+		publicDir: false,
+		// publicDir: path.resolve(__dirname, 'public'),
 		server: {
 			open: isWp ? 'http://localhost:8080' : true,
 			host: templateConfig.server.hostname,

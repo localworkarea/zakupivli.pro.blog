@@ -7,21 +7,24 @@
 			<div class="main__head grid-clm">
 				<h1 class="main__title title-main">Від новачка до профі
 					у Prozorro та Prozorro.Продажі — разом
-					з <span>blog.zakupivli.pro</span></h1>
+					з <span>blog.zakupivli.pro</span>
+				</h1>
 				<div class="main__form form-main">
 					<div class="form-main__text">
 						<p>Приєднуйтесь, щоб дізнаватись найцікавіше про <a href="#" aria-label="link">закупівлі</a>, <a href="#" aria-label="link">тендери</a> та <a href="#" aria-label="link">аукціони</a></p>
 					</div>
 					<form class="form-main__form form" data-fls-form="dev" action="#" method="POST">
-						<div data-fls-form-item class="form__item">
-							<input data-fls-input data-fls-form-errtext="Вкажіть e-mail" required type="email" name="email" placeholder="E-mail" class="form__input input">
-							<button data-fls-clear type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
+						<div class="form-main__body">
+							<div data-fls-form-item class="form__item">
+								<input data-fls-input data-fls-form-errtext="Вкажіть e-mail" required type="email" name="email" placeholder="E-mail" class="form__input input">
+								<button data-fls-clear type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
+							</div>
+							<button data-fls-buttons type="submit" aria-label="submit" class="form__submit btn btn--green">Підписатись</button>
 						</div>
-						<button data-fls-buttons type="submit" aria-label="submit" class="form__submit btn btn--green">Підписатись</button>
+						<div class="form-main__msg title-card">
+							<p class="form-main__txt-msg --icon-donelight">Дякуємо за підписку!</p>
+						</div>
 					</form>
-					<div class="form-main__msg">
-						<p>Дякуємо за підписку!</p>
-					</div>
 				</div>
 			</div>
 			<div class="main__body body-main">
@@ -121,7 +124,7 @@
 			</div>
 		</div>
 	</section>
-	<div class="white-wrapper">
+	<div class="white-wrapper mb-1">
 		<div class="about-block mb-1">
 			<div class="about-block__container">
 				<div class="about-block__text">
@@ -153,10 +156,10 @@
 				<span></span>
 			</div>
 		</div>
-		<section class="news">
+		<section class="news ">
 			<div class="news__container">
 				<h2 class="news__title title-main title-main--mb">Останні новини</h2>
-				<div class="news__body body-news ">
+				<div class="news__body body-news mb-1">
 					<div class="body-news__wrapper grid-clm">
 						<div class="body-news__left grid-gap">
 							<div class="body-news__top">
@@ -361,7 +364,118 @@
 						<a href="#" class="body-news__btn btn btn--green btn--fw" aria-label="link to the page">Більше новин</a>
 					</div>
 				</div>
+				<include src="@components/custom/subscribe/subscribe.html"></include>
 			</div>
 		</section>
 	</div>
+	<section class="slider-block">
+		<div class="slider-block__container">
+			<h2 class="slider-block__title title-main title-main--mb">Події</h2>
+			<div data-fls-slider class="slider-block__slider swiper">
+				<div class="slider-block__wrapper swiper-wrapper">
+					<div class="slider-block__slide slide-block swiper-slide">
+						<a href="#" class="slide-block__link" aria-label="link to the events">
+							<img class="ibg" src="@img/pictures/event-1.jpg" width="522" height="270" alt="Image">
+						</a>
+					</div>
+					<div class="slider-block__slide slide-block swiper-slide">
+						<a href="#" class="slide-block__link" aria-label="link to the events">
+							<img class="ibg" src="@img/pictures/event-2.jpg" width="522" height="270" alt="Image">
+						</a>
+					</div>
+					<div class="slider-block__slide slide-block swiper-slide">
+						<a href="#" class="slide-block__link" aria-label="link to the events">
+							<img class="ibg" src="@img/pictures/event-3.jpg" width="522" height="270" alt="Image">
+						</a>
+					</div>
+					<div class="slider-block__slide slide-block swiper-slide">
+						<a href="#" class="slide-block__link" aria-label="link to the events">
+							<img class="ibg" src="@img/pictures/event-1.jpg" width="522" height="270" alt="Image">
+						</a>
+					</div>
+					<div class="slider-block__slide slide-block swiper-slide">
+						<a href="#" class="slide-block__link" aria-label="link to the events">
+							<img class="ibg" src="@img/pictures/event-2.jpg" width="522" height="270" alt="Image">
+						</a>
+					</div>
+					<div class="slider-block__slide slide-block swiper-slide">
+						<a href="#" class="slide-block__link" aria-label="link to the events">
+							<img class="ibg" src="@img/pictures/event-3.jpg" width="522" height="270" alt="Image">
+						</a>
+					</div>
+				</div>
+				<div class="slider-block__buttons">
+					<button type="button" class="swiper-button-prev --icon-fill-arrow" aria-label="button prev"></button>
+					<button type="button" class="swiper-button-next --icon-fill-arrow" aria-label="button next"></button>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="video-block">
+		<div class="video-block__container">
+			<h2 class="video-block__title title-main title-main--mb">Цікаві відео</h2>
+			<div data-fls-slider class="video-block__slider swiper">
+				<div class="video-block__wrapper swiper-wrapper">
+					<div class="video-block__slide slide-video swiper-slide">
+						<div data-fls-videobutton class="video-youtube__body">
+							<button class="video-youtube__button" type="button" data-youtube="gwOmuVNsQCU" aria-label="open youtube">
+								<img class="ibg" src="@img/pictures/video-2.jpg" width="482" height="270" alt="poster video">
+							</button>
+						</div>
+					</div>
+						<div class="video-block__slide slide-video swiper-slide">
+						<div data-fls-videobutton class="video-youtube__body">
+							<button class="video-youtube__button" type="button" data-youtube="74Xv9oljqd4" aria-label="open youtube">
+								<img class="ibg" src="@img/pictures/video-4.jpg" width="482" height="270" alt="poster video">
+							</button>
+						</div>
+					</div>
+					<div class="video-block__slide slide-video swiper-slide">
+						<!-- <div data-fls-videobutton class="video-youtube__body">
+							<button class="video-youtube__button" type="button" data-youtube="9JKLRtlartU" aria-label="open youtube">
+								<img class="ibg" src="@img/pictures/video-3.jpg" width="482" height="270" alt="poster video">
+							</button>
+						</div> -->
+						<video class="ibg" muted controls playsinline src="../../../files/video.mp4" type="video/mp4" width="1440" height="800"></video>
+					</div>
+					<div class="video-block__slide slide-video swiper-slide">
+						<div class="custom-video">
+							<video class="custom-video__tag ibg" muted playsinline preload="metadata" width="1440" height="800">
+								<source src="../../../files/video.mp4" type="video/mp4">
+							</video>
+
+							<div class="custom-video__controls">
+								<button class="custom-video__play" type="button" aria-label="Play/Pause">▶️</button>
+
+								<div class="custom-video__timeline">
+									<input type="range" class="custom-video__progress" value="0" min="0" max="100" step="0.1">
+								</div>
+
+								<div class="custom-video__time">
+									<span class="custom-video__current">0:00</span> / <span class="custom-video__duration">0:00</span>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				
+					<div class="video-block__slide slide-video swiper-slide">
+						<div data-fls-videobutton class="video-youtube__body">
+							<button class="video-youtube__button" type="button" data-youtube="l_iBc9PcIe8" aria-label="open youtube">
+								<img class="ibg" src="@img/pictures/video-2.jpg" width="482" height="270" alt="poster video">
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="video-block__buttons">
+					<button type="button" class="swiper-button-prev --icon-fill-arrow" aria-label="button prev"></button>
+					<button type="button" class="swiper-button-next --icon-fill-arrow" aria-label="button next"></button>
+				</div>
+			</div>
+			<div class="video-block__footer">
+				<a href="#" class="video-block__link btn btn--fw btn--green" aria-label="до ютюб каналу">Перейти до YouTube каналу </a>
+			</div>
+		</div>
+	</section>
 </main>

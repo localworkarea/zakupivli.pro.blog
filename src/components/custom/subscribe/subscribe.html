@@ -1,0 +1,22 @@
+<form data-fls-subscribe data-fls-form="dev" class="subscribe form-subscribe form"  action="#" method="POST">
+  <div class="form-subscribe__body">
+    <h2 class="form-subscribe__title title-av">Підписатися на розсилки</h2>
+    <div class="form-subscribe__checkboxes checkboxes">
+      <include src="@components/forms/checkbox/checkbox.html" locals='{"title":"Prozorro Market"}'></include>
+      <include src="@components/forms/checkbox/checkbox.html" locals='{"title":"Державні закупівлі"}'></include>
+      <include src="@components/forms/checkbox/checkbox.html" locals='{"title":"Комерційні закупівлі"}'></include>
+      <include src="@components/forms/checkbox/checkbox.html" locals='{"title":"Аукціони"}'></include>
+      <include src="@components/forms/checkbox/checkbox.html" locals='{"title":"Постачальникам"}'></include>
+    </div>
+    <div class="form-subscribe__block">
+      <div data-fls-form-item class="form__item">
+        <input data-fls-input data-fls-form-errtext="Вкажіть e-mail" required type="email" name="email" placeholder="E-mail" class="form__input input">
+        <button data-fls-clear type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
+      </div>
+      <button data-fls-buttons type="submit" aria-label="submit" class="form__submit btn btn--fw btn--green">Підписатись</button>
+    </div>
+  </div>
+  <div class="form-subscribe__msg title-main">
+    <p class="form-subscribe__txt-msg --icon-donedark">Дякуємо за підписку!</p>
+  </div>
+</form>

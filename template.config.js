@@ -114,9 +114,9 @@ export default {
 	},
 	projectpage: {
 		enable: true,
-		projectname: 'Zakupivli',
+		projectname: '',
 		template: "src/projectpage/projectpage.html",
-		outfilename: 'zakupivli',
+		outfilename: '',
 	},
 	aliases: {
 		// HTML/SCSS/JS components

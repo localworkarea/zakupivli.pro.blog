@@ -1,6 +1,7 @@
 .checkbox {
 	display: inline-block;
 	position: relative;
+	&.--form-error {}
 	&:not(:last-child) {
 		margin-bottom: 5px;
 	}
@@ -16,34 +17,44 @@
 		&:checked + .checkbox__text:after {
 			transform: scale(1);
 		}
+		&:checked + .checkbox__text::before {
+			background-color: var(--white);
+		}
 	}
 	// .checkbox__text
 	&__text {
 		cursor: pointer;
 		position: relative;
-		gap: 10px;
+		gap: var(--size-1);
+		color: var(--white);
+		font-size: 14px;
+		font-weight: 700;
 		display: inline-flex;
 		align-items: center;
+		.--form-error & {
+			color: var(--red);
+		}
 		&:before {
 			content: "";
-			border-radius: 3px;
+			border-radius: 4px;
 			align-self: flex-start;
-			flex: 0 0 20px;
-			width: 20px;
-			height: 20px;
-			border: 1px solid #a7a9ac;
+			flex: 0 0 16px;
+			width: 16px;
+			height: 16px;
+			border: 1px solid var(--white);
 		}
 		&::after {
-			content: "";
-			transition: all 0.3s ease 0s;
+			content: "\f10c";
+			font-family: iconfont;
+			color: var(--primary);
+			transition: all 0.1s ease 0s;
 			transform: scale(0);
-			width: 10px;
-			height: 10px;
-			border-radius: 3px;
-			background-color: #7a956b;
+			width: 16px;
+			height: 16px;
 			position: absolute;
-			left: 5px;
-			top: 5px;
+			left: 0;
+			top: 0;
+			font-size: 16px;
 		}
 	}
 }

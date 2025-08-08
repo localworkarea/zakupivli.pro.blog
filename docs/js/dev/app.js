@@ -302,12 +302,6 @@ let formValidate = {
         el.classList.remove("--form-focus");
         formValidate.removeError(el);
       }
-      let checkboxes = form.querySelectorAll('input[type="checkbox"]');
-      if (checkboxes.length) {
-        checkboxes.forEach((checkbox) => {
-          checkbox.checked = false;
-        });
-      }
       if (window["flsSelect"]) {
         let selects = form.querySelectorAll("select[data-fls-select]");
         if (selects.length) {
@@ -444,6 +438,102 @@ function formInit() {
   formClearButtonInit();
 }
 document.querySelector("[data-fls-form]") ? window.addEventListener("load", formInit) : null;
+const videoYoutubeButtons = document.querySelectorAll(".video-youtube__button");
+videoYoutubeButtons.forEach((button) => {
+  button.addEventListener("click", function() {
+    const youTubeCode = this.getAttribute("data-youtube");
+    let urlVideo = `https://www.youtube.com/embed/${youTubeCode}?rel=0&showinfo=0`;
+    const iframe = document.createElement("iframe");
+    iframe.setAttribute("allowfullscreen", "");
+    {
+      urlVideo += "&autoplay=1";
+      iframe.setAttribute("allow", "autoplay; encrypted-media");
+    }
+    iframe.setAttribute("src", urlVideo);
+    const body = this.closest(".video-youtube__body");
+    body.innerHTML = "";
+    body.appendChild(iframe);
+    body.classList.add("video-added");
+  });
+});
+document.querySelectorAll(".custom-video").forEach((wrapper) => {
+  const video = wrapper.querySelector(".custom-video__tag");
+  const playBtn = wrapper.querySelector(".custom-video__play");
+  const progress = wrapper.querySelector(".custom-video__progress");
+  const currentTimeEl = wrapper.querySelector(".custom-video__current");
+  const durationEl = wrapper.querySelector(".custom-video__duration");
+  if (!video || !playBtn || !progress || !currentTimeEl || !durationEl) {
+    console.warn("❗ Пропущен блок custom-video — не все элементы найдены", wrapper);
+    return;
+  }
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
+  };
+  video.addEventListener("loadedmetadata", () => {
+    progress.max = video.duration;
+    durationEl.textContent = formatTime(video.duration);
+  });
+  video.addEventListener("timeupdate", () => {
+    if (!isDragging) {
+      progress.value = video.currentTime;
+      currentTimeEl.textContent = formatTime(video.currentTime);
+    }
+  });
+  let isDragging = false;
+  let wasPlaying = false;
+  progress.addEventListener("input", () => {
+    const value = parseFloat(progress.value);
+    currentTimeEl.textContent = formatTime(value);
+  });
+  progress.addEventListener("mousedown", () => {
+    isDragging = true;
+    wasPlaying = !video.paused;
+    video.pause();
+  });
+  progress.addEventListener("mouseup", () => {
+    isDragging = false;
+    video.currentTime = parseFloat(progress.value);
+    if (wasPlaying) {
+      video.play();
+    }
+  });
+  progress.addEventListener("touchstart", () => {
+    isDragging = true;
+    wasPlaying = !video.paused;
+    video.pause();
+  }, { passive: true });
+  progress.addEventListener("touchend", () => {
+    isDragging = false;
+    video.currentTime = parseFloat(progress.value);
+    if (wasPlaying) {
+      video.play();
+    }
+  }, { passive: true });
+  const togglePlayback = () => {
+    if (video.paused) {
+      video.play().then(() => {
+        playBtn.textContent = "⏸";
+      }).catch((err) => {
+        console.warn("Ошибка воспроизведения:", err);
+      });
+    } else {
+      video.pause();
+      playBtn.textContent = "▶️";
+    }
+  };
+  playBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    togglePlayback();
+  });
+  video.addEventListener("click", () => {
+    togglePlayback();
+  });
+  video.addEventListener("ended", () => {
+    playBtn.textContent = "▶️";
+  });
+});
 function isObject$1(obj) {
   return obj !== null && typeof obj === "object" && "constructor" in obj && obj.constructor === Object;
 }
@@ -5290,6 +5380,70 @@ function initSliders() {
         480: {
           speed: 800,
           spaceBetween: 20
+        }
+      },
+      on: {}
+    });
+  }
+  if (document.querySelector(".slider-block__slider")) {
+    new Swiper(".slider-block__slider", {
+      modules: [Navigation],
+      observer: true,
+      observeParents: true,
+      slidesPerView: 2,
+      spaceBetween: 20,
+      speed: 500,
+      initialSlide: 1,
+      // centeredSlides: true,
+      //touchRatio: 0,
+      //simulateTouch: false,
+      // loop: true,
+      //preloadImages: false,
+      //lazy: true,
+      navigation: {
+        prevEl: ".slider-block__slider .swiper-button-prev",
+        nextEl: ".slider-block__slider .swiper-button-next"
+      },
+      breakpoints: {
+        320: {
+          spaceBetween: 8,
+          slidesPerView: 1
+        },
+        768: {
+          spaceBetween: 20,
+          slidesPerView: 2
+        }
+      },
+      on: {}
+    });
+  }
+  if (document.querySelector(".video-block__slider")) {
+    new Swiper(".video-block__slider", {
+      modules: [Navigation],
+      observer: true,
+      observeParents: true,
+      slidesPerView: 2,
+      spaceBetween: 20,
+      speed: 500,
+      initialSlide: 1,
+      // centeredSlides: true,
+      //touchRatio: 0,
+      //simulateTouch: false,
+      // loop: true,
+      //preloadImages: false,
+      //lazy: true,
+      navigation: {
+        prevEl: ".video-block__slider .swiper-button-prev",
+        nextEl: ".video-block__slider .swiper-button-next"
+      },
+      breakpoints: {
+        320: {
+          spaceBetween: 8,
+          slidesPerView: 1
+        },
+        768: {
+          spaceBetween: 20,
+          slidesPerView: 2
         }
       },
       on: {}

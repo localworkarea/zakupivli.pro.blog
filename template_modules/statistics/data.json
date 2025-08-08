@@ -155,6 +155,22 @@
         "start": 1754657125652,
         "end": 1754657154123,
         "type": "build"
+      },
+      {
+        "date": "08.08.2025",
+        "start": 1754657334132,
+        "end": 1754660101104
+      },
+      {
+        "date": "08.08.2025",
+        "start": 1754660108145,
+        "end": 1754660558254
+      },
+      {
+        "date": "08.08.2025",
+        "start": 1754660564045,
+        "end": 1754670575004,
+        "type": "build"
       }
     ],
     "files": [
@@ -220,7 +236,17 @@
       "tags.scss",
       "cardnews.html",
       "cardnews.scss",
-      "cardnews.js"
+      "cardnews.js",
+      "subscribe.html",
+      "subscribe.scss",
+      "donedark.svg",
+      "donelight.svg",
+      "checkbox.scss",
+      "_functions.js",
+      "checkbox.html",
+      "videobutton.html",
+      "videobutton.js",
+      "videobutton.scss"
     ]
   }
 }

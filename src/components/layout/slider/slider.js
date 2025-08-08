@@ -59,6 +59,84 @@ function initSliders() {
 			}
 		});
 	}
+	if (document.querySelector('.slider-block__slider')) { 
+		new Swiper('.slider-block__slider', { 
+			modules: [Navigation],
+			observer: true,
+			observeParents: true,
+			slidesPerView: 2,
+			spaceBetween: 20,
+			speed: 500,
+			initialSlide: 1,
+			// centeredSlides: true,
+			
+			//touchRatio: 0,
+			//simulateTouch: false,
+			// loop: true,
+			//preloadImages: false,
+			//lazy: true,
+			
+			
+				navigation: {
+					prevEl: '.slider-block__slider .swiper-button-prev',
+					nextEl: '.slider-block__slider .swiper-button-next',
+				},
+				breakpoints: {
+					320: {
+						spaceBetween: 8,
+						slidesPerView: 1,
+					},
+					768: {
+						spaceBetween: 20,
+						slidesPerView: 2,
+
+					}
+			},
+		
+			on: {
+
+			}
+		});
+	}
+	if (document.querySelector('.video-block__slider')) { 
+		new Swiper('.video-block__slider', { 
+			modules: [Navigation],
+			observer: true,
+			observeParents: true,
+			slidesPerView: 2,
+			spaceBetween: 20,
+			speed: 500,
+			initialSlide: 1,
+			// centeredSlides: true,
+			
+			//touchRatio: 0,
+			//simulateTouch: false,
+			// loop: true,
+			//preloadImages: false,
+			//lazy: true,
+			
+			
+				navigation: {
+					prevEl: '.video-block__slider .swiper-button-prev',
+					nextEl: '.video-block__slider .swiper-button-next',
+				},
+				breakpoints: {
+					320: {
+						spaceBetween: 8,
+						slidesPerView: 1,
+					},
+					768: {
+						spaceBetween: 20,
+						slidesPerView: 2,
+
+					}
+			},
+		
+			on: {
+
+			}
+		});
+	}
 	// if (document.querySelector('.swiper')) { 
 	// 	new Swiper('.swiper', { 
 	// 		modules: [Navigation],

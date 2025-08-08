@@ -77,12 +77,12 @@ export let formValidate = {
 				el.classList.remove('--form-focus');
 				formValidate.removeError(el);
 			}
-			let checkboxes = form.querySelectorAll('input[type="checkbox"]');
-			if (checkboxes.length) {
-				checkboxes.forEach(checkbox => {
-					checkbox.checked = false;
-				})
-			}
+			// let checkboxes = form.querySelectorAll('input[type="checkbox"]');
+			// if (checkboxes.length) {
+			// 	checkboxes.forEach(checkbox => {
+			// 		checkbox.checked = false;
+			// 	})
+			// }
 			if (window['flsSelect']) {
 				let selects = form.querySelectorAll('select[data-fls-select]')
 				if (selects.length) {
