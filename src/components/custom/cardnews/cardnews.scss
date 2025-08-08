@@ -1,23 +1,75 @@
 .card-news {
+  position: relative;
   display: flex;
   flex-direction: column;
-    // .card-news--t1 
-    &--t1 {
-      padding: 20px;
-      background-color: var(--gray-light);
-      border-radius: var(--size-1);
-      min-height: 488px;
-      // max-height: 488px;
-      // height: 488px;
-      .card-news__body {
-        flex: 1;
+  max-height: max-content;
+  // .card-news--t1 
+  &--t1 {
+    padding: 20px;
+    background-color: var(--gray-light);
+    border-radius: var(--size-1);
+    min-height: 488px;
+    // max-height: 488px;
+    // height: 488px;
+    .card-news__body {
+      flex: 1;
+    }
+    .card-news__picture {
+      margin-bottom: toRem(14);
+    }
+  }
+  // .card-news--t2
+  &--t2 {}
+  // .card-news--t3
+  &--t3 {}
+  // .card-news--t4
+  &--t4 {
+    min-height: 230px;
+    overflow: hidden;
+       border-radius: var(--size-1);
+         &::before {
+        content:'';
+        pointer-events: none;
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background-image: linear-gradient(180deg, rgba(16, 16, 16, 0) 0%, #101010 100%);
       }
+     .card-news__body {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+
+       padding: 20px 20px 15px 20px ;
+       
+     }
+     .card-news__time,
+     .card-news__title {
+      color: var(--white);
+     }
+    }
+     // .card-news--t5
+    &--t5 {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: var(--size-3);
+      height: 230px;
+      overflow: hidden;
       .card-news__picture {
-        margin-bottom: toRem(14);
+        height: inherit;
       }
     }
-    // .card-news--t2
-    &--t2 {}
+    &--t5-full {
+      grid-template-columns: repeat(3,1fr);
+      .card-news__body {
+        grid-column: 2/4;
+      }
+    }
 		// .card-news__picture
 		&__picture {
       border-radius: var(--size-1);
@@ -33,7 +85,7 @@
         @extend %ibg;
         transition: transform 1s ease;
         max-height: 230px;
-        // height: 100%;
+        min-height: 230px;
         height: 230px;
       }
 		}

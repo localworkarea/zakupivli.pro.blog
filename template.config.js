@@ -17,7 +17,7 @@ export default {
 	},
 	navpanel: {
 		dev: true,
-		build: false,
+		build: true,
 		position: 'left',
 		color: '#ffffff',
 		background: 'rgba(51, 51, 51, 0.5)',
@@ -113,10 +113,10 @@ export default {
 		}
 	},
 	projectpage: {
-		enable: false,
-		projectname: '',
+		enable: true,
+		projectname: 'Zakupivli',
 		template: "src/projectpage/projectpage.html",
-		outfilename: '',
+		outfilename: 'zakupivli',
 	},
 	aliases: {
 		// HTML/SCSS/JS components

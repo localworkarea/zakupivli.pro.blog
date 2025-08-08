@@ -166,6 +166,14 @@ body {
   }
 }
 
+.grid-gap {
+  display: grid;
+  gap: var(--size-4);
+  @media (min-width:toEm($mobile)){
+    gap: var(--size-3);
+  }
+}
+
 %bodyGrid {
   display: grid;
   gap: var(--size-4);
