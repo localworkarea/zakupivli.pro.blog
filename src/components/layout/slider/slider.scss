@@ -86,3 +86,42 @@
     transform: scaleX(-1);
   }
 }
+
+
+.block-cards {
+		// .block-cards__container
+		&__container {
+		}
+		// .block-cards__title
+		&__title {
+		}
+
+		// .block-cards__body
+		&__body {
+		}
+
+		// .block-cards__slider
+		&__slider {
+		}
+
+		// .block-cards__wrapper
+		&__wrapper {
+      &.swiper-wrapper {
+        @media (min-width:toEm($tablet)){
+          grid-template-columns: repeat(3,1fr);
+        }
+        @media (max-width: toEm($tablet)) and (min-width: toEm(600.98)) {
+          grid-template-columns: repeat(2,1fr);
+          
+        }
+        @media (min-width:toEm(600.98)){
+          display: grid;
+          gap: 22px; 
+        }
+      }
+		}
+
+		// .block-cards__slide
+		&__slide {
+		}
+}

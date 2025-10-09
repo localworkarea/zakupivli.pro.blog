@@ -1,93 +1,81 @@
-// Базові стилі спойлерів
-// Сніппет (HTML): spoller
+.instructions-spollers {
 
-// Блок зі спойлерами
-.spollers {
-	display: grid;
-	gap: 15px;
-}
-// Спойлер
-.spollers__item {
-	font-size: toRem(20);
-}
-// Заголовок спойлера
-.spollers__title {
-	width: 100%;
-	cursor: default;
-	text-align: left;
-	border: 1px solid #eee;
-	padding: 10px 15px;
-	border-radius: 5px;
-	position: relative;
-	list-style: none;
-	&::marker,
-	&::-webkit-details-marker {
-		display: none;
-	}
-	.--spoller-init & {
-		cursor: pointer;
-		&::before,
-		&::after {
-			content: "";
-			position: absolute;
-			right: 10px;
-			top: 50%;
-			background-color: #000;
-			height: 2px;
-			width: 15px;
-			transition: transform 0.5s ease 0s;
+		// .instructions-spollers__item
+
+		&__item {
+			&:not(:last-child) {
+				margin-bottom: 16px;
+			}
 		}
-		&::before {
-			transform: translate(-75%, -50%) rotate(40deg);
-		}
-		&::after {
-			transform: translate(0, -50%) rotate(-40deg);
-		}
-		&.--spoller-active {
-			&::before {
-				transform: translateX(-75%) rotate(-40deg);
+
+		// .instructions-spollers__title
+
+		&__title {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			gap: 16px;
+			align-items: center;
+			border-radius: 8px;
+			background-color: var(--white);
+			padding: 24px;
+			position: relative;
+			cursor: pointer;
+			span {
+				display: inline-block;
+				grid-column: 1/2;
+			}
+			
+			&::before,
+			&::after {
+				content:'';
+				position: absolute;
+				grid-column: 2/3;
+				right: 50%;
+				top: 50%;
+				transform: translate(0%,-50%);
+				width: 18px;
+				height: 2px;
+				border-radius: 2px;
+				background-color: var(--primary);
+				transform-origin: center;
+				transition: transform .45s ease;
 			}
 			&::after {
-				transform: rotate(40deg);
+				transform: translate(0%,-50%) rotate(90deg);
+			}
+			&.--spoller-active {
+				&::after {
+					transform: translate(0%,-50%) rotate(0deg);
+				}
+			}
+			@media (min-width:toEm($mobileSmall)){
+				 padding: 32px; 
 			}
 		}
-	}
-}
-// Контент спойлера
-.spollers__body {
-	padding: 20px;
-	border-radius: 5px;
-	border: 1px solid #eee;
-}
 
-// .--spoller-init & {
-// 	position: relative;
-// 	width: 100%;
-// 	text-align: left;
-// 	&::before,
-// 	&::after {
-// 		content: "";
-// 		position: absolute;
-// 		right: 0;
-// 		top: toRem(12);
-// 		height: toRem(1);
-// 		transition: all 0.3s ease 0s;
-// 		width: toRem(10);
-// 		background-color: #000;
-// 	}
-// 	&::before {
-// 		transform: rotate(40deg);
-// 		right: toRem(7);
-// 	}
-// 	&::after {
-// 		transform: rotate(-40deg);
-// 	}
-// }
-// &.--spoller-active {
-// 	&::before {
-// 		transform: rotate(-40deg);
-// 	}
-// 	&::after {
-// 		transform: rotate(40deg);
-// 	}
-// }
+		// .instructions-spollers__body
+
+		&__body {
+		}
+		
+		// .instructions-spollers__content
+		
+		&__content {
+			padding-top: 8px;
+		}
+		
+		// .instructions-spollers__wrapper
+		&__wrapper {
+			padding: 12px 18px;
+			border-radius: 8px;
+			background-color: var(--white);
+			@media (min-width:toEm($mobileSmall)){
+				padding: 24px 32px;
+			}
+			p {
+				&:not(:last-child) {
+					margin-bottom: 8px;
+				}
+			}
+		}
+}

@@ -1,0 +1,22 @@
+<template src="@components/templates/main/main.html" locals='{
+		"title":"Zakupivli | КОМПОНЕНТИ ТА КОМЕНТАРІ", 
+		"lang":"uk",
+		"preloader": {
+			"enable":"false",
+			"once":"false"
+		},
+		"keywords":"", 
+		"description":""
+	}'>
+	<block name="header">
+	<include src="@components/layout/header/header.html" locals='{
+			"home":"false"
+		}'></include>
+	</block>
+	<block name="main">
+		<include src="@components/pages/components/components.html" locals='{}'></include>
+	</block>
+	<block name="footer">
+		<include src="@components/layout/footer/footer.html" locals='{}'></include>
+	</block>
+</template>

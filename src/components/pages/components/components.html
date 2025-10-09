@@ -1,0 +1,113 @@
+<script type="module" src="@components/pages/components/components.js"></script>
+<link rel="stylesheet" href="@components/pages/components/components.scss">
+<style>
+	.components {
+		background-color: #e9dbdb;
+		padding-block: 50px;
+	}
+
+	.components__container {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	.components__item>* {
+		margin-bottom: 10px;
+	}
+	.components__item .card-news {
+		max-width: 390px;
+		/* margin-bottom: 40px; */
+	}
+	.components__item .card-news--t5 {
+		max-width: 793px;
+		/* margin-bottom: 40px; */
+	}
+	.components__item .card-news--t5-full {
+		max-width: 1200px;
+		/* margin-bottom: 40px; */
+	}
+</style>
+
+<main class="page page--components">
+	<div class="page__container">
+	<div class="components">
+		<div class="components__container">
+			<p style="margin: 50px 0 50px; font-weight: 700; font-size: 24px; text-align: center;">СТОРІНКА ОКРЕМИХ КОМПОНЕНТІВ</p>
+			<div class="components__item">
+				<include src="@components/custom/buttons/buttons.html"></include>
+			</div>
+			<div class="components__item">
+				<p>Поле инпут с кнопкой submit</p>
+				<form class="form" data-fls-form="dev" action="#" method="POST">
+					<div data-fls-form-item class="form__item form__item--search">
+						<button type="submit" aria-label="submit" class="form__icon-submit --icon-search"></button>
+						<input data-fls-input type="text" name="search" placeholder="Що щукаєте?" class="form__input input">
+						<button data-fls-clear type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
+					</div>
+				</form>
+				<p>Поле инпут без кнопки submit</p>
+				<div data-fls-form-item class="form__item">
+					<input data-fls-input type="text" name="search" placeholder="Що щукаєте?" class="form__input input">
+					<button data-fls-clear type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
+				</div>
+				<p>Поле инпут без кнопки submit, с изображением лупы</p>
+				<div data-fls-form-item class="form__item form__item--search">
+						<div aria-label="icon" class="form__icon-submit --icon-search"></div>
+						<input data-fls-input type="text" name="search" placeholder="Що щукаєте?" class="form__input input">
+						<button data-fls-clear type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
+					</div>
+			</div>
+			<div class="components__item">
+				<include src="@components/custom/calendar/calendar.html"></include>
+			</div>
+			<div class="components__item">
+				<include src="@components/custom/tags/tags.html"></include>
+			</div>
+			<div class="components__item">
+				<include src="@components/custom/cardnews/cardnews.html"></include>
+			</div>
+			<div class="components__item">
+				<include src="@components/custom/subscribe/subscribe.html"></include>
+			</div>
+			<div class="components__item">
+				<include src="@components/custom/breadcrumb/breadcrumb.html"></include>
+			</div>
+			<div class="components__item">
+				<include src="@components/custom/blockcards/blockcards.html"></include>
+			</div>
+			<div class="components__item">
+				<p style="margin: 50px 0 50px; font-weight: 700; font-size: 24px; text-align: center;">Спойлери</p>
+				<div data-fls-spollers class="instructions-spollers">
+					<details class="instructions-spollers__item">
+						<summary class="instructions-spollers__title title-card">
+							<span>Перші кроки на майданчику</span>
+						</summary>
+						<div class="instructions-spollers__body">
+							<div class="instructions-spollers__content">
+								<div class="instructions-spollers__wrapper txt-14">
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio earum ad provident? Illum maiores beatae odio fugiat neque consectetur id, dolorem repellendus omnis asperiores in, laboriosam, velit error facere aperiam.</p>
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio earum ad provident? Illum maiores beatae odio fugiat neque consectetur id, dolorem repellendus omnis asperiores in, laboriosam, velit error facere aperiam.</p>
+								</div>
+							</div>
+						</div>
+					</details>
+					<details class="instructions-spollers__item">
+						<summary class="instructions-spollers__title title-card">
+							<span>Електронний каталог Prozorro Market</span>
+						</summary>
+						<div class="instructions-spollers__body">
+							<div class="instructions-spollers__content">
+								<div class="instructions-spollers__wrapper txt-14">
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio earum ad provident? Illum maiores beatae odio fugiat neque consectetur id, dolorem repellendus omnis asperiores in, laboriosam, velit error facere aperiam.</p>
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio earum ad provident? Illum maiores beatae odio fugiat neque consectetur id, dolorem repellendus omnis asperiores in, laboriosam, velit error facere aperiam.</p>
+								</div>
+							</div>
+						</div>
+					</details>
+				</div>
+			</div>
+			<div class="components__item"></div>
+		</div>
+	</div>
+	</div>
+</main>

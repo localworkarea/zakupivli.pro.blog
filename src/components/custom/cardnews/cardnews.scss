@@ -5,7 +5,8 @@
   max-height: max-content;
   // .card-news--t1 
   &--t1,
-  &--t6 {
+  &--t6,
+  &--t7 {
     padding: 20px;
     background-color: var(--gray-light);
     border-radius: 8px;
@@ -84,6 +85,9 @@
       .card-news__more {
         flex: 1;
       }
+    }
+    &--t7 {
+      min-height: 100%;
     }
 		// .card-news__picture
 		&__picture {

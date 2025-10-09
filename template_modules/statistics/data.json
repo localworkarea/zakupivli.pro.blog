@@ -208,6 +208,11 @@
         "start": 1760007112619,
         "end": 1760008292301,
         "type": "build"
+      },
+      {
+        "date": "09.10.2025",
+        "start": 1760008611431,
+        "end": 1760019111950
       }
     ],
     "files": [
@@ -288,7 +293,12 @@
       "footer.html",
       "app_store.svg",
       "google_play.svg",
-      "footer.scss"
+      "footer.scss",
+      "breadcrumb.scss",
+      "breadcrumb.html",
+      "spollers.scss",
+      "customer.scss",
+      "blockcards.html"
     ]
   }
 }

@@ -2,10 +2,349 @@
 <link rel="stylesheet" href="@components/pages/customer/customer.scss">
 
 <main class="page page--customer">
-	<div class="page__container">
-		<p class="lorem"><br><b>CUSTOMER </b><br><br> ipsum dolor sit amet, consectetur adipisicing elit. Unde excepturi mollitia natus aliquid sint, amet ullam asperiores nemo voluptates harum! Distinctio, optio magnam ratione cumque at officia tempora consectetur facere?</p>
-		<p class="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde excepturi mollitia natus aliquid sint, amet ullam asperiores nemo voluptates harum! Distinctio, optio magnam ratione cumque at officia tempora consectetur facere?</p>
-		<p class="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde excepturi mollitia natus aliquid sint, amet ullam asperiores nemo voluptates harum! Distinctio, optio magnam ratione cumque at officia tempora consectetur facere?</p>
-		<p class="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde excepturi mollitia natus aliquid sint, amet ullam asperiores nemo voluptates harum! Distinctio, optio magnam ratione cumque at officia tempora consectetur facere?</p>
+	<div data-fls-breadcrumb class="breadcrumb">
+		<nav class="breadcrumb__container">
+			<ul itemscope itemtype="https://schema.org/BreadcrumbList" class="breadcrumb__list">
+				<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb__item">
+					<a itemprop="item" href="index.html"><span itemprop="name">Головна</span></a>
+					<meta itemprop="position" content="1" />
+				</li>
+
+				<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb__item">
+					<span itemprop="name">Замовнику</span>
+					<meta itemprop="position" content="2" />
+				</li>
+			</ul>
+		</nav>
 	</div>
+	<section class="customer-hero pdb-2">
+		<div class="customer-hero__container">
+			<h1 class="customer-hero__title title-main title-main--mb">Все про закупівлі для державних замовників в системі Prozorro</h1>
+			<div class="customer-hero__instuctions instructions">
+				<h2 class="instructions__title title-av mb-2">Інструкції</h2>
+				<div data-fls-spollers class="instructions-spollers">
+					<details class="instructions-spollers__item">
+						<summary class="instructions-spollers__title title-card">
+							<span>Перші кроки на майданчику</span>
+						</summary>
+						<div class="instructions-spollers__body">
+							<div class="instructions-spollers__content">
+								<div class="instructions-spollers__wrapper txt-14">
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio earum ad provident? Illum maiores beatae odio fugiat neque consectetur id, dolorem repellendus omnis asperiores in, laboriosam, velit error facere aperiam.</p>
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio earum ad provident? Illum maiores beatae odio fugiat neque consectetur id, dolorem repellendus omnis asperiores in, laboriosam, velit error facere aperiam.</p>
+								</div>
+							</div>
+						</div>
+					</details>
+					<details class="instructions-spollers__item">
+						<summary class="instructions-spollers__title title-card">
+							<span>Електронний каталог Prozorro Market</span>
+						</summary>
+						<div class="instructions-spollers__body">
+							<div class="instructions-spollers__content">
+								<div class="instructions-spollers__wrapper txt-14">
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio earum ad provident? Illum maiores beatae odio fugiat neque consectetur id, dolorem repellendus omnis asperiores in, laboriosam, velit error facere aperiam.</p>
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio earum ad provident? Illum maiores beatae odio fugiat neque consectetur id, dolorem repellendus omnis asperiores in, laboriosam, velit error facere aperiam.</p>
+								</div>
+							</div>
+						</div>
+					</details>
+				</div>
+				<a href="#" data-fls-buttons class="customer-hero__link btn btn--fw btn--green" aria-label="посилання">Показати всі інструкції</a>
+			</div>
+		</div>
+	</section>
+	<div class="white-wrapper mb-1">
+		<section data-fls-blockcards class="block-cards mb-1">
+			<div class="block-cards__container">
+				<h2 class="block-cards__title title-av mb-3">Довідники держзамовника</h2>
+				<div class="block-cards__body">
+					<div data-fls-slider class="block-cards__slider swiper">
+						<div class="block-cards__wrapper swiper-wrapper">
+							<div class="block-cards__slide swiper-slide">
+								<article data-fls-cardnews class="card-news card-news--t7">
+									<a href="#" class="card-news__picture" aria-label="link to the article">
+										<img src="@img/main/main-1.jpg" width="753" height="230" alt="Image">
+									</a>
+									<div class="card-news__body">
+										<p class="card-news__time">
+											<time datetime="2025-04-10">10 квітня 2025</time>
+										</p>
+										<div class="card-news__tags">
+											<a href="#" data-fls-tags class="tag tag--1" aria-label="tag link">Назва тегу</a>
+											<a href="#" data-fls-tags class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+											<a href="#" data-fls-tags class="tag tag--3" aria-label="tag link">Назва тегу</a>
+										</div>
+										<h2 class="card-news__title title-card">
+											<a href="#" aria-label="link to the article">
+												Довідник<br> роботи з договором
+											</a>
+										</h2>
+									</div>
+								</article>
+							</div>
+							<div class="block-cards__slide swiper-slide">
+								<article data-fls-cardnews class="card-news card-news--t7">
+									<a href="#" class="card-news__picture" aria-label="link to the article">
+										<img src="@img/main/main-1.jpg" width="753" height="230" alt="Image">
+									</a>
+									<div class="card-news__body">
+										<p class="card-news__time">
+											<time datetime="2025-04-10">10 квітня 2025</time>
+										</p>
+										<div class="card-news__tags">
+											<a href="#" data-fls-tags class="tag tag--1" aria-label="tag link">Назва тегу</a>
+											<a href="#" data-fls-tags class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+											<a href="#" data-fls-tags class="tag tag--3" aria-label="tag link">Назва тегу</a>
+										</div>
+										<h2 class="card-news__title title-card">
+											<a href="#" aria-label="link to the article">
+												Довідник<br> роботи з договором
+											</a>
+										</h2>
+									</div>
+								</article>
+							</div>
+							<div class="block-cards__slide swiper-slide">
+								<article data-fls-cardnews class="card-news card-news--t7">
+									<a href="#" class="card-news__picture" aria-label="link to the article">
+										<img src="@img/main/main-1.jpg" width="753" height="230" alt="Image">
+									</a>
+									<div class="card-news__body">
+										<p class="card-news__time">
+											<time datetime="2025-04-10">10 квітня 2025</time>
+										</p>
+										<div class="card-news__tags">
+											<a href="#" data-fls-tags class="tag tag--1" aria-label="tag link">Назва тегу</a>
+											<a href="#" data-fls-tags class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+											<a href="#" data-fls-tags class="tag tag--3" aria-label="tag link">Назва тегу</a>
+										</div>
+										<h2 class="card-news__title title-card">
+											<a href="#" aria-label="link to the article">
+												Довідник<br> роботи з договором
+											</a>
+										</h2>
+									</div>
+								</article>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section data-fls-blockcards class="block-cards">
+			<div class="block-cards__container">
+				<h2 class="block-cards__title title-av mb-3">Практичні кейси</h2>
+				<div class="block-cards__body">
+					<div data-fls-slider class="block-cards__slider swiper">
+						<div class="block-cards__wrapper swiper-wrapper">
+							<div class="block-cards__slide swiper-slide">
+								<article data-fls-cardnews class="card-news card-news--t7">
+									<a href="#" class="card-news__picture" aria-label="link to the article">
+										<img src="@img/main/main-1.jpg" width="753" height="230" alt="Image">
+									</a>
+									<div class="card-news__body">
+										<p class="card-news__time">
+											<time datetime="2025-04-10">10 квітня 2025</time>
+										</p>
+										<div class="card-news__tags">
+											<a href="#" data-fls-tags class="tag tag--1" aria-label="tag link">Назва тегу</a>
+											<a href="#" data-fls-tags class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+											<a href="#" data-fls-tags class="tag tag--3" aria-label="tag link">Назва тегу</a>
+										</div>
+										<h2 class="card-news__title title-card">
+											<a href="#" aria-label="link to the article">
+												Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+											</a>
+										</h2>
+										<div class="card-news__text">
+											<p>
+												Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+												процедури дозволяють
+												зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+											</p>
+										</div>
+									</div>
+								</article>
+							</div>
+							<div class="block-cards__slide swiper-slide">
+								<article data-fls-cardnews class="card-news card-news--t7">
+									<a href="#" class="card-news__picture" aria-label="link to the article">
+										<img src="@img/main/main-1.jpg" width="753" height="230" alt="Image">
+									</a>
+									<div class="card-news__body">
+										<p class="card-news__time">
+											<time datetime="2025-04-10">10 квітня 2025</time>
+										</p>
+										<div class="card-news__tags">
+											<a href="#" data-fls-tags class="tag tag--1" aria-label="tag link">Назва тегу</a>
+											<a href="#" data-fls-tags class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+											<a href="#" data-fls-tags class="tag tag--3" aria-label="tag link">Назва тегу</a>
+										</div>
+										<h2 class="card-news__title title-card">
+											<a href="#" aria-label="link to the article">
+												Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+											</a>
+										</h2>
+										<div class="card-news__text">
+											<p>
+												Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+												процедури дозволяють
+												зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+											</p>
+										</div>
+									</div>
+								</article>
+							</div>
+							<div class="block-cards__slide swiper-slide">
+								<article data-fls-cardnews class="card-news card-news--t7">
+									<a href="#" class="card-news__picture" aria-label="link to the article">
+										<img src="@img/main/main-1.jpg" width="753" height="230" alt="Image">
+									</a>
+									<div class="card-news__body">
+										<p class="card-news__time">
+											<time datetime="2025-04-10">10 квітня 2025</time>
+										</p>
+										<div class="card-news__tags">
+											<a href="#" data-fls-tags class="tag tag--1" aria-label="tag link">Назва тегу</a>
+											<a href="#" data-fls-tags class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+											<a href="#" data-fls-tags class="tag tag--3" aria-label="tag link">Назва тегу</a>
+										</div>
+										<h2 class="card-news__title title-card">
+											<a href="#" aria-label="link to the article">
+												Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+											</a>
+										</h2>
+										<div class="card-news__text">
+											<p>
+												Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+												процедури дозволяють
+												зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+											</p>
+										</div>
+									</div>
+								</article>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<section class="tools mb-1">
+		<div class="tools__container">
+			<h2 class="tools__title title-av mb-3">Робочі інструменти на допомогу</h2>
+			<div class="tools__body">
+				<ul class="cards-link__list">
+					<li class="cards-link__item">
+						<a href="#" class="cards-link__link --icon-fill-arrow" aria-label="link"><span>Симулятор ЗЦП</span></a>
+					</li>
+					<li class="cards-link__item">
+						<a href="#" class="cards-link__link --icon-fill-arrow" aria-label="link"><span>Який тип закупівлі обрати</span></a>
+					</li>
+					<li class="cards-link__item">
+						<a href="#" class="cards-link__link --icon-fill-arrow" aria-label="link"><span>Калькулятор закупівлі</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section class="slider-events">
+		<div class="slider-events__container">
+			<h2 class="slider-events__title title-main title-main--mb">Вебінари та заходи</h2>
+			<div data-fls-slider class="slider-events__slider swiper">
+				<div class="slider-events__wrapper swiper-wrapper">
+					<div class="slider-events__slide slide-block swiper-slide">
+						<a href="#" class="slide-block__link" aria-label="link to the events">
+							<img class="ibg" src="@img/pictures/event-1.jpg" width="522" height="270" alt="Image">
+						</a>
+					</div>
+					<div class="slider-events__slide slide-block swiper-slide">
+						<a href="#" class="slide-block__link" aria-label="link to the events">
+							<img class="ibg" src="@img/pictures/event-2.jpg" width="522" height="270" alt="Image">
+						</a>
+					</div>
+					<div class="slider-events__slide slide-block swiper-slide">
+						<a href="#" class="slide-block__link" aria-label="link to the events">
+							<img class="ibg" src="@img/pictures/event-3.jpg" width="522" height="270" alt="Image">
+						</a>
+					</div>
+					<div class="slider-events__slide slide-block swiper-slide">
+						<a href="#" class="slide-block__link" aria-label="link to the events">
+							<img class="ibg" src="@img/pictures/event-1.jpg" width="522" height="270" alt="Image">
+						</a>
+					</div>
+					<div class="slider-events__slide slide-block swiper-slide">
+						<a href="#" class="slide-block__link" aria-label="link to the events">
+							<img class="ibg" src="@img/pictures/event-2.jpg" width="522" height="270" alt="Image">
+						</a>
+					</div>
+					<div class="slider-events__slide slide-block swiper-slide">
+						<a href="#" class="slide-block__link" aria-label="link to the events">
+							<img class="ibg" src="@img/pictures/event-3.jpg" width="522" height="270" alt="Image">
+						</a>
+					</div>
+				</div>
+				<div class="slider-events__buttons">
+					<button type="button" class="swiper-button-prev --icon-fill-arrow" aria-label="button prev"></button>
+					<button type="button" class="swiper-button-next --icon-fill-arrow" aria-label="button next"></button>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="video-block mb-1">
+		<div class="video-block__container">
+			<h2 class="video-block__title title-main title-main--mb">Відео</h2>
+			<div data-fls-slider class="video-block__slider swiper">
+				<div class="video-block__wrapper swiper-wrapper">
+					<div class="video-block__slide slide-video swiper-slide">
+						<div data-fls-videobutton class="video-youtube__body">
+							<button class="video-youtube__button" type="button" data-youtube="gwOmuVNsQCU" aria-label="open youtube">
+								<img class="ibg" src="@img/pictures/video-2.jpg" width="482" height="270" alt="poster video">
+							</button>
+						</div>
+					</div>
+					<div class="video-block__slide slide-video swiper-slide">
+						<div data-fls-videobutton class="video-youtube__body">
+							<button class="video-youtube__button" type="button" data-youtube="74Xv9oljqd4" aria-label="open youtube">
+								<img class="ibg" src="@img/pictures/video-4.jpg" width="482" height="270" alt="poster video">
+							</button>
+						</div>
+					</div>
+					<div class="video-block__slide slide-video swiper-slide">
+						<div data-fls-videobutton class="video-youtube__body">
+							<button class="video-youtube__button" type="button" data-youtube="9JKLRtlartU" aria-label="open youtube">
+								<img class="ibg" src="@img/pictures/video-3.jpg" width="482" height="270" alt="poster video">
+							</button>
+						</div>
+					</div>
+					<div class="video-block__slide slide-video swiper-slide">
+						<div data-fls-videobutton class="video-youtube__body">
+							<button class="video-youtube__button" type="button" data-youtube="l_iBc9PcIe8" aria-label="open youtube">
+								<img class="ibg" src="@img/pictures/video-2.jpg" width="482" height="270" alt="poster video">
+							</button>
+						</div>
+					</div>
+
+
+					<div class="video-block__slide slide-video swiper-slide">
+						<div data-fls-videobutton class="video-youtube__body">
+							<button class="video-youtube__button" type="button" data-youtube="l_iBc9PcIe8" aria-label="open youtube">
+								<img class="ibg" src="@img/pictures/video-2.jpg" width="482" height="270" alt="poster video">
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="video-block__buttons">
+					<button type="button" class="swiper-button-prev --icon-fill-arrow" aria-label="button prev"></button>
+					<button type="button" class="swiper-button-next --icon-fill-arrow" aria-label="button next"></button>
+				</div>
+			</div>
+			<div class="video-block__footer">
+				<a href="https://www.youtube.com/channel/UCxGYp5o-bfPuFJAi3KSnZ8Q" target="_blank" data-fls-buttons class="video-block__link btn btn--fw btn--green" aria-label="до ютюб каналу">Перейти до YouTube каналу </a>
+			</div>
+		</div>
+	</section>
 </main>

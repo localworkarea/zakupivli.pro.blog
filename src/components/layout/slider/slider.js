@@ -145,6 +145,49 @@ function initSliders() {
 		});
 	}
 
+	const slidersCards = document.querySelectorAll('.block-cards__slider');
+
+if (slidersCards.length) {
+  const mq = window.matchMedia("(max-width: 37.561em)");
+
+  slidersCards.forEach(slider => {
+    let swiperInstance = null;
+
+    function enable() {
+      if (!swiperInstance) {
+        swiperInstance = new Swiper(slider, {
+          modules: [Navigation],
+          observer: true,
+          observeParents: true,
+          slidesPerView: 1,
+          spaceBetween: 8,
+          speed: 500,
+        });
+      }
+    }
+
+    function disable() {
+      if (swiperInstance) {
+        swiperInstance.destroy(true, true);
+        swiperInstance = null;
+      }
+    }
+
+    function check() {
+      if (mq.matches) {
+        enable();
+      } else {
+        disable();
+      }
+    }
+
+    // проверка при загрузке
+    check();
+
+    // слушаем изменение брейкпоинта
+    mq.addEventListener("change", check);
+  });
+}
 
 	// if (document.querySelector('.swiper')) { 
 	// 	new Swiper('.swiper', { 
