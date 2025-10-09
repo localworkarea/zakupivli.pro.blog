@@ -1,0 +1,114 @@
+<header data-fls-header class="header">
+	<div class="header__container">
+		<if condition="'[[home]]' == 'true'">
+			<div class="header__logo">
+				<img src="@img/icons/logo.svg" width="187" height="31" alt="logo Zakupivli.pro">
+			</div>
+		</if>
+		<else>
+			<a href="index.html" class="header__logo" aria-label="logo Zakupivli.pro">
+				<img src="@img/icons/logo.svg" width="187" height="31" alt="logo Zakupivli.pro">
+			</a>
+		</else>
+		<div class="header__menu">
+			<button type="button" data-fls-menu class="menu__icon" aria-label="open menu">
+				<span class="icon-menu">
+					<span></span>
+				</span>
+			</button>
+			<div class="menu__body">
+				<nav class="menu-body">
+					<ul class="menu">
+						<li class="menu-item">
+							<a href="news.html">Новини</a>
+						</li>
+						<li class="menu-item menu-item-has-children">
+							<a href="articles.html">Статті</a>
+							<ul class="sub-menu">
+								<li class="menu-item"><a href="#">Назва статті 1</a></li>
+								<li class="menu-item"><a href="#">Назва статті 2</a></li>
+								<li class="menu-item"><a href="#">Назва статті інструкції 3</a></li>
+								<li class="menu-item"><a href="#">Назва статті 4</a></li>
+								<li class="menu-item"><a href="#">Назва статті інструкції 5</a></li>
+								<li class="menu-item"><a href="#">Назва статті 6</a></li>
+							</ul>
+						</li>
+						<li class="menu-item menu-item-has-children">
+							<a href="#">Заходи</a>
+							<ul class="sub-menu">
+								<li class="menu-item"><a href="#">Назва інструкції 1</a></li>
+								<li class="menu-item"><a href="#">Назва інструкції 2</a></li>
+								<li class="menu-item"><a href="#">Назва інструкції інструкції 3</a></li>
+								<li class="menu-item"><a href="#">Назва інструкції 4</a></li>
+								<li class="menu-item"><a href="#">Назва інструкції інструкції 5</a></li>
+								<li class="menu-item"><a href="#">Назва інструкції 6</a></li>
+							</ul>
+						</li>
+						<li class="menu-item"><a href="#">Законодавство</a></li>
+						<li class="menu-item"><a href="#">Інструкції</a></li>
+						<li class="menu-item"><a href="#">Про нас</a></li>
+						<li class="menu-item"><a href="#">Глосарій</a></li>
+						<li class="menu-item current-menu-item"><a href="#">На майданчик</a></li>
+					</ul>
+				</nav>
+
+				<!-- <nav class="menu-body">
+					<ul class="menu">
+						<each loop='item in [
+							{"href": "news.html", "ancor": "Новини"},
+							{"href": "articles.html", "ancor": "Статті",
+								"submenu": [
+									{"href": "#", "label": "Назва статті 1"}, 
+									{"href": "#", "label": "Назва статті 2"}, 
+									{"href": "#", "label": "Назва статті інструкції 3"}, 
+									{"href": "#", "label": "Назва статті 4"}, 
+									{"href": "#", "label": "Назва статті інструкції 5"}, 
+									{"href": "#", "label": "Назва статті 6"}
+								]
+							},
+							{"href": "#", "ancor": "Заходи", 
+								"submenu": [
+									{"href": "#", "label": "Назва інструкції 1"}, 
+									{"href": "#", "label": "Назва інструкції 2"}, 
+									{"href": "#", "label": "Назва інструкції інструкції 3"}, 
+									{"href": "#", "label": "Назва інструкції 4"}, 
+									{"href": "#", "label": "Назва інструкції інструкції 5"}, 
+									{"href": "#", "label": "Назва інструкції 6"}
+								]
+							},
+							{"href": "#", "ancor": "Законодавство"},
+							{"href": "#", "ancor": "Інструкції"},
+							{"href": "#", "ancor": "Про нас"},
+							{"href": "#", "ancor": "Глосарій"},
+							{"href": "#", "ancor": "На майданчик"}
+						]'>
+
+							<li class="menu-item [[item.submenu ? '_has-submenu' : '' ]]">
+								<a href="[[item.href]]" class="menu__link [[item.ancor === active ? 'menu__link--active' : '' ]]" aria-label="link to the page">[[item.ancor]]</a>
+								<if condition="item.submenu">
+									<ul class="menu__list--sub">
+										<each loop="subitem in item.submenu">
+											<li class="menu__item--sub">
+												<a href="[[subitem.href]]" class="menu__link--sub" aria-label="link to the page">[[subitem.label]]</a>
+											</li>
+										</each>
+									</ul>
+								</if>
+							</li>
+						</each>
+					</ul>
+				</nav> -->
+			</div>
+		</div>
+		<div data-fls-dynamic=".menu-body,768.98,0" class="header__search search-form">
+			<form class="search-form__form form" data-fls-form="dev" action="#" method="POST">
+				<div data-fls-form-item class="form__item form__item--search">
+					<button type="submit" aria-label="submit" class="form__icon-submit --icon-search"></button>
+					<input data-fls-input type="text" name="search" placeholder="Що щукаєте?" class="form__input input">
+					<button data-fls-clear type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</header>

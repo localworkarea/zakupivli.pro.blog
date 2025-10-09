@@ -9,11 +9,11 @@ textarea {
 	appearance: none;
 }
 .input {
-	border-radius: var(--size-1);
+	border-radius: 8px;
 	width: 100%;
 	min-height:40px;
 	display: block;
-	padding-inline: var(--size-2) var(--size-4);
+	padding-inline: 16px 24px;
 	caret-color: inherit;
 	background-color: var(--white);
 	transition: all .3s ease;
@@ -22,7 +22,7 @@ textarea {
 		 font-size: 16px; 
 	}
 	.form__item--search & {
-		padding-inline: 40px var(--size-4);
+		padding-inline: 40px 24px;
 	}
 	&.--form-focus {
 		outline-color: var(--green);

@@ -1,6 +1,6 @@
 .form-subscribe {
   position: relative;
-  border-radius: var(--size-1);
+  border-radius: 8px;
   background-color: var(--primary);
   padding-block: 45px 60px;
   padding-inline: 24px;
@@ -49,9 +49,9 @@
     // .form-subscribe__block
     &__block {
       display: grid;
-      gap: var(--size-5);
+      gap: 48px;
       @media (min-width:toEm($mobile)){
-        gap: var(--size-3);
+        gap: 20px;
          grid-template-columns: 67% auto; 
       }
     }
@@ -61,7 +61,7 @@
       pointer-events: none;
       inset: 0;
       z-index: 0;
-      padding: var(--size-4);
+      padding: 24px;
       @extend %gridCenter;
       opacity: 0;
       transition: opacity .1s ease;
@@ -73,7 +73,7 @@
     // .form-subscribe__txt-msg
     &__txt-msg {
       color: var(--white);
-      gap: var(--size-2);
+      gap: 16px;
       @extend %flexCenter;
       @media (min-width:toEm($mobileSmall)){
       }

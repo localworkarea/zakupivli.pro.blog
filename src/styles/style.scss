@@ -165,27 +165,27 @@ body {
 .grid-clm {
   display: grid;
   grid-template-columns: 100%;
-  gap: var(--size-4);
+  gap: 24px;
   @media (min-width:toEm($mobile)){
-    gap: var(--size-3);
+    gap: 20px;
     grid-template-columns: 66% auto;
   }
 }
 
 .grid-gap {
   display: grid;
-  gap: var(--size-4);
+  gap: 24px;
   @media (min-width:toEm($mobile)){
-    gap: var(--size-3);
+    gap: 20px;
   }
 }
 
 %bodyGrid {
   display: grid;
-  gap: var(--size-4);
+  gap: 24px;
   grid-template-columns: 100%;
   @media (min-width:toEm($mobile)){
-    gap: var(--size-3);
+    gap: 20px;
   }
 }
 
@@ -206,12 +206,12 @@ body {
   &__cards {
     flex: 1;
     @extend %bodyGrid;
-    margin-top: var(--size-3);
+    margin-top: 20px;
     @media (min-width:toEm(600.98)){
       grid-template-columns: 1fr 1fr;
     }
     @media (min-width:toEm($mobileSmall)){
-      margin-top: var(--size-4);
+      margin-top: 24px;
     }
     
 	}
@@ -237,7 +237,7 @@ body {
 }
 
 .divide {
-	padding-block: var(--size-4);
+	padding-block: 24px;
 	@media (min-width:toEm($mobileSmall)){
 		padding-block: 50px;
 	}

@@ -7,7 +7,7 @@
    padding-block: 40px;
    padding-inline: 20px;
    max-width: 390px;
-   border-radius: var(--size-1);
+   border-radius: 8px;
    margin-inline: auto;
   @media (max-width: toEm($tablet)) and (min-width: toEm($mobile)){
     padding-inline: 18px;
@@ -87,7 +87,7 @@
 
 		// .calendar__grid
 		&__grid {
-      margin-bottom: var(--size-2);
+      margin-bottom: 16px;
 		}
 
 	
@@ -156,7 +156,7 @@
 		// .calendar__events
 		&__events {
       flex: 1;
-      margin-bottom: var(--size-4);
+      margin-bottom: 24px;
 		}
     
     // .calendar__list
@@ -167,7 +167,7 @@
     &__item {
       font-weight: 700;
       &:not(:last-child) {
-        margin-bottom: var(--size-2);
+        margin-bottom: 16px;
       }
     }
     

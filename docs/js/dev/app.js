@@ -27,6 +27,85 @@
     fetch(link.href, fetchOpts);
   }
 })();
+const isMobile = { Android: function() {
+  return navigator.userAgent.match(/Android/i);
+}, BlackBerry: function() {
+  return navigator.userAgent.match(/BlackBerry/i);
+}, iOS: function() {
+  return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+}, Opera: function() {
+  return navigator.userAgent.match(/Opera Mini/i);
+}, Windows: function() {
+  return navigator.userAgent.match(/IEMobile/i);
+}, any: function() {
+  return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows();
+} };
+let slideUp = (target, duration = 500, showmore = 0) => {
+  if (!target.classList.contains("--slide")) {
+    target.classList.add("--slide");
+    target.style.transitionProperty = "height, margin, padding";
+    target.style.transitionDuration = duration + "ms";
+    target.style.height = `${target.offsetHeight}px`;
+    target.offsetHeight;
+    target.style.overflow = "hidden";
+    target.style.height = showmore ? `${showmore}px` : `0px`;
+    target.style.paddingTop = 0;
+    target.style.paddingBottom = 0;
+    target.style.marginTop = 0;
+    target.style.marginBottom = 0;
+    window.setTimeout(() => {
+      target.hidden = !showmore ? true : false;
+      !showmore ? target.style.removeProperty("height") : null;
+      target.style.removeProperty("padding-top");
+      target.style.removeProperty("padding-bottom");
+      target.style.removeProperty("margin-top");
+      target.style.removeProperty("margin-bottom");
+      !showmore ? target.style.removeProperty("overflow") : null;
+      target.style.removeProperty("transition-duration");
+      target.style.removeProperty("transition-property");
+      target.classList.remove("--slide");
+      document.dispatchEvent(new CustomEvent("slideUpDone", {
+        detail: {
+          target
+        }
+      }));
+    }, duration);
+  }
+};
+let slideDown = (target, duration = 500, showmore = 0) => {
+  if (!target.classList.contains("--slide")) {
+    target.classList.add("--slide");
+    target.hidden = target.hidden ? false : null;
+    showmore ? target.style.removeProperty("height") : null;
+    let height = target.offsetHeight;
+    target.style.overflow = "hidden";
+    target.style.height = showmore ? `${showmore}px` : `0px`;
+    target.style.paddingTop = 0;
+    target.style.paddingBottom = 0;
+    target.style.marginTop = 0;
+    target.style.marginBottom = 0;
+    target.offsetHeight;
+    target.style.transitionProperty = "height, margin, padding";
+    target.style.transitionDuration = duration + "ms";
+    target.style.height = height + "px";
+    target.style.removeProperty("padding-top");
+    target.style.removeProperty("padding-bottom");
+    target.style.removeProperty("margin-top");
+    target.style.removeProperty("margin-bottom");
+    window.setTimeout(() => {
+      target.style.removeProperty("height");
+      target.style.removeProperty("overflow");
+      target.style.removeProperty("transition-duration");
+      target.style.removeProperty("transition-property");
+      target.classList.remove("--slide");
+      document.dispatchEvent(new CustomEvent("slideDownDone", {
+        detail: {
+          target
+        }
+      }));
+    }, duration);
+  }
+};
 let bodyLockStatus = true;
 let bodyLockToggle = (delay = 500) => {
   if (document.documentElement.hasAttribute("data-fls-scrolllock")) {
@@ -108,6 +187,104 @@ function menuInit() {
   });
 }
 document.querySelector("[data-fls-menu]") ? window.addEventListener("load", menuInit) : null;
+document.addEventListener("DOMContentLoaded", function() {
+  const menuItems = document.querySelectorAll(".menu-item");
+  const menuItemHasChildren = document.querySelectorAll(".menu-item.menu-item-has-children");
+  const mediaQuery = window.matchMedia("(max-width: 48.061em)");
+  const isOpenClass = "_open-submenu";
+  const isTouchDevice = isMobile.any();
+  function hideAllSubMenus() {
+    document.querySelectorAll(".sub-menu").forEach((subMenu) => {
+      slideUp(subMenu, 300);
+    });
+  }
+  function resetSubMenusForDesktop() {
+    document.querySelectorAll(".sub-menu").forEach((subMenu) => {
+      subMenu.removeAttribute("hidden");
+      subMenu.classList.remove("--slide");
+      subMenu.style.removeProperty("height");
+      subMenu.style.removeProperty("overflow");
+      subMenu.style.removeProperty("padding-top");
+      subMenu.style.removeProperty("padding-bottom");
+      subMenu.style.removeProperty("margin-top");
+      subMenu.style.removeProperty("margin-bottom");
+      subMenu.style.removeProperty("transition-duration");
+      subMenu.style.removeProperty("transition-property");
+    });
+  }
+  function toggleSubMenu(parentItem) {
+    const subMenu = parentItem.querySelector(".sub-menu");
+    if (!subMenu) return;
+    if (subMenu.hidden) {
+      parentItem.classList.add(isOpenClass);
+      slideDown(subMenu, 300);
+    } else {
+      parentItem.classList.remove(isOpenClass);
+      slideUp(subMenu, 300);
+    }
+  }
+  function resetLinksAndEvents() {
+    menuItemHasChildren.forEach((parentItem) => {
+      const oldLink = parentItem.querySelector(":scope > a");
+      const newLink = oldLink.cloneNode(true);
+      oldLink.replaceWith(newLink);
+    });
+  }
+  function handleBreakpointChange(e) {
+    resetLinksAndEvents();
+    if (e.matches) {
+      hideAllSubMenus();
+      menuItemHasChildren.forEach((item) => item.classList.remove(isOpenClass));
+      menuItemHasChildren.forEach((parentItem) => {
+        const link = parentItem.querySelector(":scope > a");
+        link.addEventListener("click", (e2) => {
+          e2.preventDefault();
+          toggleSubMenu(parentItem);
+        });
+      });
+    } else {
+      resetSubMenusForDesktop();
+      menuItemHasChildren.forEach((item) => item.classList.remove(isOpenClass));
+      menuItemHasChildren.forEach((parentItem) => {
+        const link = parentItem.querySelector(":scope > a");
+        link.addEventListener("click", (e2) => e2.preventDefault());
+        let openedParent = null;
+        if (isTouchDevice) {
+          link.addEventListener("click", (e2) => {
+            e2.preventDefault();
+            const isOpen = parentItem.classList.contains(isOpenClass);
+            menuItemHasChildren.forEach((item) => item.classList.remove(isOpenClass));
+            if (!isOpen) {
+              parentItem.classList.add(isOpenClass);
+              openedParent = parentItem;
+            } else {
+              openedParent = null;
+            }
+          });
+          document.addEventListener("click", (e2) => {
+            if (!openedParent) return;
+            const clickedInside = openedParent.contains(e2.target);
+            if (!clickedInside) {
+              openedParent.classList.remove(isOpenClass);
+              openedParent = null;
+            }
+          });
+        } else {
+          parentItem.addEventListener("pointerenter", () => {
+            parentItem.classList.add(isOpenClass);
+          });
+          parentItem.addEventListener("pointerleave", () => {
+            parentItem.classList.remove(isOpenClass);
+          });
+        }
+      });
+    }
+  }
+  if (menuItems.length > 0) {
+    handleBreakpointChange(mediaQuery);
+    mediaQuery.addEventListener("change", handleBreakpointChange);
+  }
+});
 class DynamicAdapt {
   constructor() {
     this.type = "max";
@@ -438,100 +615,69 @@ function formInit() {
   formClearButtonInit();
 }
 document.querySelector("[data-fls-form]") ? window.addEventListener("load", formInit) : null;
-const videoYoutubeButtons = document.querySelectorAll(".video-youtube__button");
-videoYoutubeButtons.forEach((button) => {
-  button.addEventListener("click", function() {
-    const youTubeCode = this.getAttribute("data-youtube");
-    let urlVideo = `https://www.youtube.com/embed/${youTubeCode}?rel=0&showinfo=0`;
-    const iframe = document.createElement("iframe");
-    iframe.setAttribute("allowfullscreen", "");
-    {
-      urlVideo += "&autoplay=1";
-      iframe.setAttribute("allow", "autoplay; encrypted-media");
+document.addEventListener("DOMContentLoaded", () => {
+  const videoButtons = document.querySelectorAll(".video-youtube__button");
+  const players = /* @__PURE__ */ new Map();
+  let apiLoaded = false;
+  let apiReadyCallbacks = [];
+  function loadYouTubeAPI(callback) {
+    if (apiLoaded) {
+      if (typeof YT !== "undefined" && YT.Player) {
+        callback();
+      } else {
+        apiReadyCallbacks.push(callback);
+      }
+      return;
     }
-    iframe.setAttribute("src", urlVideo);
-    const body = this.closest(".video-youtube__body");
-    body.innerHTML = "";
-    body.appendChild(iframe);
-    body.classList.add("video-added");
-  });
-});
-document.querySelectorAll(".custom-video").forEach((wrapper) => {
-  const video = wrapper.querySelector(".custom-video__tag");
-  const playBtn = wrapper.querySelector(".custom-video__play");
-  const progress = wrapper.querySelector(".custom-video__progress");
-  const currentTimeEl = wrapper.querySelector(".custom-video__current");
-  const durationEl = wrapper.querySelector(".custom-video__duration");
-  if (!video || !playBtn || !progress || !currentTimeEl || !durationEl) {
-    console.warn("❗ Пропущен блок custom-video — не все элементы найдены", wrapper);
-    return;
+    apiLoaded = true;
+    apiReadyCallbacks.push(callback);
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
+    window.onYouTubeIframeAPIReady = function() {
+      apiReadyCallbacks.forEach((cb) => cb());
+      apiReadyCallbacks = [];
+    };
   }
-  const formatTime = (seconds) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${mins}:${secs.toString().padStart(2, "0")}`;
-  };
-  video.addEventListener("loadedmetadata", () => {
-    progress.max = video.duration;
-    durationEl.textContent = formatTime(video.duration);
-  });
-  video.addEventListener("timeupdate", () => {
-    if (!isDragging) {
-      progress.value = video.currentTime;
-      currentTimeEl.textContent = formatTime(video.currentTime);
-    }
-  });
-  let isDragging = false;
-  let wasPlaying = false;
-  progress.addEventListener("input", () => {
-    const value = parseFloat(progress.value);
-    currentTimeEl.textContent = formatTime(value);
-  });
-  progress.addEventListener("mousedown", () => {
-    isDragging = true;
-    wasPlaying = !video.paused;
-    video.pause();
-  });
-  progress.addEventListener("mouseup", () => {
-    isDragging = false;
-    video.currentTime = parseFloat(progress.value);
-    if (wasPlaying) {
-      video.play();
-    }
-  });
-  progress.addEventListener("touchstart", () => {
-    isDragging = true;
-    wasPlaying = !video.paused;
-    video.pause();
-  }, { passive: true });
-  progress.addEventListener("touchend", () => {
-    isDragging = false;
-    video.currentTime = parseFloat(progress.value);
-    if (wasPlaying) {
-      video.play();
-    }
-  }, { passive: true });
-  const togglePlayback = () => {
-    if (video.paused) {
-      video.play().then(() => {
-        playBtn.textContent = "⏸";
-      }).catch((err) => {
-        console.warn("Ошибка воспроизведения:", err);
+  function pauseAll(exceptId = null) {
+    players.forEach((player, id) => {
+      if (id !== exceptId && player.pauseVideo) {
+        player.pauseVideo();
+      }
+    });
+  }
+  function createPlayer(container, youTubeCode, autoplay = true) {
+    const iframeId = "yt-" + youTubeCode + "-" + Date.now();
+    const iframe = document.createElement("div");
+    iframe.setAttribute("id", iframeId);
+    container.innerHTML = "";
+    container.appendChild(iframe);
+    container.classList.add("video-added");
+    const player = new YT.Player(iframeId, {
+      videoId: youTubeCode,
+      playerVars: {
+        rel: 0,
+        showinfo: 0,
+        autoplay: autoplay ? 1 : 0
+      },
+      events: {
+        onStateChange: function(event) {
+          if (event.data === YT.PlayerState.PLAYING) {
+            pauseAll(iframeId);
+          }
+        }
+      }
+    });
+    players.set(iframeId, player);
+  }
+  videoButtons.forEach((button) => {
+    button.addEventListener("click", function() {
+      const youTubeCode = this.getAttribute("data-youtube");
+      const container = this.closest(".video-youtube__body");
+      loadYouTubeAPI(() => {
+        createPlayer(container, youTubeCode, true);
       });
-    } else {
-      video.pause();
-      playBtn.textContent = "▶️";
-    }
-  };
-  playBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    togglePlayback();
-  });
-  video.addEventListener("click", () => {
-    togglePlayback();
-  });
-  video.addEventListener("ended", () => {
-    playBtn.textContent = "▶️";
+    });
   });
 });
 function isObject$1(obj) {
@@ -5385,8 +5531,8 @@ function initSliders() {
       on: {}
     });
   }
-  if (document.querySelector(".slider-block__slider")) {
-    new Swiper(".slider-block__slider", {
+  if (document.querySelector(".slider-events__slider")) {
+    new Swiper(".slider-events__slider", {
       modules: [Navigation],
       observer: true,
       observeParents: true,
@@ -5401,8 +5547,8 @@ function initSliders() {
       //preloadImages: false,
       //lazy: true,
       navigation: {
-        prevEl: ".slider-block__slider .swiper-button-prev",
-        nextEl: ".slider-block__slider .swiper-button-next"
+        prevEl: ".slider-events__slider .swiper-button-prev",
+        nextEl: ".slider-events__slider .swiper-button-next"
       },
       breakpoints: {
         320: {
@@ -5426,6 +5572,7 @@ function initSliders() {
       spaceBetween: 20,
       speed: 500,
       initialSlide: 1,
+      // allowTouchMove: false,
       // centeredSlides: true,
       //touchRatio: 0,
       //simulateTouch: false,
@@ -5439,11 +5586,13 @@ function initSliders() {
       breakpoints: {
         320: {
           spaceBetween: 8,
-          slidesPerView: 1
+          slidesPerView: 1,
+          allowTouchMove: false
         },
         768: {
           spaceBetween: 20,
-          slidesPerView: 2
+          slidesPerView: 2,
+          allowTouchMove: true
         }
       },
       on: {}

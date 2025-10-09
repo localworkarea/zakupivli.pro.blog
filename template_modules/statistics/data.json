@@ -182,6 +182,32 @@
         "start": 1754670833525,
         "end": 1754671002840,
         "type": "build"
+      },
+      {
+        "date": "03.10.2025",
+        "start": 1759493162214,
+        "end": 1759499039832
+      },
+      {
+        "date": "07.10.2025",
+        "start": 1759825746136,
+        "end": 1759833845396
+      },
+      {
+        "date": "07.10.2025",
+        "start": 1759833983276,
+        "end": 1759862624838
+      },
+      {
+        "date": "08.10.2025",
+        "start": 1759913371991,
+        "end": 1759934124757
+      },
+      {
+        "date": "09.10.2025",
+        "start": 1760007112619,
+        "end": 1760008292301,
+        "type": "build"
       }
     ],
     "files": [
@@ -257,7 +283,12 @@
       "checkbox.html",
       "videobutton.html",
       "videobutton.js",
-      "videobutton.scss"
+      "videobutton.scss",
+      "header.js",
+      "footer.html",
+      "app_store.svg",
+      "google_play.svg",
+      "footer.scss"
     ]
   }
 }
