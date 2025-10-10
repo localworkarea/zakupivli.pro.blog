@@ -27,6 +27,71 @@
     fetch(link.href, fetchOpts);
   }
 })();
+document.addEventListener("DOMContentLoaded", () => {
+  const videoButtons = document.querySelectorAll(".video-youtube__button");
+  const players = /* @__PURE__ */ new Map();
+  let apiLoaded = false;
+  let apiReadyCallbacks = [];
+  function loadYouTubeAPI(callback) {
+    if (apiLoaded) {
+      if (typeof YT !== "undefined" && YT.Player) {
+        callback();
+      } else {
+        apiReadyCallbacks.push(callback);
+      }
+      return;
+    }
+    apiLoaded = true;
+    apiReadyCallbacks.push(callback);
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
+    window.onYouTubeIframeAPIReady = function() {
+      apiReadyCallbacks.forEach((cb) => cb());
+      apiReadyCallbacks = [];
+    };
+  }
+  function pauseAll(exceptId = null) {
+    players.forEach((player, id) => {
+      if (id !== exceptId && player.pauseVideo) {
+        player.pauseVideo();
+      }
+    });
+  }
+  function createPlayer(container, youTubeCode, autoplay = true) {
+    const iframeId = "yt-" + youTubeCode + "-" + Date.now();
+    const iframe = document.createElement("div");
+    iframe.setAttribute("id", iframeId);
+    container.innerHTML = "";
+    container.appendChild(iframe);
+    container.classList.add("video-added");
+    const player = new YT.Player(iframeId, {
+      videoId: youTubeCode,
+      playerVars: {
+        rel: 0,
+        showinfo: 0,
+        autoplay: autoplay ? 1 : 0
+      },
+      events: {
+        onStateChange: function(event) {
+          if (event.data === YT.PlayerState.PLAYING) {
+            pauseAll(iframeId);
+          }
+        }
+      }
+    });
+    players.set(iframeId, player);
+  }
+  videoButtons.forEach((button) => {
+    button.addEventListener("click", function() {
+      const youTubeCode = this.getAttribute("data-youtube");
+      const container = this.closest(".video-youtube__body");
+      loadYouTubeAPI(() => {
+        createPlayer(container, youTubeCode, true);
+      });
+    });
+  });
+});
 const isMobile = { Android: function() {
   return navigator.userAgent.match(/Android/i);
 }, BlackBerry: function() {
@@ -200,508 +265,125 @@ const gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) =>
     });
   }
 };
-function menuInit() {
-  document.addEventListener("click", function(e) {
-    if (bodyLockStatus && e.target.closest("[data-fls-menu]")) {
-      bodyLockToggle();
-      document.documentElement.toggleAttribute("data-fls-menu-open");
-    }
-  });
-}
-document.querySelector("[data-fls-menu]") ? window.addEventListener("load", menuInit) : null;
-document.addEventListener("DOMContentLoaded", function() {
-  const menuItems = document.querySelectorAll(".menu-item");
-  const menuItemHasChildren = document.querySelectorAll(".menu-item.menu-item-has-children");
-  const mediaQuery = window.matchMedia("(max-width: 48.061em)");
-  const isOpenClass = "_open-submenu";
-  const isTouchDevice = isMobile.any();
-  function hideAllSubMenus() {
-    document.querySelectorAll(".sub-menu").forEach((subMenu) => {
-      slideUp(subMenu, 300);
-    });
-  }
-  function resetSubMenusForDesktop() {
-    document.querySelectorAll(".sub-menu").forEach((subMenu) => {
-      subMenu.removeAttribute("hidden");
-      subMenu.classList.remove("--slide");
-      subMenu.style.removeProperty("height");
-      subMenu.style.removeProperty("overflow");
-      subMenu.style.removeProperty("padding-top");
-      subMenu.style.removeProperty("padding-bottom");
-      subMenu.style.removeProperty("margin-top");
-      subMenu.style.removeProperty("margin-bottom");
-      subMenu.style.removeProperty("transition-duration");
-      subMenu.style.removeProperty("transition-property");
-    });
-  }
-  function toggleSubMenu(parentItem) {
-    const subMenu = parentItem.querySelector(".sub-menu");
-    if (!subMenu) return;
-    if (subMenu.hidden) {
-      parentItem.classList.add(isOpenClass);
-      slideDown(subMenu, 300);
-    } else {
-      parentItem.classList.remove(isOpenClass);
-      slideUp(subMenu, 300);
-    }
-  }
-  function resetLinksAndEvents() {
-    menuItemHasChildren.forEach((parentItem) => {
-      const oldLink = parentItem.querySelector(":scope > a");
-      const newLink = oldLink.cloneNode(true);
-      oldLink.replaceWith(newLink);
-    });
-  }
-  function handleBreakpointChange(e) {
-    resetLinksAndEvents();
-    if (e.matches) {
-      hideAllSubMenus();
-      menuItemHasChildren.forEach((item) => item.classList.remove(isOpenClass));
-      menuItemHasChildren.forEach((parentItem) => {
-        const link = parentItem.querySelector(":scope > a");
-        link.addEventListener("click", (e2) => {
-          e2.preventDefault();
-          toggleSubMenu(parentItem);
-        });
+function spollers() {
+  const spollersArray = document.querySelectorAll("[data-fls-spollers]");
+  if (spollersArray.length > 0) {
+    let initSpollers2 = function(spollersArray2, matchMedia = false) {
+      spollersArray2.forEach((spollersBlock) => {
+        spollersBlock = matchMedia ? spollersBlock.item : spollersBlock;
+        if (matchMedia.matches || !matchMedia) {
+          spollersBlock.classList.add("--spoller-init");
+          initSpollerBody2(spollersBlock);
+        } else {
+          spollersBlock.classList.remove("--spoller-init");
+          initSpollerBody2(spollersBlock, false);
+        }
       });
-    } else {
-      resetSubMenusForDesktop();
-      menuItemHasChildren.forEach((item) => item.classList.remove(isOpenClass));
-      menuItemHasChildren.forEach((parentItem) => {
-        const link = parentItem.querySelector(":scope > a");
-        link.addEventListener("click", (e2) => e2.preventDefault());
-        let openedParent = null;
-        if (isTouchDevice) {
-          link.addEventListener("click", (e2) => {
-            e2.preventDefault();
-            const isOpen = parentItem.classList.contains(isOpenClass);
-            menuItemHasChildren.forEach((item) => item.classList.remove(isOpenClass));
-            if (!isOpen) {
-              parentItem.classList.add(isOpenClass);
-              openedParent = parentItem;
+    }, initSpollerBody2 = function(spollersBlock, hideSpollerBody = true) {
+      let spollerItems = spollersBlock.querySelectorAll("details");
+      if (spollerItems.length) {
+        spollerItems.forEach((spollerItem) => {
+          let spollerTitle = spollerItem.querySelector("summary");
+          if (hideSpollerBody) {
+            spollerTitle.removeAttribute("tabindex");
+            if (!spollerItem.hasAttribute("data-fls-spollers-open")) {
+              spollerItem.open = false;
+              spollerTitle.nextElementSibling.hidden = true;
             } else {
-              openedParent = null;
+              spollerTitle.classList.add("--spoller-active");
+              spollerItem.open = true;
             }
-          });
-          document.addEventListener("click", (e2) => {
-            if (!openedParent) return;
-            const clickedInside = openedParent.contains(e2.target);
-            if (!clickedInside) {
-              openedParent.classList.remove(isOpenClass);
-              openedParent = null;
-            }
-          });
-        } else {
-          parentItem.addEventListener("pointerenter", () => {
-            parentItem.classList.add(isOpenClass);
-          });
-          parentItem.addEventListener("pointerleave", () => {
-            parentItem.classList.remove(isOpenClass);
-          });
-        }
-      });
-    }
-  }
-  if (menuItems.length > 0) {
-    handleBreakpointChange(mediaQuery);
-    mediaQuery.addEventListener("change", handleBreakpointChange);
-  }
-});
-class DynamicAdapt {
-  constructor() {
-    this.type = "max";
-    this.init();
-  }
-  init() {
-    this.objects = [];
-    this.daClassname = "--dynamic";
-    this.nodes = [...document.querySelectorAll("[data-fls-dynamic]")];
-    this.nodes.forEach((node) => {
-      const data = node.dataset.flsDynamic.trim();
-      const dataArray = data.split(`,`);
-      const object = {};
-      object.element = node;
-      object.parent = node.parentNode;
-      object.destinationParent = dataArray[3] ? node.closest(dataArray[3].trim()) || document : document;
-      dataArray[3] ? dataArray[3].trim() : null;
-      const objectSelector = dataArray[0] ? dataArray[0].trim() : null;
-      if (objectSelector) {
-        const foundDestination = object.destinationParent.querySelector(objectSelector);
-        if (foundDestination) {
-          object.destination = foundDestination;
-        }
-      }
-      object.breakpoint = dataArray[1] ? dataArray[1].trim() : `767.98`;
-      object.place = dataArray[2] ? dataArray[2].trim() : `last`;
-      object.index = this.indexInParent(object.parent, object.element);
-      this.objects.push(object);
-    });
-    this.arraySort(this.objects);
-    this.mediaQueries = this.objects.map(({ breakpoint }) => `(${this.type}-width: ${breakpoint / 16}em),${breakpoint}`).filter((item, index, self) => self.indexOf(item) === index);
-    this.mediaQueries.forEach((media) => {
-      const mediaSplit = media.split(",");
-      const matchMedia = window.matchMedia(mediaSplit[0]);
-      const mediaBreakpoint = mediaSplit[1];
-      const objectsFilter = this.objects.filter(({ breakpoint }) => breakpoint === mediaBreakpoint);
-      matchMedia.addEventListener("change", () => {
-        this.mediaHandler(matchMedia, objectsFilter);
-      });
-      this.mediaHandler(matchMedia, objectsFilter);
-    });
-  }
-  mediaHandler(matchMedia, objects) {
-    if (matchMedia.matches) {
-      objects.forEach((object) => {
-        if (object.destination) {
-          this.moveTo(object.place, object.element, object.destination);
-        }
-      });
-    } else {
-      objects.forEach(({ parent, element, index }) => {
-        if (element.classList.contains(this.daClassname)) {
-          this.moveBack(parent, element, index);
-        }
-      });
-    }
-  }
-  moveTo(place, element, destination) {
-    element.classList.add(this.daClassname);
-    const index = place === "last" || place === "first" ? place : parseInt(place, 10);
-    if (index === "last" || index >= destination.children.length) {
-      destination.append(element);
-    } else if (index === "first") {
-      destination.prepend(element);
-    } else {
-      destination.children[index].before(element);
-    }
-  }
-  moveBack(parent, element, index) {
-    element.classList.remove(this.daClassname);
-    if (parent.children[index] !== void 0) {
-      parent.children[index].before(element);
-    } else {
-      parent.append(element);
-    }
-  }
-  indexInParent(parent, element) {
-    return [...parent.children].indexOf(element);
-  }
-  arraySort(arr) {
-    if (this.type === "min") {
-      arr.sort((a, b) => {
-        if (a.breakpoint === b.breakpoint) {
-          if (a.place === b.place) {
-            return 0;
-          }
-          if (a.place === "first" || b.place === "last") {
-            return -1;
-          }
-          if (a.place === "last" || b.place === "first") {
-            return 1;
-          }
-          return 0;
-        }
-        return a.breakpoint - b.breakpoint;
-      });
-    } else {
-      arr.sort((a, b) => {
-        if (a.breakpoint === b.breakpoint) {
-          if (a.place === b.place) {
-            return 0;
-          }
-          if (a.place === "first" || b.place === "last") {
-            return 1;
-          }
-          if (a.place === "last" || b.place === "first") {
-            return -1;
-          }
-          return 0;
-        }
-        return b.breakpoint - a.breakpoint;
-      });
-      return;
-    }
-  }
-}
-if (document.querySelector("[data-fls-dynamic]")) {
-  window.addEventListener("load", () => new DynamicAdapt());
-}
-let formValidate = {
-  getErrors(form) {
-    let error = 0;
-    let formRequiredItems = form.querySelectorAll("[required]");
-    if (formRequiredItems.length) {
-      formRequiredItems.forEach((formRequiredItem) => {
-        if ((formRequiredItem.offsetParent !== null || formRequiredItem.tagName === "SELECT") && !formRequiredItem.disabled) {
-          error += this.validateInput(formRequiredItem);
-        }
-      });
-    }
-    return error;
-  },
-  validateInput(formRequiredItem) {
-    let error = 0;
-    if (formRequiredItem.type === "email") {
-      formRequiredItem.value = formRequiredItem.value.replace(" ", "");
-      if (this.emailTest(formRequiredItem)) {
-        this.addError(formRequiredItem);
-        this.removeSuccess(formRequiredItem);
-        error++;
-      } else {
-        this.removeError(formRequiredItem);
-        this.addSuccess(formRequiredItem);
-      }
-    } else if (formRequiredItem.type === "checkbox" && !formRequiredItem.checked) {
-      this.addError(formRequiredItem);
-      this.removeSuccess(formRequiredItem);
-      error++;
-    } else {
-      if (!formRequiredItem.value.trim()) {
-        this.addError(formRequiredItem);
-        this.removeSuccess(formRequiredItem);
-        error++;
-      } else {
-        this.removeError(formRequiredItem);
-        this.addSuccess(formRequiredItem);
-      }
-    }
-    return error;
-  },
-  addError(formRequiredItem) {
-    formRequiredItem.classList.add("--form-error");
-    formRequiredItem.parentElement.classList.add("--form-error");
-    let inputError = formRequiredItem.parentElement.querySelector("[data-fls-form-error]");
-    if (inputError) formRequiredItem.parentElement.removeChild(inputError);
-    if (formRequiredItem.dataset.flsFormErrtext) {
-      formRequiredItem.parentElement.insertAdjacentHTML("beforeend", `<div data-fls-form-error>${formRequiredItem.dataset.flsFormErrtext}</div>`);
-    }
-  },
-  removeError(formRequiredItem) {
-    formRequiredItem.classList.remove("--form-error");
-    formRequiredItem.parentElement.classList.remove("--form-error");
-    if (formRequiredItem.parentElement.querySelector("[data-fls-form-error]")) {
-      formRequiredItem.parentElement.removeChild(formRequiredItem.parentElement.querySelector("[data-fls-form-error]"));
-    }
-  },
-  addSuccess(formRequiredItem) {
-    formRequiredItem.classList.add("--form-success");
-    formRequiredItem.parentElement.classList.add("--form-success");
-  },
-  removeSuccess(formRequiredItem) {
-    formRequiredItem.classList.remove("--form-success");
-    formRequiredItem.parentElement.classList.remove("--form-success");
-  },
-  formClean(form) {
-    form.reset();
-    setTimeout(() => {
-      let inputs = form.querySelectorAll("input,textarea");
-      for (let index = 0; index < inputs.length; index++) {
-        const el = inputs[index];
-        el.parentElement.classList.remove("--form-focus");
-        el.classList.remove("--form-focus");
-        formValidate.removeError(el);
-      }
-      if (window["flsSelect"]) {
-        let selects = form.querySelectorAll("select[data-fls-select]");
-        if (selects.length) {
-          selects.forEach((select) => {
-            window["flsSelect"].selectBuild(select);
-          });
-        }
-      }
-    }, 0);
-  },
-  emailTest(formRequiredItem) {
-    return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
-  }
-};
-function formInit() {
-  function formSubmit() {
-    const forms = document.forms;
-    if (forms.length) {
-      for (const form of forms) {
-        !form.hasAttribute("data-fls-form-novalidate") ? form.setAttribute("novalidate", true) : null;
-        form.addEventListener("submit", function(e) {
-          const form2 = e.target;
-          formSubmitAction(form2, e);
-        });
-        form.addEventListener("reset", function(e) {
-          const form2 = e.target;
-          formValidate.formClean(form2);
-        });
-      }
-    }
-    async function formSubmitAction(form, e) {
-      const error = formValidate.getErrors(form);
-      if (error === 0) {
-        if (form.dataset.flsForm === "ajax") {
-          e.preventDefault();
-          const formAction = form.getAttribute("action") ? form.getAttribute("action").trim() : "#";
-          const formMethod = form.getAttribute("method") ? form.getAttribute("method").trim() : "GET";
-          const formData = new FormData(form);
-          form.classList.add("--sending");
-          const response = await fetch(formAction, {
-            method: formMethod,
-            body: formData
-          });
-          if (response.ok) {
-            let responseResult = await response.json();
-            form.classList.remove("--sending");
-            formSent(form, responseResult);
           } else {
-            form.classList.remove("--sending");
+            spollerTitle.setAttribute("tabindex", "-1");
+            spollerTitle.classList.remove("--spoller-active");
+            spollerItem.open = true;
+            spollerTitle.nextElementSibling.hidden = false;
           }
-        } else if (form.dataset.flsForm === "dev") {
-          e.preventDefault();
-          formSent(form);
-        }
-      } else {
+        });
+      }
+    }, setSpollerAction2 = function(e) {
+      const el = e.target;
+      if (el.closest("summary") && el.closest("[data-fls-spollers]")) {
         e.preventDefault();
-        if (form.querySelector(".--form-error") && form.hasAttribute("data-fls-form-gotoerr")) {
-          const formGoToErrorClass = form.dataset.flsFormGotoerr ? form.dataset.flsFormGotoerr : ".--form-error";
-          gotoBlock(formGoToErrorClass);
-        }
-      }
-    }
-    function formSent(form, responseResult = ``) {
-      document.dispatchEvent(new CustomEvent("formSent", {
-        detail: {
-          form
-        }
-      }));
-      form.querySelectorAll("[data-fls-clear]").forEach((btn) => btn.classList.remove("active"));
-      form.classList.add("--sent");
-      setTimeout(() => {
-        form.classList.remove("--sent");
-      }, 5e3);
-      formValidate.formClean(form);
-    }
-  }
-  function formFieldsInit() {
-    document.body.addEventListener("focusin", function(e) {
-      const targetElement = e.target;
-      if (targetElement.tagName === "INPUT" || targetElement.tagName === "TEXTAREA") {
-        if (!targetElement.hasAttribute("data-fls-form-nofocus")) {
-          targetElement.classList.add("--form-focus");
-          targetElement.parentElement.classList.add("--form-focus");
-        }
-        targetElement.hasAttribute("data-fls-form-validatenow") ? formValidate.removeError(targetElement) : null;
-      }
-    });
-    document.body.addEventListener("focusout", function(e) {
-      const targetElement = e.target;
-      if (targetElement.tagName === "INPUT" || targetElement.tagName === "TEXTAREA") {
-        const relatedTarget = e.relatedTarget;
-        const formItem = targetElement.closest("[data-fls-form-item]");
-        const isToClearBtn = relatedTarget && formItem?.contains(relatedTarget) && relatedTarget.hasAttribute("data-fls-clear");
-        if (!targetElement.hasAttribute("data-fls-form-nofocus") && !isToClearBtn) {
-          targetElement.classList.remove("--form-focus");
-          targetElement.parentElement.classList.remove("--form-focus");
-        }
-        if (targetElement.hasAttribute("data-fls-form-validatenow")) {
-          formValidate.validateInput(targetElement);
-        }
-      }
-    });
-  }
-  function formClearButtonInit() {
-    document.body.addEventListener("input", function(e) {
-      const input = e.target;
-      if (input.matches("[data-fls-input]")) {
-        const formItem = input.closest("[data-fls-form-item]");
-        if (!formItem) return;
-        const clearBtn = formItem.querySelector("[data-fls-clear]");
-        if (!clearBtn) return;
-        if (input.value.trim() !== "") {
-          clearBtn.classList.add("active");
-        } else {
-          clearBtn.classList.remove("active");
-        }
-      }
-    });
-    document.body.addEventListener("click", function(e) {
-      const clearBtn = e.target.closest("[data-fls-clear]");
-      if (!clearBtn) return;
-      const formItem = clearBtn.closest("[data-fls-form-item]");
-      if (!formItem) return;
-      const input = formItem.querySelector("[data-fls-input]");
-      if (input) {
-        input.value = "";
-        clearBtn.classList.remove("active");
-        input.focus();
-      }
-    });
-  }
-  formSubmit();
-  formFieldsInit();
-  formClearButtonInit();
-}
-document.querySelector("[data-fls-form]") ? window.addEventListener("load", formInit) : null;
-document.addEventListener("DOMContentLoaded", () => {
-  const videoButtons = document.querySelectorAll(".video-youtube__button");
-  const players = /* @__PURE__ */ new Map();
-  let apiLoaded = false;
-  let apiReadyCallbacks = [];
-  function loadYouTubeAPI(callback) {
-    if (apiLoaded) {
-      if (typeof YT !== "undefined" && YT.Player) {
-        callback();
-      } else {
-        apiReadyCallbacks.push(callback);
-      }
-      return;
-    }
-    apiLoaded = true;
-    apiReadyCallbacks.push(callback);
-    const tag = document.createElement("script");
-    tag.src = "https://www.youtube.com/iframe_api";
-    document.head.appendChild(tag);
-    window.onYouTubeIframeAPIReady = function() {
-      apiReadyCallbacks.forEach((cb) => cb());
-      apiReadyCallbacks = [];
-    };
-  }
-  function pauseAll(exceptId = null) {
-    players.forEach((player, id) => {
-      if (id !== exceptId && player.pauseVideo) {
-        player.pauseVideo();
-      }
-    });
-  }
-  function createPlayer(container, youTubeCode, autoplay = true) {
-    const iframeId = "yt-" + youTubeCode + "-" + Date.now();
-    const iframe = document.createElement("div");
-    iframe.setAttribute("id", iframeId);
-    container.innerHTML = "";
-    container.appendChild(iframe);
-    container.classList.add("video-added");
-    const player = new YT.Player(iframeId, {
-      videoId: youTubeCode,
-      playerVars: {
-        rel: 0,
-        showinfo: 0,
-        autoplay: autoplay ? 1 : 0
-      },
-      events: {
-        onStateChange: function(event) {
-          if (event.data === YT.PlayerState.PLAYING) {
-            pauseAll(iframeId);
+        if (el.closest("[data-fls-spollers]").classList.contains("--spoller-init")) {
+          const spollerTitle = el.closest("summary");
+          const spollerBlock = spollerTitle.closest("details");
+          const spollersBlock = spollerTitle.closest("[data-fls-spollers]");
+          const oneSpoller = spollersBlock.hasAttribute("data-fls-spollers-one");
+          const scrollSpoller = spollerBlock.hasAttribute("data-fls-spollers-scroll");
+          const spollerSpeed = spollersBlock.dataset.flsSpollersSpeed ? parseInt(spollersBlock.dataset.flsSpollersSpeed) : 500;
+          if (!spollersBlock.querySelectorAll(".--slide").length) {
+            if (oneSpoller && !spollerBlock.open) {
+              hideSpollersBody2(spollersBlock);
+            }
+            !spollerBlock.open ? spollerBlock.open = true : setTimeout(() => {
+              spollerBlock.open = false;
+            }, spollerSpeed);
+            spollerTitle.classList.toggle("--spoller-active");
+            slideToggle(spollerTitle.nextElementSibling, spollerSpeed);
+            if (scrollSpoller && spollerTitle.classList.contains("--spoller-active")) {
+              const scrollSpollerValue = spollerBlock.dataset.flsSpollersScroll;
+              const scrollSpollerOffset = +scrollSpollerValue ? +scrollSpollerValue : 0;
+              const scrollSpollerNoHeader = spollerBlock.hasAttribute("data-fls-spollers-scroll-noheader") ? document.querySelector(".header").offsetHeight : 0;
+              window.scrollTo(
+                {
+                  top: spollerBlock.offsetTop - (scrollSpollerOffset + scrollSpollerNoHeader),
+                  behavior: "smooth"
+                }
+              );
+            }
           }
         }
       }
+      if (!el.closest("[data-fls-spollers]")) {
+        const spollersClose = document.querySelectorAll("[data-fls-spollers-close]");
+        if (spollersClose.length) {
+          spollersClose.forEach((spollerClose) => {
+            const spollersBlock = spollerClose.closest("[data-fls-spollers]");
+            const spollerCloseBlock = spollerClose.parentNode;
+            if (spollersBlock.classList.contains("--spoller-init")) {
+              const spollerSpeed = spollersBlock.dataset.flsSpollersSpeed ? parseInt(spollersBlock.dataset.flsSpollersSpeed) : 500;
+              spollerClose.classList.remove("--spoller-active");
+              slideUp(spollerClose.nextElementSibling, spollerSpeed);
+              setTimeout(() => {
+                spollerCloseBlock.open = false;
+              }, spollerSpeed);
+            }
+          });
+        }
+      }
+    }, hideSpollersBody2 = function(spollersBlock) {
+      const spollerActiveBlock = spollersBlock.querySelector("details[open]");
+      if (spollerActiveBlock && !spollersBlock.querySelectorAll(".--slide").length) {
+        const spollerActiveTitle = spollerActiveBlock.querySelector("summary");
+        const spollerSpeed = spollersBlock.dataset.flsSpollersSpeed ? parseInt(spollersBlock.dataset.flsSpollersSpeed) : 500;
+        spollerActiveTitle.classList.remove("--spoller-active");
+        slideUp(spollerActiveTitle.nextElementSibling, spollerSpeed);
+        setTimeout(() => {
+          spollerActiveBlock.open = false;
+        }, spollerSpeed);
+      }
+    };
+    var initSpollers = initSpollers2, initSpollerBody = initSpollerBody2, setSpollerAction = setSpollerAction2, hideSpollersBody = hideSpollersBody2;
+    document.addEventListener("click", setSpollerAction2);
+    const spollersRegular = Array.from(spollersArray).filter(function(item, index, self) {
+      return !item.dataset.flsSpollers.split(",")[0];
     });
-    players.set(iframeId, player);
-  }
-  videoButtons.forEach((button) => {
-    button.addEventListener("click", function() {
-      const youTubeCode = this.getAttribute("data-youtube");
-      const container = this.closest(".video-youtube__body");
-      loadYouTubeAPI(() => {
-        createPlayer(container, youTubeCode, true);
+    if (spollersRegular.length) {
+      initSpollers2(spollersRegular);
+    }
+    let mdQueriesArray = dataMediaQueries(spollersArray, "flsSpollers");
+    if (mdQueriesArray && mdQueriesArray.length) {
+      mdQueriesArray.forEach((mdQueriesItem) => {
+        mdQueriesItem.matchMedia.addEventListener("change", function() {
+          initSpollers2(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+        });
+        initSpollers2(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
       });
-    });
-  });
-});
+    }
+  }
+}
+window.addEventListener("load", spollers);
 function isObject$1(obj) {
   return obj !== null && typeof obj === "object" && "constructor" in obj && obj.constructor === Object;
 }
@@ -5656,6 +5338,443 @@ function initSliders() {
   }
 }
 document.querySelector("[data-fls-slider]") ? window.addEventListener("load", initSliders) : null;
+function menuInit() {
+  document.addEventListener("click", function(e) {
+    if (bodyLockStatus && e.target.closest("[data-fls-menu]")) {
+      bodyLockToggle();
+      document.documentElement.toggleAttribute("data-fls-menu-open");
+    }
+  });
+}
+document.querySelector("[data-fls-menu]") ? window.addEventListener("load", menuInit) : null;
+document.addEventListener("DOMContentLoaded", function() {
+  const menuItems = document.querySelectorAll(".menu-item");
+  const menuItemHasChildren = document.querySelectorAll(".menu-item.menu-item-has-children");
+  const mediaQuery = window.matchMedia("(max-width: 48.061em)");
+  const isOpenClass = "_open-submenu";
+  const isTouchDevice = isMobile.any();
+  function hideAllSubMenus() {
+    document.querySelectorAll(".sub-menu").forEach((subMenu) => {
+      slideUp(subMenu, 300);
+    });
+  }
+  function resetSubMenusForDesktop() {
+    document.querySelectorAll(".sub-menu").forEach((subMenu) => {
+      subMenu.removeAttribute("hidden");
+      subMenu.classList.remove("--slide");
+      subMenu.style.removeProperty("height");
+      subMenu.style.removeProperty("overflow");
+      subMenu.style.removeProperty("padding-top");
+      subMenu.style.removeProperty("padding-bottom");
+      subMenu.style.removeProperty("margin-top");
+      subMenu.style.removeProperty("margin-bottom");
+      subMenu.style.removeProperty("transition-duration");
+      subMenu.style.removeProperty("transition-property");
+    });
+  }
+  function toggleSubMenu(parentItem) {
+    const subMenu = parentItem.querySelector(".sub-menu");
+    if (!subMenu) return;
+    if (subMenu.hidden) {
+      parentItem.classList.add(isOpenClass);
+      slideDown(subMenu, 300);
+    } else {
+      parentItem.classList.remove(isOpenClass);
+      slideUp(subMenu, 300);
+    }
+  }
+  function resetLinksAndEvents() {
+    menuItemHasChildren.forEach((parentItem) => {
+      const oldLink = parentItem.querySelector(":scope > a");
+      const newLink = oldLink.cloneNode(true);
+      oldLink.replaceWith(newLink);
+    });
+  }
+  function handleBreakpointChange(e) {
+    resetLinksAndEvents();
+    if (e.matches) {
+      hideAllSubMenus();
+      menuItemHasChildren.forEach((item) => item.classList.remove(isOpenClass));
+      menuItemHasChildren.forEach((parentItem) => {
+        const link = parentItem.querySelector(":scope > a");
+        link.addEventListener("click", (e2) => {
+          e2.preventDefault();
+          toggleSubMenu(parentItem);
+        });
+      });
+    } else {
+      resetSubMenusForDesktop();
+      menuItemHasChildren.forEach((item) => item.classList.remove(isOpenClass));
+      menuItemHasChildren.forEach((parentItem) => {
+        const link = parentItem.querySelector(":scope > a");
+        link.addEventListener("click", (e2) => e2.preventDefault());
+        let openedParent = null;
+        if (isTouchDevice) {
+          link.addEventListener("click", (e2) => {
+            e2.preventDefault();
+            const isOpen = parentItem.classList.contains(isOpenClass);
+            menuItemHasChildren.forEach((item) => item.classList.remove(isOpenClass));
+            if (!isOpen) {
+              parentItem.classList.add(isOpenClass);
+              openedParent = parentItem;
+            } else {
+              openedParent = null;
+            }
+          });
+          document.addEventListener("click", (e2) => {
+            if (!openedParent) return;
+            const clickedInside = openedParent.contains(e2.target);
+            if (!clickedInside) {
+              openedParent.classList.remove(isOpenClass);
+              openedParent = null;
+            }
+          });
+        } else {
+          parentItem.addEventListener("pointerenter", () => {
+            parentItem.classList.add(isOpenClass);
+          });
+          parentItem.addEventListener("pointerleave", () => {
+            parentItem.classList.remove(isOpenClass);
+          });
+        }
+      });
+    }
+  }
+  if (menuItems.length > 0) {
+    handleBreakpointChange(mediaQuery);
+    mediaQuery.addEventListener("change", handleBreakpointChange);
+  }
+});
+class DynamicAdapt {
+  constructor() {
+    this.type = "max";
+    this.init();
+  }
+  init() {
+    this.objects = [];
+    this.daClassname = "--dynamic";
+    this.nodes = [...document.querySelectorAll("[data-fls-dynamic]")];
+    this.nodes.forEach((node) => {
+      const data = node.dataset.flsDynamic.trim();
+      const dataArray = data.split(`,`);
+      const object = {};
+      object.element = node;
+      object.parent = node.parentNode;
+      object.destinationParent = dataArray[3] ? node.closest(dataArray[3].trim()) || document : document;
+      dataArray[3] ? dataArray[3].trim() : null;
+      const objectSelector = dataArray[0] ? dataArray[0].trim() : null;
+      if (objectSelector) {
+        const foundDestination = object.destinationParent.querySelector(objectSelector);
+        if (foundDestination) {
+          object.destination = foundDestination;
+        }
+      }
+      object.breakpoint = dataArray[1] ? dataArray[1].trim() : `767.98`;
+      object.place = dataArray[2] ? dataArray[2].trim() : `last`;
+      object.index = this.indexInParent(object.parent, object.element);
+      this.objects.push(object);
+    });
+    this.arraySort(this.objects);
+    this.mediaQueries = this.objects.map(({ breakpoint }) => `(${this.type}-width: ${breakpoint / 16}em),${breakpoint}`).filter((item, index, self) => self.indexOf(item) === index);
+    this.mediaQueries.forEach((media) => {
+      const mediaSplit = media.split(",");
+      const matchMedia = window.matchMedia(mediaSplit[0]);
+      const mediaBreakpoint = mediaSplit[1];
+      const objectsFilter = this.objects.filter(({ breakpoint }) => breakpoint === mediaBreakpoint);
+      matchMedia.addEventListener("change", () => {
+        this.mediaHandler(matchMedia, objectsFilter);
+      });
+      this.mediaHandler(matchMedia, objectsFilter);
+    });
+  }
+  mediaHandler(matchMedia, objects) {
+    if (matchMedia.matches) {
+      objects.forEach((object) => {
+        if (object.destination) {
+          this.moveTo(object.place, object.element, object.destination);
+        }
+      });
+    } else {
+      objects.forEach(({ parent, element, index }) => {
+        if (element.classList.contains(this.daClassname)) {
+          this.moveBack(parent, element, index);
+        }
+      });
+    }
+  }
+  moveTo(place, element, destination) {
+    element.classList.add(this.daClassname);
+    const index = place === "last" || place === "first" ? place : parseInt(place, 10);
+    if (index === "last" || index >= destination.children.length) {
+      destination.append(element);
+    } else if (index === "first") {
+      destination.prepend(element);
+    } else {
+      destination.children[index].before(element);
+    }
+  }
+  moveBack(parent, element, index) {
+    element.classList.remove(this.daClassname);
+    if (parent.children[index] !== void 0) {
+      parent.children[index].before(element);
+    } else {
+      parent.append(element);
+    }
+  }
+  indexInParent(parent, element) {
+    return [...parent.children].indexOf(element);
+  }
+  arraySort(arr) {
+    if (this.type === "min") {
+      arr.sort((a, b) => {
+        if (a.breakpoint === b.breakpoint) {
+          if (a.place === b.place) {
+            return 0;
+          }
+          if (a.place === "first" || b.place === "last") {
+            return -1;
+          }
+          if (a.place === "last" || b.place === "first") {
+            return 1;
+          }
+          return 0;
+        }
+        return a.breakpoint - b.breakpoint;
+      });
+    } else {
+      arr.sort((a, b) => {
+        if (a.breakpoint === b.breakpoint) {
+          if (a.place === b.place) {
+            return 0;
+          }
+          if (a.place === "first" || b.place === "last") {
+            return 1;
+          }
+          if (a.place === "last" || b.place === "first") {
+            return -1;
+          }
+          return 0;
+        }
+        return b.breakpoint - a.breakpoint;
+      });
+      return;
+    }
+  }
+}
+if (document.querySelector("[data-fls-dynamic]")) {
+  window.addEventListener("load", () => new DynamicAdapt());
+}
+let formValidate = {
+  getErrors(form) {
+    let error = 0;
+    let formRequiredItems = form.querySelectorAll("[required]");
+    if (formRequiredItems.length) {
+      formRequiredItems.forEach((formRequiredItem) => {
+        if ((formRequiredItem.offsetParent !== null || formRequiredItem.tagName === "SELECT") && !formRequiredItem.disabled) {
+          error += this.validateInput(formRequiredItem);
+        }
+      });
+    }
+    return error;
+  },
+  validateInput(formRequiredItem) {
+    let error = 0;
+    if (formRequiredItem.type === "email") {
+      formRequiredItem.value = formRequiredItem.value.replace(" ", "");
+      if (this.emailTest(formRequiredItem)) {
+        this.addError(formRequiredItem);
+        this.removeSuccess(formRequiredItem);
+        error++;
+      } else {
+        this.removeError(formRequiredItem);
+        this.addSuccess(formRequiredItem);
+      }
+    } else if (formRequiredItem.type === "checkbox" && !formRequiredItem.checked) {
+      this.addError(formRequiredItem);
+      this.removeSuccess(formRequiredItem);
+      error++;
+    } else {
+      if (!formRequiredItem.value.trim()) {
+        this.addError(formRequiredItem);
+        this.removeSuccess(formRequiredItem);
+        error++;
+      } else {
+        this.removeError(formRequiredItem);
+        this.addSuccess(formRequiredItem);
+      }
+    }
+    return error;
+  },
+  addError(formRequiredItem) {
+    formRequiredItem.classList.add("--form-error");
+    formRequiredItem.parentElement.classList.add("--form-error");
+    let inputError = formRequiredItem.parentElement.querySelector("[data-fls-form-error]");
+    if (inputError) formRequiredItem.parentElement.removeChild(inputError);
+    if (formRequiredItem.dataset.flsFormErrtext) {
+      formRequiredItem.parentElement.insertAdjacentHTML("beforeend", `<div data-fls-form-error>${formRequiredItem.dataset.flsFormErrtext}</div>`);
+    }
+  },
+  removeError(formRequiredItem) {
+    formRequiredItem.classList.remove("--form-error");
+    formRequiredItem.parentElement.classList.remove("--form-error");
+    if (formRequiredItem.parentElement.querySelector("[data-fls-form-error]")) {
+      formRequiredItem.parentElement.removeChild(formRequiredItem.parentElement.querySelector("[data-fls-form-error]"));
+    }
+  },
+  addSuccess(formRequiredItem) {
+    formRequiredItem.classList.add("--form-success");
+    formRequiredItem.parentElement.classList.add("--form-success");
+  },
+  removeSuccess(formRequiredItem) {
+    formRequiredItem.classList.remove("--form-success");
+    formRequiredItem.parentElement.classList.remove("--form-success");
+  },
+  formClean(form) {
+    form.reset();
+    setTimeout(() => {
+      let inputs = form.querySelectorAll("input,textarea");
+      for (let index = 0; index < inputs.length; index++) {
+        const el = inputs[index];
+        el.parentElement.classList.remove("--form-focus");
+        el.classList.remove("--form-focus");
+        formValidate.removeError(el);
+      }
+      if (window["flsSelect"]) {
+        let selects = form.querySelectorAll("select[data-fls-select]");
+        if (selects.length) {
+          selects.forEach((select) => {
+            window["flsSelect"].selectBuild(select);
+          });
+        }
+      }
+    }, 0);
+  },
+  emailTest(formRequiredItem) {
+    return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
+  }
+};
+function formInit() {
+  function formSubmit() {
+    const forms = document.forms;
+    if (forms.length) {
+      for (const form of forms) {
+        !form.hasAttribute("data-fls-form-novalidate") ? form.setAttribute("novalidate", true) : null;
+        form.addEventListener("submit", function(e) {
+          const form2 = e.target;
+          formSubmitAction(form2, e);
+        });
+        form.addEventListener("reset", function(e) {
+          const form2 = e.target;
+          formValidate.formClean(form2);
+        });
+      }
+    }
+    async function formSubmitAction(form, e) {
+      const error = formValidate.getErrors(form);
+      if (error === 0) {
+        if (form.dataset.flsForm === "ajax") {
+          e.preventDefault();
+          const formAction = form.getAttribute("action") ? form.getAttribute("action").trim() : "#";
+          const formMethod = form.getAttribute("method") ? form.getAttribute("method").trim() : "GET";
+          const formData = new FormData(form);
+          form.classList.add("--sending");
+          const response = await fetch(formAction, {
+            method: formMethod,
+            body: formData
+          });
+          if (response.ok) {
+            let responseResult = await response.json();
+            form.classList.remove("--sending");
+            formSent(form, responseResult);
+          } else {
+            form.classList.remove("--sending");
+          }
+        } else if (form.dataset.flsForm === "dev") {
+          e.preventDefault();
+          formSent(form);
+        }
+      } else {
+        e.preventDefault();
+        if (form.querySelector(".--form-error") && form.hasAttribute("data-fls-form-gotoerr")) {
+          const formGoToErrorClass = form.dataset.flsFormGotoerr ? form.dataset.flsFormGotoerr : ".--form-error";
+          gotoBlock(formGoToErrorClass);
+        }
+      }
+    }
+    function formSent(form, responseResult = ``) {
+      document.dispatchEvent(new CustomEvent("formSent", {
+        detail: {
+          form
+        }
+      }));
+      form.querySelectorAll("[data-fls-clear]").forEach((btn) => btn.classList.remove("active"));
+      form.classList.add("--sent");
+      setTimeout(() => {
+        form.classList.remove("--sent");
+      }, 5e3);
+      formValidate.formClean(form);
+    }
+  }
+  function formFieldsInit() {
+    document.body.addEventListener("focusin", function(e) {
+      const targetElement = e.target;
+      if (targetElement.tagName === "INPUT" || targetElement.tagName === "TEXTAREA") {
+        if (!targetElement.hasAttribute("data-fls-form-nofocus")) {
+          targetElement.classList.add("--form-focus");
+          targetElement.parentElement.classList.add("--form-focus");
+        }
+        targetElement.hasAttribute("data-fls-form-validatenow") ? formValidate.removeError(targetElement) : null;
+      }
+    });
+    document.body.addEventListener("focusout", function(e) {
+      const targetElement = e.target;
+      if (targetElement.tagName === "INPUT" || targetElement.tagName === "TEXTAREA") {
+        const relatedTarget = e.relatedTarget;
+        const formItem = targetElement.closest("[data-fls-form-item]");
+        const isToClearBtn = relatedTarget && formItem?.contains(relatedTarget) && relatedTarget.hasAttribute("data-fls-clear");
+        if (!targetElement.hasAttribute("data-fls-form-nofocus") && !isToClearBtn) {
+          targetElement.classList.remove("--form-focus");
+          targetElement.parentElement.classList.remove("--form-focus");
+        }
+        if (targetElement.hasAttribute("data-fls-form-validatenow")) {
+          formValidate.validateInput(targetElement);
+        }
+      }
+    });
+  }
+  function formClearButtonInit() {
+    document.body.addEventListener("input", function(e) {
+      const input = e.target;
+      if (input.matches("[data-fls-input]")) {
+        const formItem = input.closest("[data-fls-form-item]");
+        if (!formItem) return;
+        const clearBtn = formItem.querySelector("[data-fls-clear]");
+        if (!clearBtn) return;
+        if (input.value.trim() !== "") {
+          clearBtn.classList.add("active");
+        } else {
+          clearBtn.classList.remove("active");
+        }
+      }
+    });
+    document.body.addEventListener("click", function(e) {
+      const clearBtn = e.target.closest("[data-fls-clear]");
+      if (!clearBtn) return;
+      const formItem = clearBtn.closest("[data-fls-form-item]");
+      if (!formItem) return;
+      const input = formItem.querySelector("[data-fls-input]");
+      if (input) {
+        input.value = "";
+        clearBtn.classList.remove("active");
+        input.focus();
+      }
+    });
+  }
+  formSubmit();
+  formFieldsInit();
+  formClearButtonInit();
+}
+document.querySelector("[data-fls-form]") ? window.addEventListener("load", formInit) : null;
 function adjustCardTextClamp() {
   const cards = document.querySelectorAll(".card-news--t1, .card-news--t5");
   cards.forEach((card, i) => {
@@ -5884,122 +6003,3 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
 });
-function spollers() {
-  const spollersArray = document.querySelectorAll("[data-fls-spollers]");
-  if (spollersArray.length > 0) {
-    let initSpollers2 = function(spollersArray2, matchMedia = false) {
-      spollersArray2.forEach((spollersBlock) => {
-        spollersBlock = matchMedia ? spollersBlock.item : spollersBlock;
-        if (matchMedia.matches || !matchMedia) {
-          spollersBlock.classList.add("--spoller-init");
-          initSpollerBody2(spollersBlock);
-        } else {
-          spollersBlock.classList.remove("--spoller-init");
-          initSpollerBody2(spollersBlock, false);
-        }
-      });
-    }, initSpollerBody2 = function(spollersBlock, hideSpollerBody = true) {
-      let spollerItems = spollersBlock.querySelectorAll("details");
-      if (spollerItems.length) {
-        spollerItems.forEach((spollerItem) => {
-          let spollerTitle = spollerItem.querySelector("summary");
-          if (hideSpollerBody) {
-            spollerTitle.removeAttribute("tabindex");
-            if (!spollerItem.hasAttribute("data-fls-spollers-open")) {
-              spollerItem.open = false;
-              spollerTitle.nextElementSibling.hidden = true;
-            } else {
-              spollerTitle.classList.add("--spoller-active");
-              spollerItem.open = true;
-            }
-          } else {
-            spollerTitle.setAttribute("tabindex", "-1");
-            spollerTitle.classList.remove("--spoller-active");
-            spollerItem.open = true;
-            spollerTitle.nextElementSibling.hidden = false;
-          }
-        });
-      }
-    }, setSpollerAction2 = function(e) {
-      const el = e.target;
-      if (el.closest("summary") && el.closest("[data-fls-spollers]")) {
-        e.preventDefault();
-        if (el.closest("[data-fls-spollers]").classList.contains("--spoller-init")) {
-          const spollerTitle = el.closest("summary");
-          const spollerBlock = spollerTitle.closest("details");
-          const spollersBlock = spollerTitle.closest("[data-fls-spollers]");
-          const oneSpoller = spollersBlock.hasAttribute("data-fls-spollers-one");
-          const scrollSpoller = spollerBlock.hasAttribute("data-fls-spollers-scroll");
-          const spollerSpeed = spollersBlock.dataset.flsSpollersSpeed ? parseInt(spollersBlock.dataset.flsSpollersSpeed) : 500;
-          if (!spollersBlock.querySelectorAll(".--slide").length) {
-            if (oneSpoller && !spollerBlock.open) {
-              hideSpollersBody2(spollersBlock);
-            }
-            !spollerBlock.open ? spollerBlock.open = true : setTimeout(() => {
-              spollerBlock.open = false;
-            }, spollerSpeed);
-            spollerTitle.classList.toggle("--spoller-active");
-            slideToggle(spollerTitle.nextElementSibling, spollerSpeed);
-            if (scrollSpoller && spollerTitle.classList.contains("--spoller-active")) {
-              const scrollSpollerValue = spollerBlock.dataset.flsSpollersScroll;
-              const scrollSpollerOffset = +scrollSpollerValue ? +scrollSpollerValue : 0;
-              const scrollSpollerNoHeader = spollerBlock.hasAttribute("data-fls-spollers-scroll-noheader") ? document.querySelector(".header").offsetHeight : 0;
-              window.scrollTo(
-                {
-                  top: spollerBlock.offsetTop - (scrollSpollerOffset + scrollSpollerNoHeader),
-                  behavior: "smooth"
-                }
-              );
-            }
-          }
-        }
-      }
-      if (!el.closest("[data-fls-spollers]")) {
-        const spollersClose = document.querySelectorAll("[data-fls-spollers-close]");
-        if (spollersClose.length) {
-          spollersClose.forEach((spollerClose) => {
-            const spollersBlock = spollerClose.closest("[data-fls-spollers]");
-            const spollerCloseBlock = spollerClose.parentNode;
-            if (spollersBlock.classList.contains("--spoller-init")) {
-              const spollerSpeed = spollersBlock.dataset.flsSpollersSpeed ? parseInt(spollersBlock.dataset.flsSpollersSpeed) : 500;
-              spollerClose.classList.remove("--spoller-active");
-              slideUp(spollerClose.nextElementSibling, spollerSpeed);
-              setTimeout(() => {
-                spollerCloseBlock.open = false;
-              }, spollerSpeed);
-            }
-          });
-        }
-      }
-    }, hideSpollersBody2 = function(spollersBlock) {
-      const spollerActiveBlock = spollersBlock.querySelector("details[open]");
-      if (spollerActiveBlock && !spollersBlock.querySelectorAll(".--slide").length) {
-        const spollerActiveTitle = spollerActiveBlock.querySelector("summary");
-        const spollerSpeed = spollersBlock.dataset.flsSpollersSpeed ? parseInt(spollersBlock.dataset.flsSpollersSpeed) : 500;
-        spollerActiveTitle.classList.remove("--spoller-active");
-        slideUp(spollerActiveTitle.nextElementSibling, spollerSpeed);
-        setTimeout(() => {
-          spollerActiveBlock.open = false;
-        }, spollerSpeed);
-      }
-    };
-    var initSpollers = initSpollers2, initSpollerBody = initSpollerBody2, setSpollerAction = setSpollerAction2, hideSpollersBody = hideSpollersBody2;
-    document.addEventListener("click", setSpollerAction2);
-    const spollersRegular = Array.from(spollersArray).filter(function(item, index, self) {
-      return !item.dataset.flsSpollers.split(",")[0];
-    });
-    if (spollersRegular.length) {
-      initSpollers2(spollersRegular);
-    }
-    let mdQueriesArray = dataMediaQueries(spollersArray, "flsSpollers");
-    if (mdQueriesArray && mdQueriesArray.length) {
-      mdQueriesArray.forEach((mdQueriesItem) => {
-        mdQueriesItem.matchMedia.addEventListener("change", function() {
-          initSpollers2(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
-        });
-        initSpollers2(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
-      });
-    }
-  }
-}
-window.addEventListener("load", spollers);
