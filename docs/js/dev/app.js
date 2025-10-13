@@ -5302,21 +5302,15 @@ function initSliders() {
       on: {}
     });
   }
-  const slidersCards = document.querySelectorAll(".block-cards__slider");
-  if (slidersCards.length) {
-    const mq = window.matchMedia("(max-width: 37.561em)");
-    slidersCards.forEach((slider) => {
+  function initAdaptiveSliders(selector, options, breakpoint = "(max-width: 37.561em)") {
+    const sliders = document.querySelectorAll(selector);
+    if (!sliders.length) return;
+    const mq = window.matchMedia(breakpoint);
+    sliders.forEach((slider) => {
       let swiperInstance = null;
       function enable() {
         if (!swiperInstance) {
-          swiperInstance = new Swiper(slider, {
-            modules: [Navigation],
-            observer: true,
-            observeParents: true,
-            slidesPerView: 1,
-            spaceBetween: 8,
-            speed: 500
-          });
+          swiperInstance = new Swiper(slider, options);
         }
       }
       function disable() {
@@ -5336,6 +5330,22 @@ function initSliders() {
       mq.addEventListener("change", check);
     });
   }
+  initAdaptiveSliders(".block-cards__slider", {
+    modules: [Navigation],
+    observer: true,
+    observeParents: true,
+    slidesPerView: 1,
+    spaceBetween: 8,
+    speed: 500
+  });
+  initAdaptiveSliders(".all-news__slider", {
+    modules: [Navigation],
+    observer: true,
+    observeParents: true,
+    slidesPerView: 1,
+    spaceBetween: 8,
+    speed: 500
+  }, "(max-width: 48.061em");
 }
 document.querySelector("[data-fls-slider]") ? window.addEventListener("load", initSliders) : null;
 function menuInit() {
@@ -5775,13 +5785,48 @@ function formInit() {
   formClearButtonInit();
 }
 document.querySelector("[data-fls-form]") ? window.addEventListener("load", formInit) : null;
+document.addEventListener("DOMContentLoaded", () => {
+  const newsBodies = document.querySelectorAll("[data-fls-newsbody]");
+  newsBodies.forEach((body) => {
+    const content = body.querySelector("[data-news-content]");
+    const nav = body.querySelector("[data-news-nav]");
+    if (!content || !nav) return;
+    const more = nav.querySelector("[data-news-more]");
+    const pagination = nav.querySelector("[data-news-pagination]");
+    const moreBtn = more ? more.querySelector("[data-news-more] button, [data-fls-buttons]") : null;
+    const cards = content.querySelectorAll("[data-fls-cardnews]");
+    const cardsArray = Array.from(cards);
+    const VISIBLE_COUNT = parseInt(content.dataset.newsContent, 10) || 8;
+    function updateView() {
+      if (cardsArray.length <= VISIBLE_COUNT) {
+        if (more) more.hidden = true;
+        if (pagination) pagination.hidden = false;
+      } else {
+        if (more) more.hidden = false;
+        if (pagination) pagination.hidden = true;
+        cardsArray.forEach((card, index) => {
+          card.style.display = index < VISIBLE_COUNT ? "" : "none";
+        });
+      }
+    }
+    updateView();
+    if (moreBtn) {
+      moreBtn.addEventListener("click", () => {
+        cardsArray.forEach((card) => card.style.display = "");
+        if (more) more.hidden = true;
+        if (pagination) pagination.hidden = false;
+      });
+    }
+  });
+});
 function adjustCardTextClamp() {
-  const cards = document.querySelectorAll(".card-news--t1, .card-news--t5");
-  cards.forEach((card, i) => {
+  const cards = document.querySelectorAll(".card-news--t1, .card-news--t5, .card-news--t3");
+  cards.forEach((card) => {
     const text = card.querySelector(".card-news__text");
     if (!text) return;
     requestAnimationFrame(() => {
       const isT5 = card.classList.contains("card-news--t5");
+      const isT3 = card.classList.contains("card-news--t3");
       const picture = card.querySelector(".card-news__picture");
       const time = card.querySelector(".card-news__time");
       const tags = card.querySelector(".card-news__tags");
@@ -5789,31 +5834,31 @@ function adjustCardTextClamp() {
       const textStyle = getComputedStyle(text);
       const textMarginTop = parseFloat(textStyle.marginTop || 0);
       let availableHeight = 0;
-      if (isT5) {
-        const cardHeight = 230;
-        let occupiedHeight = 0;
-        [time, tags, title].forEach((el) => {
+      function getOccupiedHeight(elements) {
+        let total = 0;
+        elements.forEach((el) => {
           if (el) {
             const style = getComputedStyle(el);
-            occupiedHeight += el.offsetHeight + parseFloat(style.marginBottom || 0);
+            total += el.offsetHeight + parseFloat(style.marginBottom || 0);
+          } else {
+            total += 8;
           }
         });
+        return total;
+      }
+      if (isT5 || isT3) {
+        const cardHeight = 230;
+        const occupiedHeight = getOccupiedHeight([time, tags, title]);
         availableHeight = cardHeight - occupiedHeight - textMarginTop;
       } else {
+        const cardHeight = 488;
         const cardStyle = getComputedStyle(card);
         const paddingTop = parseFloat(cardStyle.paddingTop || 0);
         const paddingBottom = parseFloat(cardStyle.paddingBottom || 0);
         const cardPadding = paddingTop + paddingBottom;
-        const cardHeight = 488;
         const pictureMarginBottom = picture ? parseFloat(getComputedStyle(picture).marginBottom || 0) : 0;
         const pictureHeight = 230 + pictureMarginBottom;
-        let occupiedHeight = 0;
-        [time, tags, title].forEach((el) => {
-          if (el) {
-            const style = getComputedStyle(el);
-            occupiedHeight += el.offsetHeight + parseFloat(style.marginBottom || 0);
-          }
-        });
+        const occupiedHeight = getOccupiedHeight([time, tags, title]);
         availableHeight = cardHeight - cardPadding - pictureHeight - occupiedHeight - textMarginTop;
       }
       let lineHeight = parseFloat(textStyle.lineHeight);

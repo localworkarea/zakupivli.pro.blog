@@ -7,8 +7,8 @@
 		<link rel="preload" href="./assets/fonts/Suisse-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
 		<title>Zakupivli | Home</title>
-		<script type="module" crossorigin="" src="./js/app.min.js?v=1760097379716"></script>
-		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1760097379716">
+		<script type="module" crossorigin="" src="./js/app.min.js?v=1760366843404"></script>
+		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1760366843404">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -106,6 +106,22 @@
 				</div>
 			</header>
 			<main class="page page--home">
+				<div data-fls-breadcrumb="" class="breadcrumb">
+					<nav class="breadcrumb__container">
+						<ul itemscope itemtype="https://schema.org/BreadcrumbList" class="breadcrumb__list">
+							<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb__item">
+								<a itemprop="item" href="index.html">
+									<span itemprop="name">Головна</span>
+								</a>
+								<meta itemprop="position" content="1">
+							</li>
+							<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb__item">
+								<span itemprop="name">Замовнику</span>
+								<meta itemprop="position" content="2">
+							</li>
+						</ul>
+					</nav>
+				</div>
 				<section class="main pdb-1">
 					<div class="main__container">
 						<div class="main__head grid-clm">
@@ -261,57 +277,82 @@
 						</div>
 					</div>
 				</section>
-				<div class="white-wrapper mb-1">
-					<div class="about-block mb-1">
-						<div class="about-block__container">
-							<div class="about-block__text">
-								<p>
-									blog.zakupivli.pro - це офіційний блог українського електронного майданчика
-									<a href="#" aria-label="link">Zakupivli.Pro</a>
-									, акредитованого в системі Prozorro та Prozorro.Продажі, який є найбільшою базою знань у сфері державних та
-						комерційних закупівель та аукціонів.
-						На блозі ви знайдете актуальні новини, корисні поради, інструкції, анонси подій, навчальні курси для державних, комерційних замовників, постачальників, учасників та організаторів аукціонів.
-								</p>
+				<div class="about-block white-bg border-top pdt-2 pdb-1">
+					<div class="about-block__container">
+						<div class="about-block__text">
+							<p>
+								blog.zakupivli.pro - це офіційний блог українського електронного майданчика
+								<a href="#" aria-label="link">Zakupivli.Pro</a>
+								, акредитованого в системі Prozorro та Prozorro.Продажі, який є найбільшою базою знань у сфері державних та
+					комерційних закупівель та аукціонів.
+					На блозі ви знайдете актуальні новини, корисні поради, інструкції, анонси подій, навчальні курси для державних, комерційних замовників, постачальників, учасників та організаторів аукціонів.
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="assistant white-bg">
+					<div class="assistant__container">
+						<div class="assistant__body grid-clm">
+							<div class="assistant__wrapper">
+								<div class="assistant__img">
+									<img width="84" height="93" alt="Image" src="./assets/img/pictures/zakupaiko.webp">
+								</div>
+								<div class="assistant__text title-card">
+									<p>
+										Закупайко - AI-асистент, який допоможе вам із закупівлями
+										<br>
+										Швидкі відповіді 24/7
+									</p>
+								</div>
+							</div>
+							<div class="assistant__link-body">
+								<a href="https://t.me/The_FirstLine_bot?utm_source=newsletter&utm_medium=email&utm_campaign=01042025_web" target="_blank" data-fls-buttons="" class="assistant__link btn btn--green btn--fw" aria-label="link">Спробувати</a>
 							</div>
 						</div>
 					</div>
-					<div class="assistant">
-						<div class="assistant__container">
-							<div class="assistant__body grid-clm">
-								<div class="assistant__wrapper">
-									<div class="assistant__img">
-										<img width="84" height="93" alt="Image" src="./assets/img/pictures/zakupaiko.webp">
-									</div>
-									<div class="assistant__text title-card">
-										<p>
-											Закупайко - AI-асистент, який допоможе вам із закупівлями
-											<br>
-											Швидкі відповіді 24/7
-										</p>
-									</div>
-								</div>
-								<div class="assistant__link-body">
-									<a href="https://t.me/The_FirstLine_bot?utm_source=newsletter&utm_medium=email&utm_campaign=01042025_web" target="_blank" data-fls-buttons="" class="assistant__link btn btn--green btn--fw" aria-label="link">Спробувати</a>
-								</div>
-							</div>
-						</div>
+				</div>
+				<div class="divide white-bg">
+					<div class="divide__container">
+						<span></span>
 					</div>
-					<div class="divide">
-						<div class="divide__container">
-							<span></span>
-						</div>
-					</div>
-					<section class="news">
-						<div class="news__container">
-							<h2 class="news__title title-main title-main--mb">Останні новини</h2>
-							<div class="news__body body-news mb-1">
-								<div class="body-news__wrapper grid-clm">
-									<div class="body-news__left grid-gap">
-										<div class="body-news__top">
-											<article data-fls-cardnews="" class="card-news card-news--t1">
-												<a href="#" class="card-news__picture" aria-label="link to the article">
-													<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
-												</a>
+				</div>
+				<section class="news white-bg pdb-1">
+					<div class="news__container">
+						<h2 class="news__title title-main title-main--mb">Останні новини</h2>
+						<div class="news__body body-news">
+							<div class="body-news__wrapper grid-clm">
+								<div class="body-news__left grid-gap">
+									<div class="body-news__top">
+										<article data-fls-cardnews="" class="card-news card-news--t1">
+											<a href="#" class="card-news__picture" aria-label="link to the article">
+												<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+											</a>
+											<div class="card-news__body">
+												<p class="card-news__time">
+													<time datetime="2025-04-10">10 квітня 2025</time>
+												</p>
+												<div class="card-news__tags">
+													<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+												</div>
+												<h2 class="card-news__title title-card">
+													<a href="#" aria-label="link to the article">
+														Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+													</a>
+												</h2>
+												<div class="card-news__text">
+													<p>
+														Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+											процедури дозволяють зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+													</p>
+												</div>
+											</div>
+										</article>
+									</div>
+									<div class="body-news__clmns grid-gap">
+										<div class="body-news__clm grid-gap">
+											<article data-fls-cardnews="" class="card-news card-news--t2">
 												<div class="card-news__body">
 													<p class="card-news__time">
 														<time datetime="2025-04-10">10 квітня 2025</time>
@@ -334,91 +375,6 @@
 													</div>
 												</div>
 											</article>
-										</div>
-										<div class="body-news__clmns grid-gap">
-											<div class="body-news__clm grid-gap">
-												<article data-fls-cardnews="" class="card-news card-news--t2">
-													<div class="card-news__body">
-														<p class="card-news__time">
-															<time datetime="2025-04-10">10 квітня 2025</time>
-														</p>
-														<div class="card-news__tags">
-															<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
-															<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
-															<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
-														</div>
-														<h2 class="card-news__title title-card">
-															<a href="#" aria-label="link to the article">
-																Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
-															</a>
-														</h2>
-														<div class="card-news__text">
-															<p>
-																Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
-													процедури дозволяють зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
-															</p>
-														</div>
-													</div>
-												</article>
-												<article data-fls-cardnews="" class="card-news card-news--t1">
-													<a href="#" class="card-news__picture" aria-label="link to the article">
-														<img width="753" height="230" alt="Image" src="./assets/img/main/main-2.webp">
-													</a>
-													<div class="card-news__body">
-														<p class="card-news__time">
-															<time datetime="2025-04-10">10 квітня 2025</time>
-														</p>
-														<div class="card-news__tags">
-															<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
-															<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
-															<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
-														</div>
-														<h2 class="card-news__title title-card">
-															<a href="#" aria-label="link to the article">
-																Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
-															</a>
-														</h2>
-														<div class="card-news__text">
-															<p>
-																Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
-													процедури дозволяють зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
-															</p>
-														</div>
-													</div>
-												</article>
-											</div>
-											<div class="body-news__clm grid-gap">
-												<article data-fls-cardnews="" class="card-news card-news--t1">
-													<a href="#" class="card-news__picture" aria-label="link to the article">
-														<img width="753" height="230" alt="Image" src="./assets/img/main/main-2.webp">
-													</a>
-													<div class="card-news__body">
-														<p class="card-news__time">
-															<time datetime="2025-04-10">10 квітня 2025</time>
-														</p>
-														<div class="card-news__tags">
-															<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
-															<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
-															<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
-														</div>
-														<h2 class="card-news__title title-card">
-															<a href="#" aria-label="link to the article">
-																Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
-															</a>
-														</h2>
-														<div class="card-news__text">
-															<p>
-																Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
-													процедури дозволяють зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
-															</p>
-														</div>
-													</div>
-												</article>
-											</div>
-										</div>
-									</div>
-									<div class="body-news__right grid-gap">
-										<div class="body-news__top">
 											<article data-fls-cardnews="" class="card-news card-news--t1">
 												<a href="#" class="card-news__picture" aria-label="link to the article">
 													<img width="753" height="230" alt="Image" src="./assets/img/main/main-2.webp">
@@ -447,27 +403,9 @@
 											</article>
 										</div>
 										<div class="body-news__clm grid-gap">
-											<article data-fls-cardnews="" class="card-news card-news--t3">
-												<div class="card-news__body">
-													<p class="card-news__time">
-														<time datetime="2025-04-10">10 квітня 2025</time>
-													</p>
-													<h2 class="card-news__title title-card">
-														<a href="#" aria-label="link to the article">
-															Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
-														</a>
-													</h2>
-													<div class="card-news__text">
-														<p>
-															Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
-												процедури дозволяють зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
-														</p>
-													</div>
-												</div>
-											</article>
-											<article data-fls-cardnews="" class="card-news card-news--t4">
+											<article data-fls-cardnews="" class="card-news card-news--t1">
 												<a href="#" class="card-news__picture" aria-label="link to the article">
-													<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+													<img width="753" height="230" alt="Image" src="./assets/img/main/main-2.webp">
 												</a>
 												<div class="card-news__body">
 													<p class="card-news__time">
@@ -476,17 +414,8 @@
 													<div class="card-news__tags">
 														<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
 														<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+														<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
 													</div>
-													<h2 class="card-news__title title-card">
-														<a href="#" aria-label="link to the article">Як полегшити закупівлі на Zakupivli.Pro.</a>
-													</h2>
-												</div>
-											</article>
-											<article data-fls-cardnews="" class="card-news card-news--t3">
-												<div class="card-news__body">
-													<p class="card-news__time">
-														<time datetime="2025-04-10">10 квітня 2025</time>
-													</p>
 													<h2 class="card-news__title title-card">
 														<a href="#" aria-label="link to the article">
 															Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
@@ -503,49 +432,138 @@
 										</div>
 									</div>
 								</div>
-								<div class="body-news__footer grid-gap">
-									<a href="#" data-fls-buttons="" class="body-news__btn btn btn--green btn--fw" aria-label="link to the page">Більше новин</a>
+								<div class="body-news__right grid-gap">
+									<div class="body-news__top">
+										<article data-fls-cardnews="" class="card-news card-news--t1">
+											<a href="#" class="card-news__picture" aria-label="link to the article">
+												<img width="753" height="230" alt="Image" src="./assets/img/main/main-2.webp">
+											</a>
+											<div class="card-news__body">
+												<p class="card-news__time">
+													<time datetime="2025-04-10">10 квітня 2025</time>
+												</p>
+												<div class="card-news__tags">
+													<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+												</div>
+												<h2 class="card-news__title title-card">
+													<a href="#" aria-label="link to the article">
+														Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+													</a>
+												</h2>
+												<div class="card-news__text">
+													<p>
+														Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+											процедури дозволяють зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+													</p>
+												</div>
+											</div>
+										</article>
+									</div>
+									<div class="body-news__clm grid-gap">
+										<article data-fls-cardnews="" class="card-news card-news--t3">
+											<div class="card-news__body">
+												<p class="card-news__time">
+													<time datetime="2025-04-10">10 квітня 2025</time>
+												</p>
+												<h2 class="card-news__title title-card">
+													<a href="#" aria-label="link to the article">
+														Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+													</a>
+												</h2>
+												<div class="card-news__text">
+													<p>
+														Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+											процедури дозволяють зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+													</p>
+												</div>
+											</div>
+										</article>
+										<article data-fls-cardnews="" class="card-news card-news--t4">
+											<a href="#" class="card-news__picture" aria-label="link to the article">
+												<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+											</a>
+											<div class="card-news__body">
+												<p class="card-news__time">
+													<time datetime="2025-04-10">10 квітня 2025</time>
+												</p>
+												<div class="card-news__tags">
+													<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												</div>
+												<h2 class="card-news__title title-card">
+													<a href="#" aria-label="link to the article">Як полегшити закупівлі на Zakupivli.Pro.</a>
+												</h2>
+											</div>
+										</article>
+										<article data-fls-cardnews="" class="card-news card-news--t3">
+											<div class="card-news__body">
+												<p class="card-news__time">
+													<time datetime="2025-04-10">10 квітня 2025</time>
+												</p>
+												<h2 class="card-news__title title-card">
+													<a href="#" aria-label="link to the article">
+														Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+													</a>
+												</h2>
+												<div class="card-news__text">
+													<p>
+														Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+											процедури дозволяють зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+													</p>
+												</div>
+											</div>
+										</article>
+									</div>
 								</div>
 							</div>
-							<form data-fls-subscribe="" data-fls-form="dev" class="subscribe form-subscribe form" action="#" method="POST">
-								<div class="form-subscribe__body">
-									<h2 class="form-subscribe__title title-av">Підписатися на розсилки</h2>
-									<div class="form-subscribe__checkboxes checkboxes">
-										<label data-fls-checkbox="" class="checkbox">
-											<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
-											<span class="checkbox__text">Prozorro Market</span>
-										</label>
-										<label data-fls-checkbox="" class="checkbox">
-											<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
-											<span class="checkbox__text">Державні закупівлі</span>
-										</label>
-										<label data-fls-checkbox="" class="checkbox">
-											<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
-											<span class="checkbox__text">Комерційні закупівлі</span>
-										</label>
-										<label data-fls-checkbox="" class="checkbox">
-											<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
-											<span class="checkbox__text">Аукціони</span>
-										</label>
-										<label data-fls-checkbox="" class="checkbox">
-											<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
-											<span class="checkbox__text">Постачальникам</span>
-										</label>
-									</div>
-									<div class="form-subscribe__block">
-										<div data-fls-form-item="" class="form__item">
-											<input data-fls-input="" data-fls-form-errtext="Вкажіть e-mail" required type="email" name="email" placeholder="E-mail" class="form__input input">
-											<button data-fls-clear="" type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
-										</div>
-										<button data-fls-buttons="" type="submit" aria-label="submit" class="form__submit btn btn--fw btn--green">Підписатись</button>
-									</div>
-								</div>
-								<div class="form-subscribe__msg title-main">
-									<p class="form-subscribe__txt-msg --icon-donedark">Дякуємо за підписку!</p>
-								</div>
-							</form>
+							<div class="body-news__footer grid-gap">
+								<a href="#" data-fls-buttons="" class="body-news__btn btn btn--green btn--fw" aria-label="link to the page">Більше новин</a>
+							</div>
 						</div>
-					</section>
+					</div>
+				</section>
+				<div class="subscribe white-bg border-bottom pdb-1 mb-1">
+					<div class="subscribe__container">
+						<form data-fls-subscribe="" data-fls-form="dev" class="form-subscribe form" action="#" method="POST">
+							<div class="form-subscribe__body">
+								<h2 class="form-subscribe__title title-av">Підписатися на розсилки</h2>
+								<div class="form-subscribe__checkboxes checkboxes">
+									<label data-fls-checkbox="" class="checkbox">
+										<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
+										<span class="checkbox__text">Prozorro Market</span>
+									</label>
+									<label data-fls-checkbox="" class="checkbox">
+										<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
+										<span class="checkbox__text">Державні закупівлі</span>
+									</label>
+									<label data-fls-checkbox="" class="checkbox">
+										<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
+										<span class="checkbox__text">Комерційні закупівлі</span>
+									</label>
+									<label data-fls-checkbox="" class="checkbox">
+										<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
+										<span class="checkbox__text">Аукціони</span>
+									</label>
+									<label data-fls-checkbox="" class="checkbox">
+										<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
+										<span class="checkbox__text">Постачальникам</span>
+									</label>
+								</div>
+								<div class="form-subscribe__block">
+									<div data-fls-form-item="" class="form__item">
+										<input data-fls-input="" data-fls-form-errtext="Вкажіть e-mail" required type="email" name="email" placeholder="E-mail" class="form__input input">
+										<button data-fls-clear="" type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
+									</div>
+									<button data-fls-buttons="" type="submit" aria-label="submit" class="form__submit btn btn--fw btn--green">Підписатись</button>
+								</div>
+							</div>
+							<div class="form-subscribe__msg title-main">
+								<p class="form-subscribe__txt-msg --icon-donedark">Дякуємо за підписку!</p>
+							</div>
+						</form>
+					</div>
 				</div>
 				<section class="slider-events">
 					<div class="slider-events__container">
@@ -798,6 +816,1274 @@
 						<a href="https://zakupivli.pro/signin" data-fls-buttons="" class="goto-reg__link btn btn--fw btn--green" aria-label="перейти до реєстрації">Перейти до реєстрації</a>
 					</div>
 				</div>
+				<section class="customer-hero pdb-2">
+					<div class="customer-hero__container">
+						<h1 class="customer-hero__title title-main title-main--mb">Все про закупівлі для державних замовників в системі Prozorro</h1>
+						<div class="customer-hero__instuctions instructions">
+							<h2 class="instructions__title title-av mb-2">Інструкції</h2>
+							<div data-fls-spollers="" class="instructions-spollers">
+								<details class="instructions-spollers__item">
+									<summary class="instructions-spollers__title title-card">
+										<span>Перші кроки на майданчику</span>
+									</summary>
+									<div class="instructions-spollers__body">
+										<div class="instructions-spollers__content">
+											<div class="instructions-spollers__wrapper txt-14">
+												<p>
+													Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio earum ad provident? Illum maiores beatae odio fugiat neque consectetur id, dolorem repellendus omnis asperiores in, laboriosam, velit error facere aperiam.
+												</p>
+												<p>
+													Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio earum ad provident? Illum maiores beatae odio fugiat neque consectetur id, dolorem repellendus omnis asperiores in, laboriosam, velit error facere aperiam.
+												</p>
+											</div>
+										</div>
+									</div>
+								</details>
+								<details class="instructions-spollers__item">
+									<summary class="instructions-spollers__title title-card">
+										<span>Електронний каталог Prozorro Market</span>
+									</summary>
+									<div class="instructions-spollers__body">
+										<div class="instructions-spollers__content">
+											<div class="instructions-spollers__wrapper txt-14">
+												<p>
+													Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio earum ad provident? Illum maiores beatae odio fugiat neque consectetur id, dolorem repellendus omnis asperiores in, laboriosam, velit error facere aperiam.
+												</p>
+												<p>
+													Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio earum ad provident? Illum maiores beatae odio fugiat neque consectetur id, dolorem repellendus omnis asperiores in, laboriosam, velit error facere aperiam.
+												</p>
+											</div>
+										</div>
+									</div>
+								</details>
+							</div>
+							<a href="#" data-fls-buttons="" class="customer-hero__link btn btn--fw btn--green" aria-label="посилання">Показати всі інструкції</a>
+						</div>
+					</div>
+				</section>
+				<section data-fls-blockcards="" class="block-cards white-bg pdt-2 pdb-1">
+					<div class="block-cards__container">
+						<h2 class="block-cards__title title-av mb-3">Довідники держзамовника</h2>
+						<div class="block-cards__body">
+							<div data-fls-slider="" class="block-cards__slider swiper">
+								<div class="block-cards__wrapper swiper-wrapper">
+									<div class="block-cards__slide swiper-slide">
+										<article data-fls-cardnews="" class="card-news card-news--t7">
+											<a href="#" class="card-news__picture" aria-label="link to the article">
+												<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+											</a>
+											<div class="card-news__body">
+												<p class="card-news__time">
+													<time datetime="2025-04-10">10 квітня 2025</time>
+												</p>
+												<div class="card-news__tags">
+													<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+												</div>
+												<h2 class="card-news__title title-card">
+													<a href="#" aria-label="link to the article">
+														Довідник
+														<br>
+														роботи з договором
+													</a>
+												</h2>
+											</div>
+										</article>
+									</div>
+									<div class="block-cards__slide swiper-slide">
+										<article data-fls-cardnews="" class="card-news card-news--t7">
+											<a href="#" class="card-news__picture" aria-label="link to the article">
+												<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+											</a>
+											<div class="card-news__body">
+												<p class="card-news__time">
+													<time datetime="2025-04-10">10 квітня 2025</time>
+												</p>
+												<div class="card-news__tags">
+													<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+												</div>
+												<h2 class="card-news__title title-card">
+													<a href="#" aria-label="link to the article">
+														Довідник
+														<br>
+														роботи з договором
+													</a>
+												</h2>
+											</div>
+										</article>
+									</div>
+									<div class="block-cards__slide swiper-slide">
+										<article data-fls-cardnews="" class="card-news card-news--t7">
+											<a href="#" class="card-news__picture" aria-label="link to the article">
+												<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+											</a>
+											<div class="card-news__body">
+												<p class="card-news__time">
+													<time datetime="2025-04-10">10 квітня 2025</time>
+												</p>
+												<div class="card-news__tags">
+													<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+												</div>
+												<h2 class="card-news__title title-card">
+													<a href="#" aria-label="link to the article">
+														Довідник
+														<br>
+														роботи з договором
+													</a>
+												</h2>
+											</div>
+										</article>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section data-fls-blockcards="" class="block-cards white-bg border-bottom pdb-1 mb-1">
+					<div class="block-cards__container">
+						<h2 class="block-cards__title title-av mb-3">Практичні кейси</h2>
+						<div class="block-cards__body">
+							<div data-fls-slider="" class="block-cards__slider swiper">
+								<div class="block-cards__wrapper swiper-wrapper">
+									<div class="block-cards__slide swiper-slide">
+										<article data-fls-cardnews="" class="card-news card-news--t7">
+											<a href="#" class="card-news__picture" aria-label="link to the article">
+												<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+											</a>
+											<div class="card-news__body">
+												<p class="card-news__time">
+													<time datetime="2025-04-10">10 квітня 2025</time>
+												</p>
+												<div class="card-news__tags">
+													<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+												</div>
+												<h2 class="card-news__title title-card">
+													<a href="#" aria-label="link to the article">
+														Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+													</a>
+												</h2>
+												<div class="card-news__text">
+													<p>
+														Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+											процедури дозволяють
+											зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+													</p>
+												</div>
+											</div>
+										</article>
+									</div>
+									<div class="block-cards__slide swiper-slide">
+										<article data-fls-cardnews="" class="card-news card-news--t7">
+											<a href="#" class="card-news__picture" aria-label="link to the article">
+												<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+											</a>
+											<div class="card-news__body">
+												<p class="card-news__time">
+													<time datetime="2025-04-10">10 квітня 2025</time>
+												</p>
+												<div class="card-news__tags">
+													<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+												</div>
+												<h2 class="card-news__title title-card">
+													<a href="#" aria-label="link to the article">
+														Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+													</a>
+												</h2>
+												<div class="card-news__text">
+													<p>
+														Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+											процедури дозволяють
+											зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+													</p>
+												</div>
+											</div>
+										</article>
+									</div>
+									<div class="block-cards__slide swiper-slide">
+										<article data-fls-cardnews="" class="card-news card-news--t7">
+											<a href="#" class="card-news__picture" aria-label="link to the article">
+												<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+											</a>
+											<div class="card-news__body">
+												<p class="card-news__time">
+													<time datetime="2025-04-10">10 квітня 2025</time>
+												</p>
+												<div class="card-news__tags">
+													<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+												</div>
+												<h2 class="card-news__title title-card">
+													<a href="#" aria-label="link to the article">
+														Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+													</a>
+												</h2>
+												<div class="card-news__text">
+													<p>
+														Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+											процедури дозволяють
+											зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+													</p>
+												</div>
+											</div>
+										</article>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="tools mb-1">
+					<div class="tools__container">
+						<h2 class="tools__title title-av mb-3">Робочі інструменти на допомогу</h2>
+						<div class="tools__body">
+							<ul class="cards-link__list">
+								<li class="cards-link__item">
+									<a href="#" class="cards-link__link --icon-fill-arrow" aria-label="link">
+										<span>Симулятор ЗЦП</span>
+									</a>
+								</li>
+								<li class="cards-link__item">
+									<a href="#" class="cards-link__link --icon-fill-arrow" aria-label="link">
+										<span>Який тип закупівлі обрати</span>
+									</a>
+								</li>
+								<li class="cards-link__item">
+									<a href="#" class="cards-link__link --icon-fill-arrow" aria-label="link">
+										<span>Калькулятор закупівлі</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section data-fls-aisolutions="" class="ai-solutions white-bg border-top pdt-2 pdb-1">
+					<div class="ai-solutions__container">
+						<h2 class="ai-solutions__title title-av mb-3">АІ-рішення для постачальників Prozorro</h2>
+						<div class="ai-solutions__body">
+							<article class="ai-solutions__item item-ai-solutions">
+								<div class="item-ai-solutions__img">
+									<img width="230" height="230" alt="Image" src="./assets/img/aisolutions/aisolutions-1.webp">
+								</div>
+								<h3 class="item-ai-solutions__title title-card">AI-помічник для постачальників палива</h3>
+								<a href="#" data-fls-buttons="" class="item-ai-solutions__link btn btn--fw btn--green" aria-label="посилання">Скористатися</a>
+							</article>
+							<article class="ai-solutions__item item-ai-solutions">
+								<div class="item-ai-solutions__img">
+									<img width="230" height="230" alt="Image" src="./assets/img/aisolutions/aisolutions-2.webp">
+								</div>
+								<h3 class="item-ai-solutions__title title-card">AI-помічник для постачальників ліків та медичного обладнання</h3>
+								<a href="#" data-fls-buttons="" class="item-ai-solutions__link btn btn--fw btn--green" aria-label="посилання">Скористатися</a>
+							</article>
+						</div>
+					</div>
+				</section>
+				<section data-fls-blockcards="" class="block-cards white-bg border-bottom pdb-1 mb-1">
+					<div class="block-cards__container">
+						<h2 class="block-cards__title title-av mb-3">Практичні кейси</h2>
+						<div class="block-cards__body">
+							<div data-fls-slider="" class="block-cards__slider swiper">
+								<div class="block-cards__wrapper swiper-wrapper">
+									<div class="block-cards__slide swiper-slide">
+										<article data-fls-cardnews="" class="card-news card-news--t7">
+											<a href="#" class="card-news__picture" aria-label="link to the article">
+												<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+											</a>
+											<div class="card-news__body">
+												<p class="card-news__time">
+													<time datetime="2025-04-10">10 квітня 2025</time>
+												</p>
+												<div class="card-news__tags">
+													<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+												</div>
+												<h2 class="card-news__title title-card">
+													<a href="#" aria-label="link to the article">
+														Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+													</a>
+												</h2>
+												<div class="card-news__text">
+													<p>
+														Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+											процедури дозволяють
+											зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+													</p>
+												</div>
+											</div>
+										</article>
+									</div>
+									<div class="block-cards__slide swiper-slide">
+										<article data-fls-cardnews="" class="card-news card-news--t7">
+											<a href="#" class="card-news__picture" aria-label="link to the article">
+												<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+											</a>
+											<div class="card-news__body">
+												<p class="card-news__time">
+													<time datetime="2025-04-10">10 квітня 2025</time>
+												</p>
+												<div class="card-news__tags">
+													<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+												</div>
+												<h2 class="card-news__title title-card">
+													<a href="#" aria-label="link to the article">
+														Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+													</a>
+												</h2>
+												<div class="card-news__text">
+													<p>
+														Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+											процедури дозволяють
+											зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+													</p>
+												</div>
+											</div>
+										</article>
+									</div>
+									<div class="block-cards__slide swiper-slide">
+										<article data-fls-cardnews="" class="card-news card-news--t7">
+											<a href="#" class="card-news__picture" aria-label="link to the article">
+												<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+											</a>
+											<div class="card-news__body">
+												<p class="card-news__time">
+													<time datetime="2025-04-10">10 квітня 2025</time>
+												</p>
+												<div class="card-news__tags">
+													<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+													<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+												</div>
+												<h2 class="card-news__title title-card">
+													<a href="#" aria-label="link to the article">
+														Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+													</a>
+												</h2>
+												<div class="card-news__text">
+													<p>
+														Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+											процедури дозволяють
+											зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+													</p>
+												</div>
+											</div>
+										</article>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="hero-news pdb-2">
+					<div class="hero-news__container">
+						<h2 class="hero-news__title title-main mb-3">Новини на Zakupivli.Pro Prozorro та Prozorro.Продажі</h2>
+						<div class="hero-news__body body-main">
+							<div class="body-main__left">
+								<div class="body-main__slider slider-main">
+									<div data-fls-slider="" class="slider-main__slider swiper">
+										<ul class="slider-main__wrapper swiper-wrapper">
+											<li class="slider-main__slide slide-main swiper-slide">
+												<a href="#" aria-label="article link" class="slide-main__item">
+													<img class="ibg" width="793" height="400" alt="Image" src="./assets/img/main/main-1.webp">
+													<div class="slide-main__txt title-card">
+														<p>
+															Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+														</p>
+													</div>
+												</a>
+											</li>
+											<li class="slider-main__slide slide-main swiper-slide">
+												<a href="#" aria-label="article link" class="slide-main__item">
+													<img class="ibg" width="793" height="400" alt="Image" src="./assets/img/main/main-2.webp">
+													<div class="slide-main__txt title-card">
+														<p>
+															Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+														</p>
+													</div>
+												</a>
+											</li>
+											<li class="slider-main__slide slide-main swiper-slide">
+												<a href="#" aria-label="article link" class="slide-main__item">
+													<img class="ibg" width="793" height="400" alt="Image" src="./assets/img/main/main-3.webp">
+													<div class="slide-main__txt title-card">
+														<p>
+															Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+														</p>
+													</div>
+												</a>
+											</li>
+											<li class="slider-main__slide slide-main swiper-slide">
+												<a href="#" aria-label="article link" class="slide-main__item">
+													<img class="ibg" width="793" height="400" alt="Image" src="./assets/img/main/main-1.webp">
+													<div class="slide-main__txt title-card">
+														<p>
+															Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+														</p>
+													</div>
+												</a>
+											</li>
+											<li class="slider-main__slide slide-main swiper-slide">
+												<a href="#" aria-label="article link" class="slide-main__item">
+													<img class="ibg" width="793" height="400" alt="Image" src="./assets/img/main/main-2.webp">
+													<div class="slide-main__txt title-card">
+														<p>
+															Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+														</p>
+													</div>
+												</a>
+											</li>
+											<li class="slider-main__slide slide-main swiper-slide">
+												<a href="#" aria-label="article link" class="slide-main__item">
+													<img class="ibg" width="793" height="400" alt="Image" src="./assets/img/main/main-3.webp">
+													<div class="slide-main__txt title-card">
+														<p>
+															Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+														</p>
+													</div>
+												</a>
+											</li>
+										</ul>
+										<div class="swiper-pagination"></div>
+										<button type="button" class="swiper-button-prev --icon-fill-arrow" aria-label="button prev"></button>
+										<button type="button" class="swiper-button-next --icon-fill-arrow" aria-label="button next"></button>
+									</div>
+								</div>
+								<div class="body-main__cards">
+									<article data-fls-cardnews="" class="card-news card-news--t4">
+										<a href="#" class="card-news__picture" aria-label="link to the article">
+											<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+										</a>
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">Як полегшити закупівлі на Zakupivli.Pro.</a>
+											</h2>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t4">
+										<a href="#" class="card-news__picture" aria-label="link to the article">
+											<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+										</a>
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">Як полегшити закупівлі на Zakupivli.Pro.</a>
+											</h2>
+										</div>
+									</article>
+								</div>
+							</div>
+							<div class="body-main__right">
+								<div class="list-news white-bg">
+									<article data-fls-cardnews="" class="card-news card-news--t2">
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+										процедури дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t2">
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+										процедури дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t2">
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+										процедури дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="hero-news pdb-2">
+					<div class="hero-news__container">
+						<h2 class="hero-news__title title-main mb-3">Новини на Zakupivli.Pro Prozorro та Prozorro.Продажі</h2>
+						<div class="hero-news__body body-main">
+							<div class="body-main__left">
+								<div class="body-main__slider slider-main">
+									<div data-fls-slider="" class="slider-main__slider swiper">
+										<ul class="slider-main__wrapper swiper-wrapper">
+											<li class="slider-main__slide slide-main swiper-slide">
+												<a href="#" aria-label="article link" class="slide-main__item">
+													<img class="ibg" width="793" height="400" alt="Image" src="./assets/img/main/main-1.webp">
+													<div class="slide-main__txt title-card">
+														<p>
+															Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+														</p>
+													</div>
+												</a>
+											</li>
+											<li class="slider-main__slide slide-main swiper-slide">
+												<a href="#" aria-label="article link" class="slide-main__item">
+													<img class="ibg" width="793" height="400" alt="Image" src="./assets/img/main/main-2.webp">
+													<div class="slide-main__txt title-card">
+														<p>
+															Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+														</p>
+													</div>
+												</a>
+											</li>
+											<li class="slider-main__slide slide-main swiper-slide">
+												<a href="#" aria-label="article link" class="slide-main__item">
+													<img class="ibg" width="793" height="400" alt="Image" src="./assets/img/main/main-3.webp">
+													<div class="slide-main__txt title-card">
+														<p>
+															Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+														</p>
+													</div>
+												</a>
+											</li>
+											<li class="slider-main__slide slide-main swiper-slide">
+												<a href="#" aria-label="article link" class="slide-main__item">
+													<img class="ibg" width="793" height="400" alt="Image" src="./assets/img/main/main-1.webp">
+													<div class="slide-main__txt title-card">
+														<p>
+															Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+														</p>
+													</div>
+												</a>
+											</li>
+											<li class="slider-main__slide slide-main swiper-slide">
+												<a href="#" aria-label="article link" class="slide-main__item">
+													<img class="ibg" width="793" height="400" alt="Image" src="./assets/img/main/main-2.webp">
+													<div class="slide-main__txt title-card">
+														<p>
+															Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+														</p>
+													</div>
+												</a>
+											</li>
+											<li class="slider-main__slide slide-main swiper-slide">
+												<a href="#" aria-label="article link" class="slide-main__item">
+													<img class="ibg" width="793" height="400" alt="Image" src="./assets/img/main/main-3.webp">
+													<div class="slide-main__txt title-card">
+														<p>
+															Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+														</p>
+													</div>
+												</a>
+											</li>
+										</ul>
+										<div class="swiper-pagination"></div>
+										<button type="button" class="swiper-button-prev --icon-fill-arrow" aria-label="button prev"></button>
+										<button type="button" class="swiper-button-next --icon-fill-arrow" aria-label="button next"></button>
+									</div>
+								</div>
+								<div class="body-main__cards">
+									<article data-fls-cardnews="" class="card-news card-news--t4">
+										<a href="#" class="card-news__picture" aria-label="link to the article">
+											<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+										</a>
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">Як полегшити закупівлі на Zakupivli.Pro.</a>
+											</h2>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t4">
+										<a href="#" class="card-news__picture" aria-label="link to the article">
+											<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+										</a>
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">Як полегшити закупівлі на Zakupivli.Pro.</a>
+											</h2>
+										</div>
+									</article>
+								</div>
+							</div>
+							<div class="body-main__right">
+								<div class="list-news green-bg">
+									<article data-fls-cardnews="" class="card-news card-news--t2">
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+										процедури дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t2">
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+										процедури дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t2">
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+										процедури дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="all-news white-bg border-top border-bottom pdt-2 pdb-1 mb-1">
+					<div class="all-news__container">
+						<h2 class="all-news__title title-main mb-3">Всі останні новини</h2>
+						<div class="all-news__body">
+							<div class="all-news__top">
+								<div data-fls-slider="" class="all-news__slider swiper">
+									<div class="all-news__wrapper swiper-wrapper">
+										<div class="all-news__slide swiper-slide">
+											<article data-fls-cardnews="" class="card-news card-news--t1">
+												<a href="#" class="card-news__picture" aria-label="link to the article">
+													<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+												</a>
+												<div class="card-news__body">
+													<p class="card-news__time">
+														<time datetime="2025-04-10">10 квітня 2025</time>
+													</p>
+													<div class="card-news__tags">
+														<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+														<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+														<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+													</div>
+													<h2 class="card-news__title title-card">
+														<a href="#" aria-label="link to the article">
+															Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+														</a>
+													</h2>
+													<div class="card-news__text">
+														<p>
+															Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+												процедури дозволяють
+												зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+														</p>
+													</div>
+												</div>
+											</article>
+										</div>
+										<div class="all-news__slide swiper-slide">
+											<article data-fls-cardnews="" class="card-news card-news--t1">
+												<a href="#" class="card-news__picture" aria-label="link to the article">
+													<img width="753" height="230" alt="Image" src="./assets/img/main/main-2.webp">
+												</a>
+												<div class="card-news__body">
+													<p class="card-news__time">
+														<time datetime="2025-04-10">10 квітня 2025</time>
+													</p>
+													<div class="card-news__tags">
+														<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+														<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+														<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+													</div>
+													<h2 class="card-news__title title-card">
+														<a href="#" aria-label="link to the article">
+															Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+														</a>
+													</h2>
+													<div class="card-news__text">
+														<p>
+															Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+												процедури дозволяють
+												зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+														</p>
+													</div>
+												</div>
+											</article>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div data-fls-newsbody="">
+								<div data-news-content="8" class="all-news__content">
+									<article data-fls-cardnews="" class="card-news card-news--t5">
+										<a href="#" class="card-news__picture" aria-label="link to the article">
+											<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+										</a>
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені процедури
+										дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t3">
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені процедури
+										дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t5">
+										<a href="#" class="card-news__picture" aria-label="link to the article">
+											<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+										</a>
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені процедури
+										дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t3">
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені процедури
+										дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t5">
+										<a href="#" class="card-news__picture" aria-label="link to the article">
+											<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+										</a>
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені процедури
+										дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t3">
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені процедури
+										дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t5">
+										<a href="#" class="card-news__picture" aria-label="link to the article">
+											<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+										</a>
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені процедури
+										дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t3">
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені процедури
+										дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t5">
+										<a href="#" class="card-news__picture" aria-label="link to the article">
+											<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+										</a>
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені процедури
+										дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t3">
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені процедури
+										дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t5">
+										<a href="#" class="card-news__picture" aria-label="link to the article">
+											<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+										</a>
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені процедури
+										дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t3">
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені процедури
+										дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t5">
+										<a href="#" class="card-news__picture" aria-label="link to the article">
+											<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+										</a>
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені процедури
+										дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t3">
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені процедури
+										дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t5">
+										<a href="#" class="card-news__picture" aria-label="link to the article">
+											<img width="753" height="230" alt="Image" src="./assets/img/main/main-1.webp">
+										</a>
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені процедури
+										дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+									<article data-fls-cardnews="" class="card-news card-news--t3">
+										<div class="card-news__body">
+											<p class="card-news__time">
+												<time datetime="2025-04-10">10 квітня 2025</time>
+											</p>
+											<div class="card-news__tags">
+												<a href="#" data-fls-tags="" class="tag tag--1" aria-label="tag link">Назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+												<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Назва тегу</a>
+											</div>
+											<h2 class="card-news__title title-card">
+												<a href="#" aria-label="link to the article">
+													Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+												</a>
+											</h2>
+											<div class="card-news__text">
+												<p>
+													Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені процедури
+										дозволяють
+										зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+												</p>
+											</div>
+										</div>
+									</article>
+								</div>
+								<div data-news-nav="" class="all-news__nav">
+									<div data-news-more="" class="all-news__more">
+										<button type="button" data-fls-buttons="" class="all-news__btn btn btn--green btn--fw" aria-label="more content">Більше новин</button>
+									</div>
+									<div data-news-pagination="" class="pagination">
+										<div class="pagination__body">
+											<button type="button" disabled class="pagination__button" aria-label="pagination button prev">
+												<svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M14.4 20C14.1 20 13.9 19.9 13.7 19.7L6 12L13.7 4.3C14.1 3.9 14.7 3.9 15.1 4.3C15.5 4.7 15.5 5.3 15.1 5.7L8.8 12L15.1 18.3C15.5 18.7 15.5 19.3 15.1 19.7C14.9 19.9 14.7 20 14.4 20Z" fill="black"></path>
+												</svg>
+											</button>
+											<ul class="pagination__items">
+												<li class="pagination__item">
+													<a href="#" class="pagination__link active" aria-label="link to page">1</a>
+												</li>
+												<li class="pagination__item">
+													<a href="#" class="pagination__link" aria-label="link to page">2</a>
+												</li>
+												<li class="pagination__item">
+													<a href="#" class="pagination__link" aria-label="link to page">3</a>
+												</li>
+												<li class="pagination__item">
+													<span>...</span>
+												</li>
+												<li class="pagination__item">
+													<a href="#" class="pagination__link" aria-label="link to page">500</a>
+												</li>
+											</ul>
+											<button type="button" class="pagination__button" aria-label="pagination button next">
+												<svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M9.6 4C9.9 4 10.1 4.1 10.3 4.3L18 12L10.3 19.7C9.9 20.1 9.3 20.1 8.9 19.7C8.5 19.3 8.5 18.7 8.9 18.3L15.2 12L8.9 5.7C8.5 5.3 8.5 4.7 8.9 4.3C9.1 4.1 9.3 4 9.6 4Z" fill="black"></path>
+												</svg>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
 			</main>
 			<footer data-fls-footer="" class="footer">
 				<div class="footer__top">
@@ -892,16 +2178,7 @@
 		</div>
 		<ul id="fls-dev-panel">
 			<li>
-				<a href="supplier.html">supplier</a>
-			</li>
-			<li>
-				<a href="news.html">news</a>
-			</li>
-			<li>
 				<a href="index.html">index</a>
-			</li>
-			<li>
-				<a href="customer.html">customer</a>
 			</li>
 			<li>
 				<a href="components.html">components</a>

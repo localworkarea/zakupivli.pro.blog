@@ -145,49 +145,106 @@ function initSliders() {
 		});
 	}
 
-	const slidersCards = document.querySelectorAll('.block-cards__slider');
+// 	const slidersCards = document.querySelectorAll('.block-cards__slider');
 
-if (slidersCards.length) {
-  const mq = window.matchMedia("(max-width: 37.561em)");
+// if (slidersCards.length) {
+//   const mq = window.matchMedia("(max-width: 37.561em)"); // 600рх
 
-  slidersCards.forEach(slider => {
-    let swiperInstance = null;
+//   slidersCards.forEach(slider => {
+//     let swiperInstance = null;
 
-    function enable() {
-      if (!swiperInstance) {
-        swiperInstance = new Swiper(slider, {
-          modules: [Navigation],
-          observer: true,
-          observeParents: true,
-          slidesPerView: 1,
-          spaceBetween: 8,
-          speed: 500,
-        });
-      }
-    }
+//     function enable() {
+//       if (!swiperInstance) {
+//         swiperInstance = new Swiper(slider, {
+//           modules: [Navigation],
+//           observer: true,
+//           observeParents: true,
+//           slidesPerView: 1,
+//           spaceBetween: 8,
+//           speed: 500,
+//         });
+//       }
+//     }
 
-    function disable() {
-      if (swiperInstance) {
-        swiperInstance.destroy(true, true);
-        swiperInstance = null;
-      }
-    }
+//     function disable() {
+//       if (swiperInstance) {
+//         swiperInstance.destroy(true, true);
+//         swiperInstance = null;
+//       }
+//     }
 
-    function check() {
-      if (mq.matches) {
-        enable();
-      } else {
-        disable();
-      }
-    }
+//     function check() {
+//       if (mq.matches) {
+//         enable();
+//       } else {
+//         disable();
+//       }
+//     }
 
-    // проверка при загрузке
-    check();
+//     // проверка при загрузке
+//     check();
 
-    // слушаем изменение брейкпоинта
-    mq.addEventListener("change", check);
-  });
-}
+//     // слушаем изменение брейкпоинта
+//     mq.addEventListener("change", check);
+//   });
+// }
+
+	// функция инициализации разных салйдеров на ширине меньше чем 37.561em (600px) ===
+	function initAdaptiveSliders(selector, options, breakpoint = "(max-width: 37.561em)") {
+	  const sliders = document.querySelectorAll(selector);
+	  if (!sliders.length) return;
+
+	  const mq = window.matchMedia(breakpoint);
+
+	  sliders.forEach(slider => {
+	    let swiperInstance = null;
+
+	    function enable() {
+	      if (!swiperInstance) {
+	        swiperInstance = new Swiper(slider, options);
+	      }
+	    }
+
+	    function disable() {
+	      if (swiperInstance) {
+	        swiperInstance.destroy(true, true);
+	        swiperInstance = null;
+	      }
+	    }
+
+	    function check() {
+	      if (mq.matches) {
+	        enable();
+	      } else {
+	        disable();
+	      }
+	    }
+
+	    check();
+	    mq.addEventListener("change", check);
+	  });
+	}
+
+	initAdaptiveSliders('.block-cards__slider', {
+	  modules: [Navigation],
+	  observer: true,
+	  observeParents: true,
+	  slidesPerView: 1,
+	  spaceBetween: 8,
+	  speed: 500,
+	});
+
+	initAdaptiveSliders('.all-news__slider', {
+	  modules: [Navigation],
+	  observer: true,
+	  observeParents: true,
+	  slidesPerView: 1,
+	  spaceBetween: 8,
+	  speed: 500,
+	}, "(max-width: 48.061em");
+
+
+
 
 	// if (document.querySelector('.swiper')) { 
 	// 	new Swiper('.swiper', { 

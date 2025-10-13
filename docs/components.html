@@ -7,8 +7,8 @@
 		<link rel="preload" href="./assets/fonts/Suisse-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
 		<title>Zakupivli | КОМПОНЕНТИ ТА КОМЕНТАРІ</title>
-		<script type="module" crossorigin="" src="./js/app.min.js?v=1760097379719"></script>
-		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1760097379719">
+		<script type="module" crossorigin="" src="./js/app.min.js?v=1760366843394"></script>
+		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1760366843394">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -231,7 +231,7 @@
 										</div>
 									</div>
 								</article>
-								<p style="margin: 50px 0 30px; font-weight: 700; font-size: 24px;">Карточка card-news card-news--t3</p>
+								<p style="margin: 50px 0 30px; font-weight: 700; font-size: 24px;">Карточка card-news card-news--t3 - имеет фикс высоту 230рх и обрабатывается JS</p>
 								<article data-fls-cardnews="" class="card-news card-news--t3">
 									<div class="card-news__body">
 										<p class="card-news__time">
@@ -404,43 +404,47 @@
 								</article>
 							</div>
 							<div class="components__item">
-								<form data-fls-subscribe="" data-fls-form="dev" class="subscribe form-subscribe form" action="#" method="POST">
-									<div class="form-subscribe__body">
-										<h2 class="form-subscribe__title title-av">Підписатися на розсилки</h2>
-										<div class="form-subscribe__checkboxes checkboxes">
-											<label data-fls-checkbox="" class="checkbox">
-												<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
-												<span class="checkbox__text">Prozorro Market</span>
-											</label>
-											<label data-fls-checkbox="" class="checkbox">
-												<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
-												<span class="checkbox__text">Державні закупівлі</span>
-											</label>
-											<label data-fls-checkbox="" class="checkbox">
-												<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
-												<span class="checkbox__text">Комерційні закупівлі</span>
-											</label>
-											<label data-fls-checkbox="" class="checkbox">
-												<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
-												<span class="checkbox__text">Аукціони</span>
-											</label>
-											<label data-fls-checkbox="" class="checkbox">
-												<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
-												<span class="checkbox__text">Постачальникам</span>
-											</label>
-										</div>
-										<div class="form-subscribe__block">
-											<div data-fls-form-item="" class="form__item">
-												<input data-fls-input="" data-fls-form-errtext="Вкажіть e-mail" required type="email" name="email" placeholder="E-mail" class="form__input input">
-												<button data-fls-clear="" type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
+								<div class="subscribe">
+									<div class="subscribe__container">
+										<form data-fls-subscribe="" data-fls-form="dev" class="form-subscribe form" action="#" method="POST">
+											<div class="form-subscribe__body">
+												<h2 class="form-subscribe__title title-av">Підписатися на розсилки</h2>
+												<div class="form-subscribe__checkboxes checkboxes">
+													<label data-fls-checkbox="" class="checkbox">
+														<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
+														<span class="checkbox__text">Prozorro Market</span>
+													</label>
+													<label data-fls-checkbox="" class="checkbox">
+														<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
+														<span class="checkbox__text">Державні закупівлі</span>
+													</label>
+													<label data-fls-checkbox="" class="checkbox">
+														<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
+														<span class="checkbox__text">Комерційні закупівлі</span>
+													</label>
+													<label data-fls-checkbox="" class="checkbox">
+														<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
+														<span class="checkbox__text">Аукціони</span>
+													</label>
+													<label data-fls-checkbox="" class="checkbox">
+														<input class="checkbox__input" type="checkbox" value="1" name="form[]" checked>
+														<span class="checkbox__text">Постачальникам</span>
+													</label>
+												</div>
+												<div class="form-subscribe__block">
+													<div data-fls-form-item="" class="form__item">
+														<input data-fls-input="" data-fls-form-errtext="Вкажіть e-mail" required type="email" name="email" placeholder="E-mail" class="form__input input">
+														<button data-fls-clear="" type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
+													</div>
+													<button data-fls-buttons="" type="submit" aria-label="submit" class="form__submit btn btn--fw btn--green">Підписатись</button>
+												</div>
 											</div>
-											<button data-fls-buttons="" type="submit" aria-label="submit" class="form__submit btn btn--fw btn--green">Підписатись</button>
-										</div>
+											<div class="form-subscribe__msg title-main">
+												<p class="form-subscribe__txt-msg --icon-donedark">Дякуємо за підписку!</p>
+											</div>
+										</form>
 									</div>
-									<div class="form-subscribe__msg title-main">
-										<p class="form-subscribe__txt-msg --icon-donedark">Дякуємо за підписку!</p>
-									</div>
-								</form>
+								</div>
 							</div>
 							<div class="components__item">
 								<div data-fls-breadcrumb="" class="breadcrumb">
@@ -733,16 +737,7 @@
 		</div>
 		<ul id="fls-dev-panel">
 			<li>
-				<a href="supplier.html">supplier</a>
-			</li>
-			<li>
-				<a href="news.html">news</a>
-			</li>
-			<li>
 				<a href="index.html">index</a>
-			</li>
-			<li>
-				<a href="customer.html">customer</a>
 			</li>
 			<li>
 				<a href="components.html">components</a>
