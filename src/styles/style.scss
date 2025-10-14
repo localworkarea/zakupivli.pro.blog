@@ -255,51 +255,23 @@ body {
 	}
 }
 
-// .white-wrapper {
-// 	background-color: var(--white);
-// 	border-radius: 40px;
-// 	padding-top: 38px;
-// 	padding-bottom: 48px;
-// 	margin-bottom: 48px;
-// 	@media (min-width:toEm($mobile)){
-// 		margin-bottom: 85px;
-// 		 padding-bottom: 100px; 
-// 	}
-// }
+
 .border-top {
-	// background-color: var(--white);
 	border-top-left-radius: 40px;
 	border-top-right-radius: 40px;
-	// padding-top: 38px;
-	// padding-bottom: 48px;
-	// @media (min-width:toEm($mobile)){
-	// 	 padding-bottom: 100px; 
-	// }
 }
 .border-bottom {
-	// background-color: var(--white);
 	border-bottom-left-radius: 40px;
 	border-bottom-right-radius: 40px;
-	// padding-top: 38px;
-	// padding-bottom: 48px;
-	// margin-bottom: 48px;
-	// @media (min-width:toEm($mobile)){
-	// 	margin-bottom: 85px;
-	// 	 padding-bottom: 100px; 
-	// }
 }
 .white-bg {
 	background-color: var(--white);
-	// padding-top: 38px;
-	// padding-bottom: 48px;
-	// @media (min-width:toEm($mobile)){
-	// 	 padding-bottom: 100px; 
-	// }
 }
 .green-bg {
 	background-color: var(--green);
 }
 
+// разделительная полоса на первой странице (встречается один раз)
 .divide {
 	padding-block: 24px;
 	@media (min-width:toEm($mobileSmall)){

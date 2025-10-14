@@ -78,6 +78,25 @@
       background-color: var(--gray-light-2);
     }
   }
+  &--gray {
+    background-color: var(--white);
+    outline-color: var(--gray);
+    @media (any-hover: hover){
+      &:hover{
+        outline-color: var(--gray-dark);
+        background-color: var(--gray-light);
+      }
+    }
+    &:focus,
+    &:focus-visible {
+      outline-color: var(--gray-dark);
+      background-color: var(--white);
+    }
+    &:active {
+      outline-color: var(--gray-dark);
+      background-color: var(--gray-light-2);
+    }
+  }
   &[disabled] {
     pointer-events: none;
     outline-color: var(--gray);
