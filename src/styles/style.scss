@@ -16,7 +16,9 @@ body {
 	font-family: $fontFamily;
 	font-size: #{$fontSize}px;
 	background-color: var(--gray-light);
-
+	.article-page & {
+		background-color: var(--white);
+	}
 	// Скролл заблоковано
 	[data-fls-scrolllock] & {
 		overflow: hidden;

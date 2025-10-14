@@ -1,11 +1,185 @@
 <script type="module" src="@components/pages/article/article.html"></script>
-<link rel="stylesheet" href="@components/pages/article/article.scss">
+<link rel="stylesheet" href="@components/pages/home/home.scss">
 
-<main class="page page--article">
-	<div class="page__container">
-		<p class="lorem"><br><b>ARTICLE !</b><br><br> ipsum dolor sit amet, consectetur adipisicing elit. Unde excepturi mollitia natus aliquid sint, amet ullam asperiores nemo voluptates harum! Distinctio, optio magnam ratione cumque at officia tempora consectetur facere?</p>
-		<p class="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde excepturi mollitia natus aliquid sint, amet ullam asperiores nemo voluptates harum! Distinctio, optio magnam ratione cumque at officia tempora consectetur facere?</p>
-		<p class="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde excepturi mollitia natus aliquid sint, amet ullam asperiores nemo voluptates harum! Distinctio, optio magnam ratione cumque at officia tempora consectetur facere?</p>
-		<p class="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde excepturi mollitia natus aliquid sint, amet ullam asperiores nemo voluptates harum! Distinctio, optio magnam ratione cumque at officia tempora consectetur facere?</p>
+<main class="page">
+	<div data-fls-breadcrumb class="breadcrumb">
+		<nav class="breadcrumb__container">
+			<ul itemscope itemtype="https://schema.org/BreadcrumbList" class="breadcrumb__list">
+				<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb__item">
+					<a itemprop="item" href="index.html"><span itemprop="name">Головна</span></a>
+					<meta itemprop="position" content="1" />
+				</li>
+				<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb__item">
+					<a itemprop="item" href="index.html"><span itemprop="name">Для держзамовників</span></a>
+					<meta itemprop="position" content="2" />
+				</li>
+				<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb__item">
+					<a itemprop="item" href="index.html"><span itemprop="name">Статті</span></a>
+					<meta itemprop="position" content="3" />
+				</li>
+
+				<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="breadcrumb__item">
+					<span itemprop="name">Все про зміни та термін дії плану</span>
+					<meta itemprop="position" content="4" />
+				</li>
+			</ul>
+		</nav>
 	</div>
+	<article class="article">
+		<div class="article__head head-article">
+			<div class="head-article__container">
+				<div class="head-article__tags">
+					<a href="#" data-fls-tags="" class="tag tag--3" aria-label="tag link">Держзамовнику</a>
+				</div>
+				<div class="head-article__info">
+					<div class="head-article__time --icon-clock">
+						Приблизний час читання: <span>12 хв</span>
+					</div>
+					<div class="head-article__view --icon-eye">
+						Переглядів: <span>100500</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="article__content">
+			<div class="article__container">
+				<div class="article-program"></div>
+			</div>
+		</div>
+	</article>
+	<div class="author-article">
+		<div class="author-article__container">
+
+		</div>
+	</div>
+	<div class="comments">
+		<div class="comments__content">
+
+		</div>
+	</div>
+	<div class="subscribe mb-1">
+		<div class="subscribe__container">
+			<form data-fls-subscribe data-fls-form="dev" class="form-subscribe form" action="#" method="POST">
+				<div class="form-subscribe__body">
+					<h2 class="form-subscribe__title title-av">Підписатися на розсилки</h2>
+					<div class="form-subscribe__checkboxes checkboxes">
+						<include src="@components/forms/checkbox/checkbox.html" locals='{"title":"Prozorro Market"}'></include>
+						<include src="@components/forms/checkbox/checkbox.html" locals='{"title":"Державні закупівлі"}'></include>
+						<include src="@components/forms/checkbox/checkbox.html" locals='{"title":"Комерційні закупівлі"}'></include>
+						<include src="@components/forms/checkbox/checkbox.html" locals='{"title":"Аукціони"}'></include>
+						<include src="@components/forms/checkbox/checkbox.html" locals='{"title":"Постачальникам"}'></include>
+					</div>
+					<div class="form-subscribe__block">
+						<div data-fls-form-item class="form__item">
+							<input data-fls-input data-fls-form-errtext="Вкажіть e-mail" required type="email" name="email" placeholder="E-mail" class="form__input input">
+							<button data-fls-clear type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
+						</div>
+						<button data-fls-buttons type="submit" aria-label="submit" class="form__submit btn btn--fw btn--green">Підписатись</button>
+					</div>
+				</div>
+				<div class="form-subscribe__msg title-main">
+					<p class="form-subscribe__txt-msg --icon-donedark">Дякуємо за підписку!</p>
+				</div>
+			</form>
+		</div>
+	</div>
+	<section data-fls-blockcards class="block-cards white-bg border-bottom mb-1">
+		<div class="block-cards__container">
+			<h2 class="block-cards__title title-av mb-3">Останні матеріали</h2>
+			<div class="block-cards__body">
+				<div data-fls-slider class="block-cards__slider swiper">
+					<div class="block-cards__wrapper swiper-wrapper">
+						<div class="block-cards__slide swiper-slide">
+							<article data-fls-cardnews class="card-news card-news--t7">
+								<a href="#" class="card-news__picture" aria-label="link to the article">
+									<img src="@img/main/main-1.jpg" width="753" height="230" alt="Image">
+								</a>
+								<div class="card-news__body">
+									<p class="card-news__time">
+										<time datetime="2025-04-10">10 квітня 2025</time>
+									</p>
+									<div class="card-news__tags">
+										<a href="#" data-fls-tags class="tag tag--1" aria-label="tag link">Назва тегу</a>
+										<a href="#" data-fls-tags class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+										<a href="#" data-fls-tags class="tag tag--3" aria-label="tag link">Назва тегу</a>
+									</div>
+									<h2 class="card-news__title title-card">
+										<a href="#" aria-label="link to the article">
+											Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+										</a>
+									</h2>
+									<div class="card-news__text">
+										<p>
+											Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+											процедури дозволяють
+											зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+										</p>
+									</div>
+								</div>
+							</article>
+						</div>
+						<div class="block-cards__slide swiper-slide">
+							<article data-fls-cardnews class="card-news card-news--t7">
+								<a href="#" class="card-news__picture" aria-label="link to the article">
+									<img src="@img/main/main-1.jpg" width="753" height="230" alt="Image">
+								</a>
+								<div class="card-news__body">
+									<p class="card-news__time">
+										<time datetime="2025-04-10">10 квітня 2025</time>
+									</p>
+									<div class="card-news__tags">
+										<a href="#" data-fls-tags class="tag tag--1" aria-label="tag link">Назва тегу</a>
+										<a href="#" data-fls-tags class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+										<a href="#" data-fls-tags class="tag tag--3" aria-label="tag link">Назва тегу</a>
+									</div>
+									<h2 class="card-news__title title-card">
+										<a href="#" aria-label="link to the article">
+											Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+										</a>
+									</h2>
+									<div class="card-news__text">
+										<p>
+											Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+											процедури дозволяють
+											зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+										</p>
+									</div>
+								</div>
+							</article>
+						</div>
+						<div class="block-cards__slide swiper-slide">
+							<article data-fls-cardnews class="card-news card-news--t7">
+								<a href="#" class="card-news__picture" aria-label="link to the article">
+									<img src="@img/main/main-1.jpg" width="753" height="230" alt="Image">
+								</a>
+								<div class="card-news__body">
+									<p class="card-news__time">
+										<time datetime="2025-04-10">10 квітня 2025</time>
+									</p>
+									<div class="card-news__tags">
+										<a href="#" data-fls-tags class="tag tag--1" aria-label="tag link">Назва тегу</a>
+										<a href="#" data-fls-tags class="tag tag--2" aria-label="tag link">Довга назва тегу</a>
+										<a href="#" data-fls-tags class="tag tag--3" aria-label="tag link">Назва тегу</a>
+									</div>
+									<h2 class="card-news__title title-card">
+										<a href="#" aria-label="link to the article">
+											Як зробити спрощені закупівлі ще зручнішими. Секрети роботи на майданчику Zakupivli.Pro
+										</a>
+									</h2>
+									<div class="card-news__text">
+										<p>
+											Хоча спрощені закупівлі замовники можуть використовувати лише у певних випадках, їх кількість в Україні зростає. Це пов'язано з необхідністю швидше реагувати на потреби ринку та забезпечувати ефективність витрат. Спрощені
+											процедури дозволяють
+											зменшити бюрократичні бар'єри, що, в свою чергу, сприяє залученню більшої кількості постачальників. Важливо, щоб замовники дотримувались усіх вимог, щоб замовники дотримувались усіх вимог
+										</p>
+									</div>
+								</div>
+							</article>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </main>

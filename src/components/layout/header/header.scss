@@ -5,7 +5,7 @@
 	width: 100%;
 	z-index: 20;
 	background-color: var(--white);
-
+	border-bottom: 1px solid var(--gray-light);
 	// .header__container
 	&__container {
 		@extend %flexCenter;

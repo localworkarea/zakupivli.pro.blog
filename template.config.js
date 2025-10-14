@@ -113,7 +113,7 @@ export default {
 		}
 	},
 	projectpage: {
-		enable: true,
+		enable: false,
 		projectname: '',
 		template: "src/projectpage/projectpage.html",
 		outfilename: '',

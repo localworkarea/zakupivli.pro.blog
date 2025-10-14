@@ -28,7 +28,7 @@
 	// .breadcrumb__item
 	&__item {
     white-space: nowrap;
-    font-size: toRem(16);
+    font-size: 12px;
     font-weight: 500;
     &:not(:last-child) {
       color: var(--primary);
