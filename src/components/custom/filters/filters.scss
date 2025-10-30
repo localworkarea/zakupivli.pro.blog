@@ -1,0 +1,214 @@
+.filters {
+
+  // .filters__body
+  &__body {
+    margin-bottom: 24px;
+    @media (min-width:toEm($mobile)){
+       margin-bottom: 0px; 
+    }
+  }
+
+  // .filters__top
+  &__top {
+    @media (min-width:toEm($mobile)){
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  }
+
+  // .filters__spoller
+  &__spoller {
+    position: relative;
+    &:not(:last-child) {
+      margin-bottom: 24px; 
+      @media (min-width:toEm($mobile)){
+         margin-bottom: 0; 
+      }
+    }
+    @media (min-width:toEm($mobile)){
+        
+    }
+  }
+
+  // .filters__btn
+  &__btn {
+    display: flex !important;
+    justify-content: center;
+    gap: 8px;
+    min-width: 100%;
+    margin-bottom: 8px;
+
+    @media (min-width:toEm($mobile)) {
+      font-weight: 400 !important;
+      padding-inline: 8px !important;
+      min-width: max-content;
+      margin-bottom: 0;
+      min-height: 32px !important;
+    }
+    @media (max-width:toEm($mobile)){
+       background-color: #D1D1D1 !important; 
+    }
+  }
+
+  // .filters__count
+  &__count {
+    border-radius: 3px;
+    padding: 0 6px;
+    background-color: var(--gray-light);
+    // aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+  }
+
+  // .filters__applied
+  &__applied {
+    line-height: 1.33;
+    margin-top: 21px;
+    @media (min-width:toEm($mobile)){
+       margin-top: 11px; 
+    }
+  }
+
+  // .filters__applied-title
+  &__applied-title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  // .filters__applied-group
+  &__applied-group {
+    line-height: 1.71;
+    font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  // .filters__applied-label
+  &__applied-label {
+    font-weight: 700;
+  }
+
+  // .filters__tag
+  &__tag {}
+
+  // .filters__tag-remove
+  &__tag-remove {
+    transition: color .3s ease;
+    @media (any-hover: hover){
+      &:hover{
+        color: var(--green);
+      }
+    }
+  }
+
+  // .filters__reset
+  &__reset {
+     margin-top: 16px;
+    @media (max-width:toEm($mobile)){
+      margin-top: 13px; 
+       width: 100%;
+       min-width: 100%; 
+    }
+  }
+
+  // .filters__show
+  &__show {
+    @media (min-width:toEm($mobile)){
+       display: none; 
+    }
+  }
+
+  // .filters__hide
+  &__hide {
+    @media (max-width:toEm($mobile)){
+       width: 100%;
+       min-width: 100%; 
+    }
+  }
+}
+
+.filter-dropdown {
+  background-color: var(--white);
+  border-radius: 8px;
+  width: 100%;
+  padding: 24px;
+  @media (min-width:toEm($mobile)){
+    max-width: 228px;
+    min-width: max-content;
+    border: 1px solid var(--gray);
+
+    position: absolute;
+    top: 45px;
+    z-index: 5;
+  }
+  // .filter-dropdown__header
+  &__header {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+
+  // .filter-dropdown__list
+  &__list {
+    margin-bottom: 30px;
+  }
+
+  // .filter-dropdown__item
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+    label {
+      display: inline-flex;
+      gap: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      input {}
+
+      input[type="checkbox"] {
+        width: auto;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 16px;
+        height: 16px;
+        border: 1px solid #000;
+        border-radius: 4px;
+        background-color: #fff;
+        display: inline-block;
+        position: relative;
+        transition: all 0.2s ease;
+      }
+
+      /* Состояние при фокусе с клавиатуры */
+      input[type="checkbox"]:focus-visible {
+        outline: 2px solid #000;
+        outline-offset: 2px;
+      }
+
+      input[type="checkbox"]:checked {
+        background-color: #000;
+        border-color: #000;
+      }
+
+      input[type="checkbox"]:checked::after {
+        content: "\f10c";
+        font-family: iconfont; 
+        position: absolute;
+        top: -1px;
+        left: 0px;
+        font-size: 15px;
+        color: var(--white);
+      }
+    }
+  }
+
+  // .filter-dropdown__apply
+  &__apply {
+    min-width: 100%;
+  }
+}

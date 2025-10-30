@@ -7,8 +7,8 @@
 		<link rel="preload" href="./assets/fonts/Suisse-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
 		<title>Zakupivli | Home</title>
-		<script type="module" crossorigin="" src="./js/app.min.js?v=1760446231991"></script>
-		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1760446231991">
+		<script type="module" crossorigin="" src="./js/app.min.js?v=1761839015401"></script>
+		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1761839015401">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -2352,6 +2352,166 @@
 						</div>
 					</div>
 				</section>
+				<section class="search mb-1">
+					<div class="search__container">
+						<div class="search__body">
+							<form class="form grid-clm" data-fls-form="dev" action="#" method="POST">
+								<div data-fls-form-item="" class="form__item form__item--search">
+									<div aria-label="icon" class="form__icon-submit --icon-search"></div>
+									<input data-fls-input="" type="text" name="search" placeholder="Назва статті, теги чи фрази" class="form__input input">
+									<button data-fls-clear="" type="button" aria-label="clear input" class="form__clear --icon-cross"></button>
+								</div>
+								<button type="submit" class="form__submit btn btn--green btn--fw">Пошук</button>
+							</form>
+							<div data-fls-filters="" class="filters">
+								<div class="filters__body">
+									<div class="filters__top">
+										<div class="filters__spoller">
+											<button type="button" class="filters__btn btn btn--white" data-filter="role">Фільтр за роллю</button>
+											<div class="filter-dropdown" data-filter-dropdown="role">
+												<div class="filter-dropdown__header">Ролі</div>
+												<ul class="filter-dropdown__list">
+													<li class="filter-dropdown__item">
+														<label>
+															<input type="checkbox" value="Державний замовник">
+															<span>Державний замовник</span>
+														</label>
+													</li>
+													<li class="filter-dropdown__item">
+														<label>
+															<input type="checkbox" value="Комерційний замовник">
+															<span>Комерційний замовник</span>
+														</label>
+													</li>
+													<li class="filter-dropdown__item">
+														<label>
+															<input type="checkbox" value="Постачальник">
+															<span>Постачальник</span>
+														</label>
+													</li>
+													<li class="filter-dropdown__item">
+														<label>
+															<input type="checkbox" value="Учасник аукціонів">
+															<span>Учасник аукціонів</span>
+														</label>
+													</li>
+													<li class="filter-dropdown__item">
+														<label>
+															<input type="checkbox" value="Організатор аукціонів">
+															<span>Організатор аукціонів</span>
+														</label>
+													</li>
+												</ul>
+												<button type="button" class="filter-dropdown__apply btn btn--green btn--fw">Вибрати</button>
+											</div>
+										</div>
+										<div class="filters__spoller">
+											<button type="button" class="filters__btn btn btn--white" data-filter="category">Фільтр за рубрикою</button>
+											<div class="filter-dropdown" data-filter-dropdown="category">
+												<div class="filter-dropdown__header">Рубрики</div>
+												<ul class="filter-dropdown__list">
+													<li class="filter-dropdown__item">
+														<label>
+															<input type="checkbox" value="Будівництво">
+															<span>Будівництво</span>
+														</label>
+													</li>
+													<li class="filter-dropdown__item">
+														<label>
+															<input type="checkbox" value="Медицина">
+															<span>Медицина</span>
+														</label>
+													</li>
+													<li class="filter-dropdown__item">
+														<label>
+															<input type="checkbox" value="Освіта">
+															<span>Освіта</span>
+														</label>
+													</li>
+													<li class="filter-dropdown__item">
+														<label>
+															<input type="checkbox" value="Транспорт">
+															<span>Транспорт</span>
+														</label>
+													</li>
+													<li class="filter-dropdown__item">
+														<label>
+															<input type="checkbox" value="Енергетика">
+															<span>Енергетика</span>
+														</label>
+													</li>
+												</ul>
+												<button type="button" class="filter-dropdown__apply btn btn--green btn--fw">Вибрати</button>
+											</div>
+										</div>
+										<div class="filters__spoller">
+											<button type="button" class="filters__btn btn btn--white" data-filter="type">Фільтр за типом</button>
+											<div class="filter-dropdown" data-filter-dropdown="type">
+												<div class="filter-dropdown__header">Типи</div>
+												<ul class="filter-dropdown__list">
+													<li class="filter-dropdown__item">
+														<label>
+															<input type="checkbox" value="Тендер">
+															<span>Тендер</span>
+														</label>
+													</li>
+													<li class="filter-dropdown__item">
+														<label>
+															<input type="checkbox" value="Аукціон">
+															<span>Аукціон</span>
+														</label>
+													</li>
+													<li class="filter-dropdown__item">
+														<label>
+															<input type="checkbox" value="Закупівля">
+															<span>Закупівля</span>
+														</label>
+													</li>
+													<li class="filter-dropdown__item">
+														<label>
+															<input type="checkbox" value="Оголошення">
+															<span>Оголошення</span>
+														</label>
+													</li>
+													<li class="filter-dropdown__item">
+														<label>
+															<input type="checkbox" value="Продаж">
+															<span>Продаж</span>
+														</label>
+													</li>
+												</ul>
+												<button type="button" class="filter-dropdown__apply btn btn--green btn--fw">Вибрати</button>
+											</div>
+										</div>
+									</div>
+									<!--
+<div class="filters__applied">
+<div class="filters__applied-title">Застосовані фільтри</div>
+<div class="filters__applied-group">
+<div class="filters__applied-label">Фільтр за роллю:</div>
+<div class="filters__tag">
+Державний замовник
+<button type="button" class="filters__tag-remove" aria-label="Видалити">×</button>
+</div>
+<div class="filters__tag">
+Комерційний замовник
+<button type="button" class="filters__tag-remove" aria-label="Видалити">×</button>
+</div>
+</div>
+<button type="button" class="filters__reset btn btn--fill-gray">Скинути фільтри</button>
+</div>
+-->
+								</div>
+								<div class="filters__show">
+									<button type="button" class="filters__hide btn btn--fill-gray">
+										<span>Показати фільтри</span>
+										<span>Приховати фільтри</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
 			</main>
 			<footer data-fls-footer="" class="footer">
 				<div class="footer__top">
@@ -2445,6 +2605,9 @@
 			</footer>
 		</div>
 		<ul id="fls-dev-panel">
+			<li>
+				<a href="not-found.html">not-found</a>
+			</li>
 			<li>
 				<a href="index.html">index</a>
 			</li>
