@@ -1148,7 +1148,12 @@
   &__head {}
 
   // .article__content
-  &__content {}
+  &__content {
+    all: revert;
+    line-height: normal;
+    // font-family: system-ui, sans-serif;
+    color: inherit;
+  }
 
   // .article__container
   &__container {}
@@ -1339,86 +1344,63 @@
   }
 }
 
-// .wp-block-button__link {
-//   color: #fff;
-//   background-color: #32373c;
-//   border-radius: 9999px;
-//   box-shadow: none;
-//   text-decoration: none;
-//   padding: calc(.667em + 2px) calc(1.333em + 2px);
-//   font-size: 1.125em;
-// }
-
-// .wp-block-button__link {
-//   align-content: center;
-//   box-sizing: border-box;
-//   cursor: pointer;
-//   display: inline-block;
-//   height: 100%;
-//   text-align: center;
-//   word-break: break-word;
-// }
-
-// .has-text-align-center {
-//   text-align: center;
-// }
 
 .wp-block-table {
-  &.is-style-custom {
-    @media (max-width:toEm($mobile)) {
-      margin-inline: -24px;
-      padding-inline: 24px;
-    }
+  @media (max-width:toEm($mobile)) {
+    margin-inline: -24px;
+    padding-inline: 24px;
+  }
 
-    table {
-      border: 1px solid #46d75a;
-      border-radius: 8px;
-      border-collapse: separate;
-      border-spacing: 0;
-      overflow: hidden;
-      width: 100%;
-    }
+  table {
+    border: 1px solid #46d75a;
+    border-radius: 8px;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    width: 100%;
+  }
 
-    thead {
-      background-color: #46d75a;
+  thead {
+    background-color: #46d75a;
 
-      th {
-        color: var(--primary);
-        font-weight: 700;
-        line-height: 1.7;
-        padding-block: 7px 14px;
-        text-align: left;
-        font-size: 14px;
-        padding: 12px 16px;
-        height: 69px;
-      }
-    }
-
-    tbody tr {
-      background-color: transparent;
-    }
-
-    td {
-      padding: 12px 16px;
-      border: none !important;
+    th {
+      color: var(--primary);
+      font-weight: 700;
       line-height: 1.7;
-    }
-
-    tfoot td {
-      border: none;
-    }
-
-    @media (max-width: toEm($mobile)) {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-
-      table {
-        width: 720px;
-
-        min-width: 720px;
-      }
+      padding-block: 7px 14px;
+      text-align: left;
+      font-size: 14px;
+      padding: 12px 16px;
+      height: 69px;
     }
   }
+
+  tbody tr {
+    background-color: transparent;
+  }
+
+  td {
+    padding: 12px 16px;
+    border: none !important;
+    line-height: 1.7;
+  }
+
+  tfoot td {
+    border: none;
+  }
+
+  @media (max-width: toEm($mobile)) {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    table {
+      width: 720px;
+
+      min-width: 720px;
+    }
+  }
+  // &.is-style-custom {
+  // }
 
   &.is-style-custom--green {
     table {
@@ -1789,7 +1771,6 @@
     }
   }
 }
-
 
 .search {
 

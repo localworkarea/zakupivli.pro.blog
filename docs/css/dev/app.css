@@ -948,6 +948,11 @@ textarea.input {
   margin-bottom: 1.5rem;
 }
 
+.article__content {
+  all: revert;
+  line-height: normal;
+  color: inherit;
+}
 .head-article {
   margin-bottom: 0.5rem;
 }
@@ -1032,7 +1037,7 @@ textarea.input {
   outline-color: var(--gray-dark);
   background-color: var(--gray-light-2);
 }
-.wp-block-table.is-style-custom table {
+.wp-block-table table {
   border: 0.0625rem solid #46d75a;
   border-radius: 0.5rem;
   border-collapse: separate;
@@ -1040,10 +1045,10 @@ textarea.input {
   overflow: hidden;
   width: 100%;
 }
-.wp-block-table.is-style-custom thead {
+.wp-block-table thead {
   background-color: #46d75a;
 }
-.wp-block-table.is-style-custom thead th {
+.wp-block-table thead th {
   color: var(--primary);
   font-weight: 700;
   line-height: 1.7;
@@ -1053,15 +1058,15 @@ textarea.input {
   padding: 0.75rem 1rem;
   height: 4.3125rem;
 }
-.wp-block-table.is-style-custom tbody tr {
+.wp-block-table tbody tr {
   background-color: transparent;
 }
-.wp-block-table.is-style-custom td {
+.wp-block-table td {
   padding: 0.75rem 1rem;
   border: none !important;
   line-height: 1.7;
 }
-.wp-block-table.is-style-custom tfoot td {
+.wp-block-table tfoot td {
   border: none;
 }
 .wp-block-table.is-style-custom--green table {
@@ -2312,15 +2317,15 @@ textarea.input {
   .video-block__buttons .swiper-button-next {
     transform: translate(40%, -50%);
   }
-  .wp-block-table.is-style-custom {
+  .wp-block-table {
     margin-inline: -1.5rem;
     padding-inline: 1.5rem;
   }
-  .wp-block-table.is-style-custom {
+  .wp-block-table {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .wp-block-table.is-style-custom table {
+  .wp-block-table table {
     width: 45rem;
     min-width: 45rem;
   }
