@@ -43,7 +43,10 @@
       @include adaptiveValue("width", 80, 50);
       @include adaptiveValue("height", 80, 50);
     }
-    img {}
+    img {
+      height: 100% !important;
+      max-width: 100% !important;;
+    }
   }
 }
 

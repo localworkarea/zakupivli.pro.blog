@@ -72,6 +72,14 @@
 			@media (min-width:toEm($mobileSmall)){
 				padding: 24px 32px;
 			}
+			a {
+				color: var(--blue);
+				@media (any-hover: hover){
+					&:hover{
+						text-decoration: underline;
+					}
+				}
+			}
 			p {
 				&:not(:last-child) {
 					margin-bottom: 8px;

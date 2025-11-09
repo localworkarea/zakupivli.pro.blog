@@ -1149,14 +1149,21 @@
 
   // .article__content
   &__content {
-    all: revert;
-    line-height: normal;
+    // all: revert;
+    // line-height: normal;
     // font-family: system-ui, sans-serif;
-    color: inherit;
+    // color: inherit;
   }
 
   // .article__container
-  &__container {}
+  &__container {
+    // * {
+      p,h1,h2,h3,h4,h5,h6,ul,ol,li,strong,b,i,blockquote,a:not(.wp-element-button),img {
+        all:revert;
+      } 
+    // }
+      
+  }
 }
 
 .head-article {

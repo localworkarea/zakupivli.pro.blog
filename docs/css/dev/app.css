@@ -948,11 +948,10 @@ textarea.input {
   margin-bottom: 1.5rem;
 }
 
-.article__content {
+.article__container p, .article__container h1, .article__container h2, .article__container h3, .article__container h4, .article__container h5, .article__container h6, .article__container ul, .article__container ol, .article__container li, .article__container strong, .article__container b, .article__container i, .article__container blockquote, .article__container a:not(.wp-element-button), .article__container img {
   all: revert;
-  line-height: normal;
-  color: inherit;
 }
+
 .head-article {
   margin-bottom: 0.5rem;
 }
@@ -1303,6 +1302,11 @@ textarea.input {
   background-size: contain;
   transition: transform 0.65s ease;
 }
+.video-youtube__button img {
+  height: 100% !important;
+  max-width: 100% !important;
+}
+
 .custom-video {
   position: relative;
   width: 100%;
@@ -1393,6 +1397,9 @@ textarea.input {
   padding: 0.75rem 1.125rem;
   border-radius: 0.5rem;
   background-color: var(--white);
+}
+.instructions-spollers__wrapper a {
+  color: var(--blue);
 }
 .instructions-spollers__wrapper p:not(:last-child) {
   margin-bottom: 0.5rem;
@@ -2975,6 +2982,9 @@ textarea.input {
   }
   .video-youtube__button:hover::before {
     transform: translate(-50%, -50%) scale(1.1);
+  }
+  .instructions-spollers__wrapper a:hover {
+    text-decoration: underline;
   }
   .swiper-button-prev:hover,
   .swiper-button-next:hover {
