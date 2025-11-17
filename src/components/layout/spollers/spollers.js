@@ -174,59 +174,57 @@ export function spollers() {
 		});
 	}
 
-	// === 🔹 Новый корректный блок ограничения ===
-	function handleSpollersLimit(spollersBlock) {
-		const limit = parseInt(spollersBlock.dataset.flsSpollers);
-		if (!limit || isNaN(limit)) return;
+function handleSpollersLimit(spollersBlock) {
+	const limit = parseInt(spollersBlock.dataset.flsSpollers);
+	const details = [...spollersBlock.querySelectorAll('details')];
+	if (!details.length) return;
 
-		const details = [...spollersBlock.querySelectorAll('details')];
-		if (!details.length) return;
-
-		// Ищем/создаём кнопку ВНЕ details
-		let btn = spollersBlock.querySelector('[data-fls-buttons]');
-		if (!btn) {
-			btn = document.createElement('a');
-			btn.href = '#';
-			btn.className = 'customer-hero__link btn btn--fw btn--green mt-2';
-			btn.setAttribute('data-fls-buttons', '');
-			btn.setAttribute('aria-label', 'показати всі інструкції');
-			btn.textContent = 'Показати всі інструкції';
-			// Добавляем строго ПОСЛЕ всех details
-			spollersBlock.append(btn);
-		}
-
-		// функция применения лимита
-		const applyLimit = (showAll = false) => {
-			details.forEach((el, i) => {
-				el.hidden = !showAll && i >= limit;
-			});
-		};
-
-		// начальное состояние
-		if (details.length <= limit) {
-			btn.style.display = 'none';
-			applyLimit(true);
-		} else {
-			btn.style.display = '';
-			applyLimit(false);
-		}
-
-		// клик по кнопке
-		btn.addEventListener('click', e => {
-			e.preventDefault();
-			const expanded = btn.classList.toggle('--expanded');
-			if (expanded) {
-				applyLimit(true);
-				btn.textContent = 'Сховати інструкції';
-				btn.setAttribute('aria-label', 'сховати інструкції');
-			} else {
-				applyLimit(false);
-				btn.textContent = 'Показати всі інструкції';
-				btn.setAttribute('aria-label', 'показати всі інструкції');
-				spollersBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
-			}
-		});
+	let btn = spollersBlock.querySelector('[data-fls-buttons]');
+	if (!btn) {
+		btn = document.createElement('a');
+		btn.href = '#';
+		btn.className = 'customer-hero__link btn btn--fw btn--green mt-2';
+		btn.setAttribute('data-fls-buttons', '');
+		btn.setAttribute('aria-label', 'показати всі інструкції');
+		btn.textContent = 'Показати всі інструкції';
+		spollersBlock.append(btn);
 	}
+
+	if (!limit || isNaN(limit) || limit === 0) {
+		btn.style.display = 'none';
+		details.forEach(el => (el.hidden = false)); // показываем всё
+		return;
+	}
+
+	const applyLimit = (showAll = false) => {
+		details.forEach((el, i) => {
+			el.hidden = !showAll && i >= limit;
+		});
+	};
+
+	if (details.length <= limit) {
+		btn.style.display = 'none';
+		applyLimit(true);
+	} else {
+		btn.style.display = '';
+		applyLimit(false);
+	}
+
+	btn.addEventListener('click', e => {
+		e.preventDefault();
+		const expanded = btn.classList.toggle('--expanded');
+		if (expanded) {
+			applyLimit(true);
+			btn.textContent = 'Сховати інструкції';
+			btn.setAttribute('aria-label', 'сховати інструкції');
+		} else {
+			applyLimit(false);
+			btn.textContent = 'Показати всі інструкції';
+			btn.setAttribute('aria-label', 'показати всі інструкції');
+			spollersBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		}
+	});
+}
 
 	function setSpollerAction(e) {
 		const el = e.target;

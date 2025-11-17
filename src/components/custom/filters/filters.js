@@ -133,25 +133,51 @@ document.addEventListener("DOMContentLoaded", () => {
 				}
 
 				if (group) group.querySelectorAll(".filters__tag").forEach(tag => tag.remove());
+				// checked.forEach(ch => {
+				// 	const tag = document.createElement("div");
+				// 	tag.className = "filters__tag";
+				// 	tag.textContent = ch.value;
+
+				// 	const removeBtn = document.createElement("button");
+				// 	removeBtn.type = "button";
+				// 	removeBtn.className = "filters__tag-remove";
+				// 	removeBtn.setAttribute("aria-label", "Видалити");
+				// 	removeBtn.textContent = "×";
+
+				// 	tag.appendChild(removeBtn);
+				// 	group.appendChild(tag);
+
+				// 	removeBtn.addEventListener("click", () => {
+				// 		ch.checked = false;
+				// 		updateCountAndApplied();
+				// 	});
+				// });
 				checked.forEach(ch => {
 					const tag = document.createElement("div");
 					tag.className = "filters__tag";
-					tag.textContent = ch.value;
-
+								
+					// ✅ Берём текст из <span> рядом с input
+					const label = ch.closest("label");
+					const textEl = label?.querySelector("span");
+					const tagText = textEl ? textEl.textContent.trim() : ch.value;
+								
+					tag.textContent = tagText;
+								
 					const removeBtn = document.createElement("button");
 					removeBtn.type = "button";
 					removeBtn.className = "filters__tag-remove";
 					removeBtn.setAttribute("aria-label", "Видалити");
 					removeBtn.textContent = "×";
-
+								
 					tag.appendChild(removeBtn);
 					group.appendChild(tag);
-
+								
 					removeBtn.addEventListener("click", () => {
 						ch.checked = false;
 						updateCountAndApplied();
 					});
 				});
+
 			} else {
 				const group = applied?.querySelector(`.filters__applied-group[data-group="${key}"]`);
 				group?.remove();

@@ -723,7 +723,6 @@ function spollers() {
   }
   function handleSpollersLimit(spollersBlock) {
     const limit = parseInt(spollersBlock.dataset.flsSpollers);
-    if (!limit || isNaN(limit)) return;
     const details = [...spollersBlock.querySelectorAll("details")];
     if (!details.length) return;
     let btn = spollersBlock.querySelector("[data-fls-buttons]");
@@ -735,6 +734,11 @@ function spollers() {
       btn.setAttribute("aria-label", "показати всі інструкції");
       btn.textContent = "Показати всі інструкції";
       spollersBlock.append(btn);
+    }
+    if (!limit || isNaN(limit) || limit === 0) {
+      btn.style.display = "none";
+      details.forEach((el) => el.hidden = false);
+      return;
     }
     const applyLimit = (showAll = false) => {
       details.forEach((el, i) => {
@@ -5880,7 +5884,10 @@ document.addEventListener("DOMContentLoaded", () => {
         checked.forEach((ch) => {
           const tag = document.createElement("div");
           tag.className = "filters__tag";
-          tag.textContent = ch.value;
+          const label = ch.closest("label");
+          const textEl = label?.querySelector("span");
+          const tagText = textEl ? textEl.textContent.trim() : ch.value;
+          tag.textContent = tagText;
           const removeBtn = document.createElement("button");
           removeBtn.type = "button";
           removeBtn.className = "filters__tag-remove";
