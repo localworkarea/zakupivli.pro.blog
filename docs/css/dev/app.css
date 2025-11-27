@@ -686,7 +686,6 @@ textarea.input {
 }
 
 .slider-main {
-  flex: 1;
   aspect-ratio: 386/400;
 }
 .slider-main__slider .swiper-pagination {
