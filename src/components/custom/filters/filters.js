@@ -133,25 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				}
 
 				if (group) group.querySelectorAll(".filters__tag").forEach(tag => tag.remove());
-				// checked.forEach(ch => {
-				// 	const tag = document.createElement("div");
-				// 	tag.className = "filters__tag";
-				// 	tag.textContent = ch.value;
-
-				// 	const removeBtn = document.createElement("button");
-				// 	removeBtn.type = "button";
-				// 	removeBtn.className = "filters__tag-remove";
-				// 	removeBtn.setAttribute("aria-label", "Видалити");
-				// 	removeBtn.textContent = "×";
-
-				// 	tag.appendChild(removeBtn);
-				// 	group.appendChild(tag);
-
-				// 	removeBtn.addEventListener("click", () => {
-				// 		ch.checked = false;
-				// 		updateCountAndApplied();
-				// 	});
-				// });
+				
 				checked.forEach(ch => {
 					const tag = document.createElement("div");
 					tag.className = "filters__tag";
@@ -173,9 +155,14 @@ document.addEventListener("DOMContentLoaded", () => {
 					group.appendChild(tag);
 								
 					removeBtn.addEventListener("click", () => {
-						ch.checked = false;
-						updateCountAndApplied();
+					    ch.checked = false;
+					    updateCountAndApplied();
+
+					    // Отправляем форму после удаления тега
+					    const form = filtersWrapper.closest("form");
+					    if (form) form.requestSubmit();
 					});
+
 				});
 
 			} else {

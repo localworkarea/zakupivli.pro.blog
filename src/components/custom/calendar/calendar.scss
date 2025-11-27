@@ -130,7 +130,7 @@
       cursor: pointer;
       border-radius: 50%;
       transition: background-color .3s ease;
-      &:not(.calendar__day--event) {
+      &:not(.calendar__day--event):not(.calendar__day--empty) {
         &:active {
            background-color: var(--green-2);
         }

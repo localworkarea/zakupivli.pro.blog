@@ -5898,6 +5898,8 @@ document.addEventListener("DOMContentLoaded", () => {
           removeBtn.addEventListener("click", () => {
             ch.checked = false;
             updateCountAndApplied();
+            const form = filtersWrapper.closest("form");
+            if (form) form.requestSubmit();
           });
         });
       } else {
