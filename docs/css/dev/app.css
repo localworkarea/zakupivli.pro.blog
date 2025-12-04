@@ -687,6 +687,10 @@ textarea.input {
 
 .slider-main {
   aspect-ratio: 386/400;
+  min-width: 0;
+}
+.slider-main__slider {
+  min-width: 0;
 }
 .slider-main__slider .swiper-pagination {
   position: absolute;
@@ -714,10 +718,10 @@ textarea.input {
 }
 
 .slide-main {
-  aspect-ratio: 386/400;
   height: 100%;
 }
 .slide-main__item {
+  flex: 0 0;
   display: block;
   position: relative;
   border-radius: 0.5rem;
@@ -729,6 +733,7 @@ textarea.input {
 }
 .slide-main__item img {
   min-height: 100%;
+  border-radius: 0.5rem;
   transition: transform 1s ease;
   aspect-ratio: 386/400;
 }

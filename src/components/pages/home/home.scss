@@ -120,8 +120,8 @@
 
 
 .slider-main {
-  // flex: 1;
   aspect-ratio: 386/400;
+  min-width: 0;
 
   @media (min-width:toEm($mobileSmall)) {
     aspect-ratio: 793/400;
@@ -129,6 +129,7 @@
 
   // .slider-main__slider
   &__slider {
+    min-width: 0;
     .swiper-pagination {
       position: absolute;
       z-index: 5;
@@ -187,7 +188,7 @@
 
 .slide-main {
 
-  aspect-ratio: 386/400;
+  // aspect-ratio: 386/400;
   height: 100%;
 
   @media (min-width:toEm($mobileSmall)) {
@@ -196,6 +197,7 @@
 
   // .slide-main__item
   &__item {
+    flex: 0 0;
     display: block;
     position: relative;
     border-radius: 8px;
@@ -219,6 +221,7 @@
 
     img {
       min-height: 100%;
+      border-radius: 8px;
       transition: transform 1s ease;
       aspect-ratio: 386/400;
 
