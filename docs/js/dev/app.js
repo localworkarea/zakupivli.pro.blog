@@ -5974,13 +5974,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 function adjustCardTextClamp() {
-  const cards = document.querySelectorAll(".card-news--t1, .card-news--t5, .card-news--t3");
+  const cards = document.querySelectorAll(".card-news--t1, .card-news--t3, .card-news--t5, .card-news--t8");
   cards.forEach((card) => {
     const text = card.querySelector(".card-news__text");
     if (!text) return;
     requestAnimationFrame(() => {
       const isT5 = card.classList.contains("card-news--t5");
       const isT3 = card.classList.contains("card-news--t3");
+      const isT8 = card.classList.contains("card-news--t8");
       const picture = card.querySelector(".card-news__picture");
       const time = card.querySelector(".card-news__time");
       const tags = card.querySelector(".card-news__tags");
@@ -6000,8 +6001,8 @@ function adjustCardTextClamp() {
         });
         return total;
       }
-      if (isT5 || isT3) {
-        const cardHeight = 230;
+      if (isT5 || isT3 || isT8) {
+        const cardHeight = isT8 ? 205 : 230;
         const occupiedHeight = getOccupiedHeight([time, tags, title]);
         availableHeight = cardHeight - occupiedHeight - textMarginTop;
       } else {
@@ -6014,6 +6015,29 @@ function adjustCardTextClamp() {
         const pictureHeight = 230 + pictureMarginBottom;
         const occupiedHeight = getOccupiedHeight([time, tags, title]);
         availableHeight = cardHeight - cardPadding - pictureHeight - occupiedHeight - textMarginTop;
+      }
+      if (isT8 && tags) {
+        if (!tags.dataset.original) {
+          tags.dataset.original = tags.innerHTML;
+        }
+        tags.innerHTML = tags.dataset.original;
+        const tagItems = [...tags.querySelectorAll("[data-fls-tags]")];
+        if (tagItems.length > 1) {
+          const firstRowTop = tagItems[0].offsetTop;
+          const ROW_TOLERANCE = 2;
+          let lastAllowedIndex = tagItems.length - 1;
+          tagItems.forEach((tag, index) => {
+            if (tag.offsetTop - firstRowTop > ROW_TOLERANCE && lastAllowedIndex === tagItems.length - 1) {
+              lastAllowedIndex = index - 1;
+            }
+          });
+          if (lastAllowedIndex < tagItems.length - 1) {
+            if (lastAllowedIndex < 0) lastAllowedIndex = 0;
+            tagItems.forEach((tag, index) => {
+              if (index > lastAllowedIndex) tag.remove();
+            });
+          }
+        }
       }
       let lineHeight = parseFloat(textStyle.lineHeight);
       if (!lineHeight || isNaN(lineHeight)) {
